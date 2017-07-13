@@ -1,21 +1,17 @@
 <html>
   <body>
+    <h1> Restaurants! </h1>
 
-    <h1> Restaurant </h1>
 
-      <h2> MENU </h2>
 
       <a href='#'>Add New Item!</a>
 
       <br/>
       <br/>
 
-      {% for i in items %}
-        {{i.name}}
+      {% for R in Restaurant %}
+        {{R.name}}
         <br/>
-        {{i.price}}
-        <br/>
-        {{i.description}}
         <br/>
         <a href= '#' >Edit</a>
         <br/>
@@ -24,6 +20,8 @@
         <br/>
 
       {% endfor %}
+
+
 
   </body>
 </html>
