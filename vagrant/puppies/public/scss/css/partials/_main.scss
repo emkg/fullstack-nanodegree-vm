@@ -1,0 +1,182 @@
+ /* === Box-sizing: everything. No, really. === */
+ 
+html  { 
+  @include boxSizing(border-box);
+}
+
+*, 
+*:before, 
+*:after  { 
+  box-sizing: inherit;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.mobile {
+	display: block;
+	@include breakpoint(break-small) { display:none; }
+}
+
+.tablet {
+	display: none;
+	@include breakpoint(break-small) { display:block; } 
+	@include breakpoint(break-medium) { display:none; } 
+}
+
+.fullscreen {
+  display: none;
+  @include breakpoint(break-medium) { display:block; } 
+}
+
+.not-mobile {
+	display: none !important;
+	@include breakpoint(break-small) { display:block !important; } 
+}
+	
+
+html,
+header,
+#banner,
+footer {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  @include rem-fallback(padding, $navbar-height, 0, 0, 0); // top padding for the sticky menu bar on mobile
+  @include rem-fallback(min-width, 20);
+  
+  @include breakpoint(break-medium) { padding: 0; }
+}
+
+.page-wrapper {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+	margin: 0;
+	padding: 0;
+}
+
+.navbar-wrapper {
+  margin: 0;
+  padding: 0;
+  
+  @include breakpoint(break-large) {
+    margin: 0 auto;
+    max-width: $break-large;
+  } // break-large
+}
+
+.banner-wrapper {
+  margin: 0;
+  padding: 0;
+  
+  @include breakpoint(break-large) {
+    margin: 0 auto;
+    max-width: $break-large;
+  } // break-large
+}
+
+#content {
+  background: $main-bg;
+  margin: 0;
+  @include rem-fallback(padding, 0, 0, $base-padding, 0);
+  
+  @include breakpoint(break-small) {
+	  padding: 0;
+  }
+  
+  .nssl_home & { // no breadcrumbs on front page, need a little extra space at the top
+	  @include breakpoint(break-small) {
+		  @include rem-fallback(padding, $base-padding*2, 0, 0, 0);
+	  }
+  }
+  
+  @include breakpoint(break-large) {
+    margin: 0 auto;
+    max-width: $break-large; 
+  } // break-large
+}
+ 
+.footer-wrapper {
+  margin: 0;
+  @include rem-fallback(padding, $base-padding, $base-padding/2);
+  
+  @include breakpoint(break-small) {
+	  @include rem-fallback(padding, $base-padding);
+  }
+  
+  @include breakpoint(break-large) {
+    margin: 0 auto;
+    max-width: $break-large; 
+  } // break-large
+}
+
+ /* === Main content area === */
+
+#main {
+  margin: 0;
+  padding: 0;
+  
+   @include breakpoint(break-small) {
+    float: left;
+    width: 60%;
+  } // break-small
+}
+  
+.main-wrapper {
+  @include rem-fallback(margin, 0, $base-margin/2, $base-margin);
+  @include rem-fallback(padding, 0, $base-padding/2, $base-padding); // if we display breadcrumbs in mobile
+	//  @include rem-fallback(padding, $base-padding*2, $base-padding/2, 0, $base-padding/2);
+  border-bottom: $sidebar-border;
+  
+  @include breakpoint(break-small) {
+	  @include rem-fallback(margin, 0, $base-margin/2, $base-margin, $base-margin);
+	  @include rem-fallback(padding, $base-padding);
+	  border-bottom: none;
+  
+	  > :last-child {
+		 margin-bottom: 0;
+	  } // last-child
+	  
+  } // break-small
+}
+
+#breadcrumbs {
+    // margin: 0;
+    // @include rem-fallback(padding, $base-padding);
+	 display: none;
+  
+  @include breakpoint(break-small) {
+	  display: block;
+	  margin: 0;
+	  @include rem-fallback(padding, $base-padding, $base-padding*2);
+  } // break-small
+  
+  .breadcrumb-item {
+      display: inline-block;
+      margin: 0;
+      padding: 0;
+      
+      &:after {
+          content: "#{$separator}";
+      }
+      
+      &:last-child:after {
+          content: "";
+      }
+      
+      &.current a
+      a.current {
+          color: $text-color;
+          text-decoration: none;
+          cursor: default;
+      }
+  }
+}

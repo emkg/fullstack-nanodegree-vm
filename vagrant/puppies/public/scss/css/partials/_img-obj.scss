@@ -1,0 +1,204 @@
+/* === Images === */
+
+img,
+img[class*="align"] {
+   height: auto;
+   max-width: 100%;
+  -ms-interpolation-mode: bicubic; 
+}
+
+a img {
+  border: none;
+}
+
+/* === Embeds === */
+
+
+object, embed, iframe { 
+// note, I have taken video out of this entry because it messes up jwplayer
+    max-width: 100%;
+}
+
+object + p,
+embed + p,
+iframe + p, 
+video + p,
+.post_media_object { // space between embedded object and p immediately following 
+  @include rem-fallback(margin-top, $base-margin);
+}
+
+/* === Video Items === */
+
+// related to page_items in _utility.scss
+
+.video_item {
+    background: $box-bg;
+	 border: $box-border;
+	 @include materialShadow(2);
+    @include rem-fallback(margin, $base-margin, 0);
+	 padding: 0;
+	 
+	.video_banner {
+		margin: 0;
+		padding: 0;
+	}
+	.video_item_wrapper {
+		@include rem-fallback(padding, $base-padding);
+		margin: 0;
+    
+    > :last-child {
+        margin-bottom: 0;
+    }
+	}
+}
+
+.video_metadata {
+	color: $blockquote-text;
+	font-style: italic;
+}
+
+/* === Photo Boxes === */
+
+.photo_box {
+  background: $box-bg;
+  border: $box-border;
+  @include rem-fallback(padding, $base-padding/4); // 6px
+  
+  img { 
+    display: block;
+    margin: 0 auto;
+  }
+  
+  &.dark {
+    background: darken($box-bg, 10%);
+    border: $box-border;
+    border-color: darken($box-bg, 20%);
+    
+    .caption,
+	 .caption p {
+        color: $text-color;
+    }
+  } //.photo_box.dark
+  
+  .page_subtitle {
+    @include rem-fallback(margin-bottom, $base-margin/4); // 8px
+  }
+	  
+  .caption,
+  .caption p {
+    color: lighten($text-color, 25%);
+    @include rem-fallback(font-size, $px14-font-size); // 14px
+    line-height: $px14-line-height;  // 18px
+    @include rem-fallback(margin, $base-margin/2, 0, 0, 0); // 8px
+  } // .photo_box .caption
+  
+ .credit {
+	  color: lighten($text-color, 50%);
+	  @include rem-fallback(font-size, $px14-font-size); // 14px
+	  font-style: italic;
+	  line-height: $px14-line-height;  // 18px
+	  margin: 0;
+	  text-align: right;
+ }
+} // .photo_box
+
+.photo_box_plain {
+  @include rem-fallback(margin-bottom, $base-margin); // 24px
+  
+  img { 
+    display: block;
+    margin: 0 auto;
+  }
+  
+	.caption,
+	.caption p {
+		@include rem-fallback(font-size, $px14-font-size); // 14px
+		line-height: $px14-line-height;  // 18px
+		@include rem-fallback(margin, $base-margin/4, 0, 0, 0); // 8px
+	} // .photo_box .caption
+	
+	.credit {
+		color: lighten($text-color, 50%);
+		@include rem-fallback(font-size, $px14-font-size); // 14px
+		font-style: italic;
+		line-height: $px14-line-height;  // 18px
+		margin: 0;
+	}
+}
+
+.photo_box_card {
+    img { @include materialShadow(1); }
+} 
+
+/* === Gallery === */
+
+// gallery has class="col-# depth-#" indicating how many columns
+// and the Google Material z-depth of the cards
+// rows are denoted by class="gallery_row"
+// items within a row are denoted by class="gallery_item"
+
+.gallery_row {
+    @include clearFix;
+}
+
+.gallery_item {
+    float: left;
+  @include rem-fallback(margin-bottom, 2*$base-margin); // 24px
+    
+    img {
+        width: 90%;
+        height: auto;
+        margin: 0 auto;
+        @include materialShadow(2);
+    }
+  
+  .caption {
+    color: lighten($text-color, 25%);
+    @include rem-fallback(font-size, $px14-font-size); // 14px
+    line-height: $px14-line-height;  // 18px
+    @include rem-fallback(margin, $base-margin/2, 0, 0, 0); // 8px
+  } 
+        
+}
+
+.col-2 .gallery_item {
+    
+    width: 100%;
+  
+  @include breakpoint(break-min) {
+    width: 50%;
+    
+  }
+}
+
+.col-3 .gallery_item {
+    
+    width: 100%;
+  
+  @include breakpoint(break-small) {
+    width: 33.3%;
+  }
+}
+
+.col-4 .gallery_item {
+    
+    width: 100%;
+  
+  @include breakpoint(break-min) {
+    width: 50%;
+  }
+  
+  @include breakpoint(break-medium) {
+    width: 25%;
+  }
+}
+
+/* multimedia transcripts */
+
+.transcript {
+	
+	.speaker {
+		font-weight: bold;
+	}
+	
+}

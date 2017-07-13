@@ -1,0 +1,145 @@
+/**
+* Footer styles
+* --------------------------------------------------------------------------- */
+
+.footer-wrapper { // fonts and colors ONLY -- .footer-wrapper structure is in _main.scss
+
+	background: $footer-bg;
+	
+	p,
+	li {
+	  color: $footer-text;
+	  @include rem-fallback(font-size, 0.875); // 14px
+	  line-height: 1.7142857; // 24px
+	}
+  
+  a {
+		color: $footer-text !important; // override the default color for telephone links in _utility.scss
+		font-weight: normal;
+		text-decoration: none;
+  }
+  
+  a:focus {
+	  outline: 1px dotted $footer-text;
+  }
+  
+  a:hover,
+  a:active {
+		text-decoration: underline;
+  }
+  
+  ul {
+		list-style: none;
+		padding: 0;
+	}
+	
+	h2 {
+		color: $footer-title-text;
+		@include rem-fallback(font-size, $p-font-size); // 16px
+		line-height: $p-line-height; // 24px
+		font-weight: normal;
+		@include rem-fallback(letter-spacing, $lato-letter-spacing); // .5px use when doing all uppercase
+		@include rem-fallback(margin-bottom, 1.5); // 24px
+		text-transform: uppercase;
+	}
+}
+
+// 3 columns, NOAA logo
+
+.footer_left {
+	@include rem-fallback(margin, 0, $base-margin/2);
+	padding: 0;
+	@include makeTransition();
+  
+	@include breakpoint(break-small) {
+		background: url(#{$images}/noaa-wt.svg) no-repeat 20px 21px;
+		background-size: 100px 100px;
+		float: left;
+		margin: 0;
+		width: 50%;
+	} // break-small
+	
+	ul {
+		@include rem-fallback(margin-top, 3); // 48px
+	}
+	
+	p, li {
+		@include makeTransition();
+		@include breakpoint(break-small) { margin-left: 150px; }
+	}
+}
+
+.footer_center_right {
+	border-top: $footer-border;
+	margin: 0;
+	@include rem-fallback(padding, $base-padding, 0, 0, 0); 
+	@include makeTransition();
+  
+	@include breakpoint(break-small) {
+		border-top: none;
+		border-left: $footer-border;
+		float: left;
+		padding: 0;
+		width: 50%;
+	} // break-small
+}
+
+.footer_center,
+.footer_right {
+	margin: 0;
+	@include rem-fallback(padding, 0, $base-padding/2);
+	float: left;
+	width: 50%;
+  
+	@include breakpoint(break-small) {
+		@include rem-fallback(padding, 0, $base-padding);
+	}
+}
+
+#connect_list { 
+// initial padding, line height, margin same as for .compact list in _utility.scss
+// line-height changes at break-small
+// padding changes at break-medium
+// compact li is one pixel shorter than connect_list li; don't know why
+	
+	li {
+		margin-bottom: 0;
+		@include rem-fallback(padding-top, $base-padding/2);  
+		@include rem-fallback(padding-bottom, $base-padding/2);  
+	
+	@include breakpoint(break-small) {
+		@include rem-fallback(line-height, 2);
+		@include rem-fallback(padding-top, $base-padding/4);  
+		@include rem-fallback(padding-bottom, $base-padding/4); 
+	}
+	
+	}
+	
+	.fa {
+		@include rem-fallback(font-size, 2); 
+		@include rem-fallback(margin-top, -0.5); 
+		@include rem-fallback(margin-right, 0.5); 
+		@include rem-fallback(width, 2);
+		vertical-align: middle;
+	}
+	
+/*	.fa-facebook-square {
+		color: #3b5998;
+	}
+	
+	.fa-twitter-square {
+		color: #00aced;
+	}
+	
+	.fa-youtube-square {
+		color: #bb0000;
+	}
+	
+	.fa-flickr {
+		color: #ff0084;
+	}
+	
+	.fa-umbrella {
+		color: #004c98;
+	}*/
+}

@@ -1,0 +1,135 @@
+/**
+* Drawer styles
+* --------------------------------------------------------------------------- */
+	
+#side-nav {
+	
+	background: $bottom-nav-bg;
+	color: $bottom-nav-text;
+	opacity: 1;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	overflow: auto;
+	position: fixed;
+	top: 0;
+	width: 70%;
+	z-index: 2010; // to keep it above the menu, which is about jqueryUI elements
+  	@include rem-fallback(max-width, 20);
+	@include makeTransition();
+	
+	@include materialShadow(2);
+
+	@include breakpoint(break-medium) { display: none; }
+	
+	li {
+		margin: 0;
+		padding: 0;
+	
+		a, 
+		button {
+			border-bottom: $bottom-nav-border;
+			display: inline-block;
+			margin: 0;
+			@include rem-fallback(padding, $base-padding*2/3, $base-padding);
+			text-align: left;
+			width: 100%;
+			
+			color: $bottom-nav-links;
+			border-left: 4px solid $bottom-nav-bg;
+			
+			&:focus {
+				outline: 1px dotted $bottom-nav-links;
+			}
+			
+			&:hover,
+			&:active {
+				background-color: $bottom-nav-bg-hover;
+				border-left-color: $bottom-nav-links;
+				color: $bottom-nav-links;
+				text-decoration: none;
+			} 
+			
+			.fa { 
+				float: right;
+				@include rem-fallback(font-size, 1.25);
+			 }
+			 
+			&.menu-toggle-button .fa {
+				@include rem-fallback(font-size, 2);
+			}
+			
+		} // a
+				
+		&.current a {
+			border-left: 4px solid $bottom-nav-links;
+		}
+		
+		li { // sub-menu list items
+				
+			&.current a {
+				border-left: 4px solid $bottom-subnav-links;
+			}
+		
+			a {
+				color: $bottom-subnav-links;
+				border-left: 4px solid $bottom-nav-bg;
+				@include rem-fallback(padding-left, $base-padding*3);
+				
+				&:focus {
+					outline: 1px dotted $bottom-subnav-links;
+				}
+				
+				&:hover,
+				&:active {
+					border-left-color: $bottom-subnav-links;
+					color: $bottom-subnav-links;
+					text-decoration: none;
+				}
+			} // submenu links
+		} // submenu list items
+	} // top level list items
+	
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		
+		.active > a+ul {
+			display: block;
+		}
+		
+		li ul {
+			display: none;
+		}
+	} // ul
+	
+	button { // buttons for opening and closing the drawer and the accordions
+		background-color: transparent;
+		border: none;
+	}
+	
+} // #side-nav
+	
+li.menu-toggle { // hamburger icon in social links
+
+	button {
+		background: transparent;
+		border: none;
+				
+		&:focus {
+			outline: 1px dotted $bottom-subnav-links;
+		}
+	}
+
+	@include breakpoint(break-medium) { display: none; }
+	
+}
+
+.menu-hidden { left: -70%; }
+ 
+.menu-show { left: 0; }
+	
+
+
+

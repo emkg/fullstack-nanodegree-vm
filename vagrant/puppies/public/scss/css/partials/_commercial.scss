@@ -1,0 +1,156 @@
+/* Fancybox fixes */
+
+.fancybox-title {
+    
+    sub, 
+    sup {
+        font-size: 75%;
+        line-height: 0;
+        position: relative;
+        vertical-align: baseline;
+    }
+    
+    sup {
+       top: -0.5em; // yes, really ems
+    }
+    
+    sub {
+       bottom: -0.25em; // yes, really ems
+    }
+    
+    > :last-child {
+        margin-bottom: 0;
+    }
+}
+
+.fancybox-nav {
+	
+	&:focus,
+	&:hover,
+	&:active {
+		outline: none;
+	}
+}
+
+// .fancybox2 styles
+// .fancybox2 is for adding html to a caption
+
+.fancybox-hidden {
+    display: none;   
+}
+
+// .fancybox_video styles
+// hide the inline content UNLESS no JS.
+
+.js .fb-video-content {
+	display: none;
+}
+
+/* Galleria fixes */
+
+.jwplayer + p { 
+    @include rem-fallback(margin-top, $base-margin);
+}
+
+.jwplayer ~ p.youtube-link {
+    @include rem-fallback(margin-top, $base-margin/2);
+}
+
+/* Galleria fixes */
+
+.galleria + p { 
+    @include rem-fallback(margin-top, $base-margin);
+}
+
+.galleria ~ p.flickr-link {
+    @include rem-fallback(margin-top, $base-margin/2);
+}
+
+/* Google Maps */
+
+.google-maps {
+	  position: relative;
+	  padding-bottom: 75%; // This is the aspect ratio
+	  height: 0;
+	  overflow: hidden;
+    @include rem-fallback(margin-bottom, $base-margin);
+ }
+ .google-maps iframe,
+ .google-maps .iframe {
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  width: 100% !important;
+	  height: 100% !important;
+ }
+ 
+ /* Timeline.js (3) */
+ 
+ // added timelinejs3-wrapper class div to prioritize over native CSS classes for the script
+ 
+.timelinejs3-wrapper {
+ 
+	.tl-skinny .tl-media .tl-media-content-container .tl-credit, 
+	.tl-skinny .tl-media .tl-media-content-container .tl-caption {
+		@include rem-fallback(font-size, .75); // 12px
+		line-height: 1.2; // 14px
+	}
+ 
+	.tl-skinny .tl-media .tl-media-content-container .tl-credit{
+		 @include rem-fallback(margin-top, $base-margin/4);
+	}
+	
+	.tl-timeline {
+		
+		p {
+			line-height: 1.5;
+		}
+		
+		h2 {
+			@include rem-fallback(margin-bottom, $base-margin/4);
+		}
+		
+		.tl-text .tl-headline-date, 
+		.tl-text h3.tl-headline-date {
+			@include rem-fallback(margin-bottom, $base-margin/4);
+		}
+			
+	}
+	
+	.tl-media .tl-media-blockquote blockquote {
+		
+		@include rem-fallback(font-size, 1.75); // 28px
+		line-height: 1.142857; // 32px
+		@include rem-fallback(padding, 1, 0, 0, 3.5);
+		position: relative;
+		
+		&:before {
+			content: "\201C";
+			color: rgba(0,0,0,.15);
+			@include rem-fallback(font-size, 14);
+			font-style: italic;
+			font-family: Georgia, serif;
+			display: block;
+			position: absolute;
+			@include rem-fallback(left, -1.5);
+			@include rem-fallback(top, -2.5);
+		}
+	}
+}
+
+/* DataTables Fixes */
+
+.dataTables_length,
+.dataTables_filter {
+	margin-bottom: 6px !important;
+	margin-bottom: .375rem !important; // $base-margin/4
+}
+
+table.dataTable>tbody>tr.child span.dtr-title {
+    min-width: initial !important;
+	@include rem-fallback(margin-right, $base-margin/2);
+	
+	&:after {
+		content: ":";
+	}
+}

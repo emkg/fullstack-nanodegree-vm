@@ -1,0 +1,45 @@
+ /* === One-column pages. No sidebar. === */
+ 
+.one-col {
+	
+	 /* === Main content area === */
+	
+	#main {
+		
+		margin: 0;
+		padding: 0;
+		float: none !important;
+		width: 100% !important;
+		
+	} // #main
+	
+	.main-wrapper {
+		
+		@include rem-fallback(margin, 0, $base-margin/2, $base-margin);
+		@include rem-fallback(padding, 0, $base-padding/2); // if we display breadcrumbs in mobile
+		//  @include rem-fallback(padding, $base-padding*2, $base-padding/2, 0, $base-padding/2);
+		border-bottom: none;
+		
+		@include breakpoint(break-small) {
+			@include rem-fallback(margin, 0, $base-margin, $base-margin);
+			@include rem-fallback(padding, $base-padding);
+			
+			> :last-child {
+				margin-bottom: 0;
+			} // last-child
+		
+		} // break-small
+		
+	} // .main-wrapper
+
+} // .one-col
+	  
+.one-col.home .main-wrapper { // no breadcrumbs on home page
+	
+  @include rem-fallback(padding, $base-padding, $base-padding/2, 0, $base-padding/2);
+		
+	@include breakpoint(break-small) {
+		@include rem-fallback(padding, $base-padding);
+	}
+		
+}

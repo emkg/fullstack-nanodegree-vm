@@ -1,0 +1,189 @@
+// Directories
+
+$root: "";
+$styles: $root + "/css";
+$images: $root + "/img";
+
+$separator: "\00a0 \00a0\003e\00a0 \00a0"; // &nbsp; &nbsp;&gt;&nbsp; &nbsp;
+
+// Colors
+
+$bg-color: #009BD9;
+$text-color: #000;
+$base-color: #0E5CC9; // blue
+$base-dark: darken( $base-color, 10%);
+$highlight-color: #00B5FF; // cyan
+$dark-bg-color: #1B457E;
+$dark-bg-text-color: #fff;
+
+// the following colors ceom from the 18F US govt web standards
+// https://playbook.cio.gov/designstandards/visual-style/
+
+$red: #e31c2d;
+$dark-red: #cd2026; 
+$darker-red: #981b1e;
+$light-red: #e59393;
+$lighter-red: #f0b9b9;
+$lighter-red2: #f5cbcb;
+$lightest-red: #f9dede;
+
+$green: #2e8540;
+$dark-green: #007318;
+$light-green: #4aa564;
+$lighter-green: #94bfa2;
+$lighter-green2: #c8e0d0;
+$lightest-green: #e7f4e4;
+
+$alert-gold-lightest: #fff1d2;
+$alert-gold-lighter: #fad980;
+$alert-gold-light: #f9c642;
+$alert-gold: #fdb81e;
+
+
+$ltbase-bg: lighten( desaturate( $base-color, 25% ), 50% );
+$ltbase-border: lighten( desaturate( $base-color, 35% ), 35% );
+$medbase-bg: lighten( $base-color, 25% ); 
+
+$federal: $base-color;
+$cimms: $dark-red;
+$its: #993399;
+$student: $green;
+
+$main-bg: #fff;
+$main-border: solid 1px darken($main-bg, 10%);
+$main-border-color: darken($main-bg, 10%);
+
+$box-bg: darken($main-bg, 10%);
+$box-border: solid 1px darken($box-bg, 10%);
+$box-border-color: darken($box-bg, 10%);
+
+$blockquote-border: darken($main-bg, 40%);
+$blockquote-text: darken($main-bg, 65%);
+
+$link-color: lighten(saturate($base-color, 50%), 5%);
+$link-focus-light: lighten($base-color, 40%);
+$link-focus-dark: lighten($main-bg, 60%);
+
+$ghost-color: $text-color;
+$ghost-highlight-color: lighten( $base-color, 20% ); // blue
+
+$sidebar-border: solid 1px darken($main-bg, 35%);
+
+$footer-bg: #002E6B;
+$footer-text: #fff;
+$footer-title-text: #fff;
+$footer-border: solid 1px lighten($footer-bg, 15%);
+
+$title-text: $base-color;
+
+$top-nav-bg: #0E5CC9;
+$top-nav-text: #fff;
+$top-nav-border: solid 1px lighten($top-nav-bg, 25%);
+$top-nav-links: $top-nav-text;
+$top-nav-links-highlight: $highlight-color;
+$top-nav-current: lighten($base-color, 25%);
+
+$branding-bg: #002E6B;
+
+$search-bg: #1B457E;
+$search-bg-focus: lighten($search-bg, 35%);
+$search-border: #4773AA;
+$search-text: rgba(255,255,255,.85);
+$search-placeholder: rgba(255,255,255,.35);
+$search-button-highlight: $search-bg-focus;
+
+// bottom nav bg color is the same as for the page
+
+$bottom-nav-bg: #B0C6DC; 
+$bottom-nav-bg-hover: lighten($bottom-nav-bg, 10%);
+$bottom-nav-text: #1B457E; // never actually used
+$bottom-nav-border: solid 1px lighten($bottom-nav-bg, 10%);
+$bottom-nav-links: #1B457E;
+$bottom-nav-links-highlight: lighten($bottom-nav-links, 10%);
+$bottom-nav-current: $bottom-nav-links;
+$bottom-subnav-links: $bottom-nav-text;
+$bottom-subnav-links-highlight: $bottom-nav-text;
+$bottom-subnav-links-current: $bottom-nav-text;
+
+$slider-caption-links: $highlight-color;
+
+$material-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.2);
+
+$breaking-bg: #a63133;
+$breaking-text: #000;
+$breaking-links: #000;
+
+// Sizes (in rems)
+
+$base-margin: 1.5; // rems
+$base-padding: 1.5; // rems
+$list-padding: 2.5; // rems 
+
+$menu-icon-height: 2; // rems
+$menu-icon-width: 2; // rems
+
+$menu-icon-text-size: 0.75; // rems
+
+$navbar-height: $menu-icon-height + 2; // rems
+
+$social-icon-font-size-lg: 2; // rems
+$social-icon-width-lg: $social-icon-font-size-lg; // rems
+$social-icon-height-lg: $navbar-height; // rems
+$social-icon-png-top-lg: (($navbar-height - $social-icon-font-size-lg)/2) * 16px;
+
+$social-icon-font-size-sm: 2; // rems
+$social-icon-width-sm: $social-icon-font-size-sm; // rems
+$social-icon-height-sm: $navbar-height; // rems
+$social-icon-png-top-sm: (($navbar-height - $social-icon-font-size-sm)/2) * 16px;
+
+$i-margin-sm: -1* $social-icon-font-size-sm/2;
+$i-margin-lg: -1*$social-icon-font-size-lg/2;
+
+$search-margin-top: ( $social-icon-height-lg - (1+$base-padding/2) )/2;
+
+$h1-font-size: 2; // 32px
+$h1-line-height: 1.125; // 36px
+
+$h2-font-size: 1.75; // 28px
+$h2-line-height: 1.2857; // 36px
+
+$h3-font-size: 1.5; // 24px
+$h3-line-height: 1.25; // 30px
+
+$h4-font-size: 1.3125; // 21px
+$h4-line-height: 1.42857; // 30px
+
+$h56-font-size: 1.125; // 18px
+$h56-line-height: 1.333; // 24px
+
+$p-font-size: 1; // 16px
+$p-line-height: 1.5; // 24px
+
+$px19-font-size: 1.192; // 19px
+$px19-line-height: 1.263;  // 24px
+
+$px14-font-size: 0.875; // 14px
+$px14-line-height: 1.2857; // 18px
+
+$px12-font-size: 0.75; // 12px
+$px12-line-height: 1.5; // 18px
+
+$px10-font-size: 0.625; // 10px
+$px10-line-height: 1.2; // 12px
+
+$page-title-font-size: 2.25; //rems
+$page-title-line-height: 1.3333;
+$page-title-bottom-margin: $base-margin/4;
+$page-subtitle-font-size: ($page-title-font-size/3) *2; 
+$page-subtitle-line-height: 1.25;
+$page-subtitle-bottom-margin: 0;
+
+
+// letter spacing for all-caps headers
+
+$adventor-letter-spacing: .0625;
+$lato-letter-spacing: .03125;
+
+// nssl-main-specific variables
+
+$noaa-branding-color: #00b5ff;

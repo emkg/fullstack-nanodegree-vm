@@ -1,0 +1,48 @@
+$stack-palatino: "Palatino Linotype",  Palatino,  Palladio, "URW Palladio L", "Book Antiqua",  "Century Schoolbook",  "Century Schoolbook L",  "New Century Schoolbook",  Constantia,  "Bookman Old Style",  Georgia  serif;
+
+$stack-lucida: "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", "Trebuchet MS", "Liberation Sans", FreeSans, Arial, sans-serif;
+
+$stack-lato: "Lato", "Helvetica Neue", Helvetica, Univers, "Liberation Sans", Arial, "Nimbus Sans L", sans-serif;
+
+$stack-helvetica: "Helvetica Neue", Helvetica, Univers, "Liberation Sans", Arial, "Nimbus Sans L", sans-serif;
+
+$stack-gothic: "Century Gothic", "URW Gothic L", "Gill Sans", "Gill Sans MT", Univers, Euphemia, "Euphemia UCAS", Futura, Verdana,sans-serif;
+
+$stack-mono-serif: "Courier New", "Nimbus Mono L", FreeMono, Courier, monospace;
+
+$stack-mono-sans: "Lucida Console", "Lucida Sans Typewriter", "Liberation Mono", "Andale Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", Consolas, monospace;
+
+$stack-oswald: Oswald, Impact, Haettenschweiler, "Franklin Gothic Medium Cond", "Arial Narrow", "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans-serif;
+
+$stack-voltaire: Voltaire, Futura, "Franklin Gothic Medium Cond", "Arial Narrow", sans-serif;
+
+// generate webfont code
+
+@mixin fontFace($family, $src, $weight: normal, $style: normal) {
+  @font-face {
+    font-family: $family;
+    src: url('#{$src}.eot'); // IE9 compat
+    src: url('#{$src}.eot?#iefix') format('embedded-opentype'), // IE8 and below
+         url('#{$src}.woff') format('woff'), // standards
+         url('#{$src}.ttf') format('truetype'), // Safari, Android, iOS
+         url('#{$src}.svg##{$family}') format('svg'); // legacy iOS
+    font-style: $style;
+    font-weight: $weight;
+  }
+}
+
+
+// Define title styles
+
+@mixin branding_style {
+  font-family: #{$stack-oswald};
+  font-weight: bold;
+}
+
+@include fontFace('TexGyreAdventorRegular', '/fonts/TeXGyreAdventor/texgyreadventor_regular_macroman/texgyreadventor-regular-webfont');
+
+$stack-adventor: TexGyreAdventorRegular, "Century Gothic", "URW Gothic L", "Gill Sans", "Gill Sans MT", Univers, Euphemia, "Euphemia UCAS", Futura, Verdana,sans-serif;
+
+// NSSL Home icon
+
+@include fontFace('nssl-home-icon', '/fonts/nssl-home/font/nssl-home');

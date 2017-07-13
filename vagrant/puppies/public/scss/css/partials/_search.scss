@@ -1,0 +1,124 @@
+/**
+* Search form styles
+* --------------------------------------------------------------------------- */
+	
+#top-nav, #side-nav { 
+
+	.search {
+		
+		input[type="text"] {
+			background: $search-bg;
+			border: 1px solid $search-border;
+			color: $search-text;
+			vertical-align:middle;
+			margin: 0;
+			text-transform: lowercase;
+			width: 84%;
+			@include rem-fallback(max-width, 18);
+			float: left;
+			
+			&:focus,
+			&:hover {
+				outline: none;
+				background: $search-bg-focus;
+				color: $search-text;
+				
+				&::-webkit-input-placeholder {
+					color: $search-placeholder;
+				}
+			
+				&::-moz-placeholder {
+					color: $search-placeholder;
+				}
+				
+				&:-moz-placeholder {
+					color: $search-placeholder;
+				}
+				
+				&:-ms-input-placeholder {
+					color: $search-placeholder;
+				}
+			}
+			
+			&::-webkit-input-placeholder { // you have to list these separately or they break, and I have no idea why
+					color: $search-placeholder;
+				font-style: italic;
+				vertical-align: middle;
+			}
+			
+			&::-moz-placeholder {
+					color: $search-placeholder;
+				font-style: italic;
+				vertical-align: middle;
+			}
+			
+			&:-moz-placeholder {
+					color: $search-placeholder;
+				font-style: italic;
+				vertical-align: middle;
+			}
+			
+			&:-ms-input-placeholder {
+					color: $search-placeholder;
+				font-style: italic;
+				vertical-align: middle;
+			}
+		}
+		
+		input[type="submit"] {
+			background: $search-bg url(#{$images}/search.svg) no-repeat center center;
+			background-size: 65% auto; 
+			border: 1px solid $search-border;
+			color: $search-bg-focus;
+			vertical-align: middle;
+			margin: 0;
+			text-indent: -9999px;
+			text-transform: lowercase;
+			width: 14%;
+			@include rem-fallback(max-width, 3.625);
+			float: left;
+			
+			&:focus,
+			&:hover {
+				outline: none;
+				background: $search-button-highlight url(#{$images}/search.svg) no-repeat center center;
+				background-size: 65% auto; 
+			}
+		}
+
+	}
+}
+
+#top-nav .search {
+	display: none;
+	
+	@include breakpoint(break-medium) {
+		display: block;
+	} 
+	
+	float:right;
+	@include rem-fallback(margin, $search-margin-top, 0, 0, $base-margin);
+
+	input[type="text"],
+	input[type="submit"] {
+			@include rem-fallback(font-size, 0.875);
+			line-height: 1;
+			@include rem-fallback(height, 1+$base-padding/2);
+			@include rem-fallback(padding, $base-padding/4);
+	}
+}
+
+#side-nav .search {
+	@include rem-fallback(padding, $base-padding/2, $base-padding);
+	
+	// font and padding are bigger for the input fields to make it easier for fingers on mobile
+	
+	input[type="text"],
+	input[type="submit"] {
+			@include rem-fallback(font-size, 1);
+			line-height: 1;
+			@include rem-fallback(height, 1+$base-padding);
+			@include rem-fallback(padding, $base-padding/2);
+	}
+	
+}

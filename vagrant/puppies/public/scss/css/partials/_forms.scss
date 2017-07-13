@@ -1,0 +1,1339 @@
+/* Form styles */
+
+/* reset */
+
+// Custom colors from 18F
+
+$color-gray-dark:            #323a45 !default;
+$color-gray:                 #5b616b !default; // lighten($color-gray-dark, 20%)
+$color-gray-medium:          #757575 !default; // lightest gray that passes color contrast
+//$color-gray-light:           #aeb0b5 !default; // lighten($color-gray-dark, 60%)
+//$color-gray-lighter:         #d6d7d9 !default; // lighten($color-gray-dark, 80%)
+$color-gray-light:           #bfc1c7 !default; // 
+$color-gray-lighter:         #dddee0 !default; // 
+$color-gray-lightest:        #f1f1f1 !default; // lighten($color-gray-dark, 91%)
+$color-white:        		 #ffffff !default; // lighten($color-gray-dark, 100%)
+
+
+.form-18f { 
+
+form,
+fieldset,
+label,
+input,
+select,
+textarea {
+	display: block;
+	font-family: $stack-lato;
+	margin: 0;
+	padding: 0;
+	max-width: 100%;
+}
+
+fieldset {
+  @include rem-fallback(margin, 0, 0, $base-margin, 0);
+  @include rem-fallback(padding, $base-padding);
+  
+  &:last-of-type {
+  	margin-bottom: 0;
+  }
+  
+  legend {
+	@include rem-fallback(font-size, $h4-font-size);
+	font-weight: bold;
+  }
+  
+  &.radio,
+  &.checkbox {
+	  
+	  border: none;
+	  margin: 0;
+	  padding: 0;
+	  
+	  > legend {  // duplicate label
+		display: block;
+		@include rem-fallback(font-size, $p-font-size);
+		line-height: $p-line-height;
+		font-weight: normal;
+		@include rem-fallback(padding, $base-margin/2, 0); // duplicate label 
+	  }
+	  
+	  label {
+		  margin: 0;
+	  }
+  }
+		  
+}
+
+label {
+  @include rem-fallback(font-size, $p-font-size);
+  line-height: $p-line-height;
+  @include rem-fallback(margin, $base-margin/2, 0);
+	  
+}
+
+textarea {
+  overflow: auto;
+}
+
+// Custom styles from 18F
+
+input,
+textarea,
+select {
+  @include boxSizing(border-box);
+  appearance: none;
+  border: 1px solid $color-gray;
+  border-radius: 0;
+  color: $text-color; // standardize on firefox
+  display: block;
+  outline: none;
+  @include rem-fallback(font-size, $p-font-size);
+  @include rem-fallback(line-height, $p-line-height);
+  @include rem-fallback(margin, $base-margin/8);
+  @include rem-fallback(padding, $base-padding/4, $base-padding/2);
+
+  &:focus {
+	border: 1px solid $base-color;
+    @include materialShadow(2, $base-color);
+	// box-shadow: 0 0 0 2px $color-white, 0 0 0 4px $base-color, 0 2.25px 6px rgba(0,0,0,0.48),0 2.25px 9px rgba(0,0,0,0.24);
+  }
+  
+  &:disabled {
+	background: $color-gray-lighter;
+	border: 1px solid $color-gray-light;
+	color: $color-gray;
+  }
+}
+	 
+textarea, 
+input[type='text'],
+input[type='email'],
+input[type='tel'],
+input[type='url']{
+  @include rem-fallback(max-width, 46); // for readability
+  width: 100%;
+}
+
+select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url('#{$images}/arrow-down.png');
+  background-image: url('#{$images}/arrow-down.svg');
+  background-position: right 16px center;
+  background-position: right 1rem center;
+  background-repeat: no-repeat;
+  @include rem-fallback(background-size, .75);
+  @include rem-fallback(padding-right, 2.75); // background size + background-position +1
+}
+
+[type="checkbox"],
+[type="radio"] {
+  margin-left: -2rem;
+  opacity: 0;
+  position: absolute;
+
+  .lt-ie9 & {
+    border: 0;
+    float: left;
+    margin: 0.4em 0.4em 0 0;
+    position: static;
+    width: auto;
+  }
+}
+
+[type="checkbox"] + label,
+[type="radio"] + label {
+  cursor: pointer;
+  display: inline-block; // enclose in a block element
+  font-weight: 400;
+  /*@include rem-fallback(max-width, 24);*/
+  @include rem-fallback(padding, $base-padding/4, 0);
+  
+  @include breakpoint(break-medium) { 
+	@include rem-fallback(padding, 0);
+	@include rem-fallback(margin-left, 1.625);  //  label::before width + margin-right
+	@include rem-fallback(text-indent, -1.625);
+  }
+}
+
+[type="checkbox"] + label::before,
+[type="radio"] + label::before {
+  background: $color-white;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 0 1px $color-gray-medium;
+  content: '\a0';
+  display: inline-block;
+  @include rem-fallback(height, 1.125);
+  @include rem-fallback(line-height, 1.125);
+  @include rem-fallback(width, 1.125);
+  margin-right: 0.6em;
+  text-indent: 0.15em;
+  vertical-align: middle\0; // Target IE 11 and below to vertically center inputs
+}
+
+[type="radio"] + label::before {
+  box-shadow: 0 0 0 2px $color-white, 0 0 0 3px $color-gray-medium;
+  @include rem-fallback(height, 1);
+  @include rem-fallback(line-height, 1);
+  @include rem-fallback(width, 1);
+  border-radius: 100%;
+}
+
+[type="radio"]:checked + label::before {
+  background-color: $base-color;
+  box-shadow: 0 0 0 2px $color-white, 0 0 0 4px $base-color;
+}
+
+[type="radio"]:focus + label::before {
+  box-shadow: 0 0 0 2px $color-white, 0 0 0 4px $base-color, 0 2.25px 6px rgba($base-color,0.48),0 2.25px 9px rgba($base-color,0.24);
+}
+
+[type="checkbox"]:checked + label::before {
+  background-color: $base-color;
+  box-shadow: 0 0 0 2px $color-white, 0 0 0 4px $base-color;
+  background-image: url('#{$images}/correct8.png');
+  background-image: url('#{$images}/correct8.svg');
+  background-position: 50%;
+  background-repeat: no-repeat;
+}
+
+[type="checkbox"]:focus + label::before {
+  box-shadow: 0 0 0 1px $base-color, 0 2.25px 6px rgba($base-color,0.48),0 2.25px 9px rgba($base-color,0.24);
+}
+
+[type="checkbox"]:checked:focus + label::before {
+  box-shadow: 0 0 0 2px $color-white, 0 0 0 4px $base-color, 0 2.25px 6px rgba($base-color,0.48),0 2.25px 9px rgba($base-color,0.24);
+}
+
+[type="checkbox"]:disabled + label,
+[type="radio"]:disabled + label {
+  color: $color-gray;
+}
+
+[type="checkbox"]:disabled + label::before,
+[type="radio"]:disabled + label::before {
+  background: $color-gray-lighter;
+  box-shadow: 0 0 0 1px $color-gray-light;
+  cursor: not-allowed;
+}
+
+[type="file"] {
+	border: none;
+}
+
+[type="submit"],
+[type="reset"],
+[type="button"] {
+    display: inline-block;
+    @include rem-fallback(padding, $base-padding*2/3, $base-padding); 
+	width: auto;
+	
+	@include borderRadius(4px);
+	@include borderRadius(0.25rem);
+	
+	@include materialShadow(2);
+    
+    &:hover {
+		@include materialShadow(0);
+    }
+}
+
+[type="submit"],
+[type="button"] {
+    
+    @include makeGradient( $base-color, lighten($base-color, 5%) );
+	border: none;
+    color: #fff;
+    
+    &:hover {
+        @include makeGradient( darken($base-color, 5%), $base-color );
+        color: #fff;
+    }
+}
+
+[type="reset"] {
+    
+    @include makeGradient( $dark-red, lighten($dark-red, 5%) );
+	border: none;
+    color: #fff;
+    
+    &:hover {
+        @include makeGradient( darken($dark-red, 5%), $dark-red );
+        color: #fff;
+    }
+}
+
+.radio-list,
+.checkbox-list {
+	list-style: none;
+	margin-bottom: 0;
+	
+	@include breakpoint(break-min) {
+	
+		&.horizontal {
+			@include rem-fallback(padding-left, $base-padding); 
+			
+			li {
+			  display: inline-block;
+			  @include rem-fallback(margin-right, $base-margin*1.5); 
+			  
+			  &:last-of-type {
+				  margin-right: 0;
+			  }
+			}
+		}
+	
+	}
+}
+
+.note {
+	@include rem-fallback(font-size, $px14-font-size); // 14px
+	font-style: italic;
+	line-height: $px14-line-height; // 18px
+	
+	&.compact {
+		margin-bottom: 0;
+	}
+	
+	&.compact-top {
+		margin-top: 0;
+	}
+}
+
+.error-dialog {
+	@include rem-fallback(margin, -$base-margin/2, 0, $base-margin*1.5, 0); 
+}
+
+} // .form-18f
+
+
+/* old form styles */
+ 
+/* lab status admin form */
+ 
+ #status_update_form {
+	  @include rem-fallback(margin, 0, 0, $base-margin, 0);
+	 
+	 .form-item {
+	  background: $ltbase-bg;
+	  border: solid 1px $ltbase-border;
+	  @include rem-fallback(margin, 0, 0, $base-margin/2, 0);
+	  @include rem-fallback(padding, $base-padding);
+	 
+	 }
+	 
+	 .form-item-label label {
+	    @include rem-fallback(font-size, $h4-font-size);
+		line-height: $h4-line-height;
+		font-weight: bold;
+		@include rem-fallback(margin, 0, 0, $base-margin/2, 0);
+	 }
+	 
+	 .form-item-content {
+		margin: 0;
+		 
+		 > *:last-child {
+			 margin-bottom: 0;
+		 }
+	 }
+	 
+	 input[type='button'],
+	 input[type='submit'] {
+		@include rem-fallback(padding, $base-padding/2, $base-padding*2);
+		@include makeGradient( $base-color, lighten($base-color, 5%) );
+		border: none;
+		color: #fff;
+		@include borderRadius(4px);
+		@include borderRadius(0.25rem);
+	
+		@include materialShadow(2);
+
+		&:hover {
+			@include makeGradient( darken($base-color, 5%), $base-color );
+			color: #fff;
+			@include materialShadow(0);
+		}
+	 }
+	 
+	 input[type='reset'] {
+		 background: transparent;
+		 border: none;
+		 cursor: pointer;
+		 color: $link-color;
+		 display: inline-block;
+		 @include rem-fallback(margin, $base-margin);
+		 padding: 0;
+		 text-decoration: underline;
+		 
+		 &:hover,
+		 &:focus,
+		 &:active, {
+			 text-decoration: none;
+		 }
+	 }
+	 
+	 textarea, 
+	 input[type='text'] {
+		 background: #fff;
+		 border: 1px solid #aaa;
+		 width: 100%;
+		@include rem-fallback(padding, $base-padding/2);
+	 }
+	 
+	 
+	 #accordion {
+		list-style: none;
+		padding: 0;
+		max-width: 100%;
+		 
+		 .accordion-toggle {
+			background-color: $base-color;
+			background-image: none;
+			color: white;
+			cursor: pointer;
+			display: block;
+			font-weight: bold;
+			margin: 1px;
+			@include rem-fallback(padding, $base-padding/4, $base-padding/4, $base-padding/4, $base-padding);
+			
+			 &.ui-state-focus,
+			 &.ui-state-hover,
+			 &.ui-state-active {
+				 outline: none;
+				 background-color: lighten($base-color, 30%);
+				 color: black;
+			 }
+			 
+			 &.ui-state-default {
+				 
+				 .toggle-icon {
+					 font-weight: normal;
+					@include rem-fallback(font-size, 0.875); 
+				 }
+				 .toggle-icon:before {
+					 font-family: "FontAwesome";
+					 font-weight: normal;
+					@include rem-fallback(font-size, 0.875); 
+					content: "\f067"; // fa-external-link
+					// content: "\f14c"; // fa-external-link-square
+					display: inline-block;
+					@include rem-fallback(padding-right, .25); 
+					text-rendering: auto;
+					-webkit-font-smoothing: antialiased;
+					-moz-osx-font-smoothing: grayscale;
+				 }
+				 
+				 &.ui-state-active {
+				 .toggle-icon:before {
+					 font-family: "FontAwesome";
+					 font-weight: normal;
+					@include rem-fallback(font-size, 0.875); 
+					content: "\f068"; // fa-external-link
+					// content: "\f14c"; // fa-external-link-square
+					display: inline-block;
+					@include rem-fallback(padding-right, .25); 
+					text-rendering: auto;
+					-webkit-font-smoothing: antialiased;
+					-moz-osx-font-smoothing: grayscale;
+				 }
+				 }
+			 }
+			 
+
+		 } // .accordion-toggle
+		 
+		 .accordion-content {
+			 @include rem-fallback(padding, $base-padding/2); 
+		 }
+		 
+		 ul {
+			display: none;
+			list-style: none;
+			padding: 0;
+			max-width: 100%;
+			 
+			 li {
+				background-color: #fff;
+				cursor: auto;
+				font-weight: normal;
+				margin: 0;
+				@include rem-fallback(padding, 0, 0, 0, $base-padding/2);
+				// padding: 0 0 0 7px;
+			} // li
+		 } // ul
+		 
+		 a {
+			color: black;
+		} // a
+ 
+	 } // #accordion
+
+	#resetButton {
+		@include rem-fallback(margin-left, $base-margin);
+		// margin-left: 20px;
+		color: red;
+	}
+ } // #status_update_form
+
+
+#clearance, #travelform { // publications clearance form
+
+	fieldset.main {
+		background-color: $color-gray-lighter;
+		@include materialShadow(1);
+		
+		&:last-of-type {
+			@include rem-fallback(margin-bottom, $base-margin); // space before the submit button
+		}
+	}
+	
+	label {
+		@include rem-fallback(margin-top, $base-margin*2);
+	}
+	
+	.radio {
+		
+		@include rem-fallback(margin-top, $base-margin*2);
+	}
+		
+	.radio-list {
+		
+		label {
+			margin-top: 0;
+		}
+	}
+	
+	.followup {
+		
+		background-color: $color-gray-light;
+		@include rem-fallback(margin-top, $base-margin/2);
+		@include rem-fallback(padding, $base-padding);
+		@include materialShadow(1);
+		
+		label {
+			
+			@include rem-fallback(margin-top, $base-margin);
+			
+			&:first-child {
+				margin-top: 0;
+			}
+		}
+		
+		.radio {
+			label {
+				margin-top: 0;
+			}
+		}
+	}
+	
+	.quote {
+		font-style: italic;
+		line-height: 1.25;
+		@include rem-fallback(padding, 0, $base-padding/2);
+	}
+
+}
+	
+.required_field {
+	&:before {
+		content: "* ";
+		color: $red;
+		font-weight: bold;
+	}
+}
+	
+.required_cimms_field {
+	&:before {
+		content: "* ";
+		color: $green;
+		font-weight: bold;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.form-18f2 { 
+	
+	/* Reset elements */
+
+	form,
+	fieldset,
+	legend,
+	label,
+	input,
+	select,
+	textarea {
+		display: block;
+		font-family: $stack-lato;
+		margin: 0;
+		padding: 0;
+		max-width: 100%;
+	}
+
+	textarea {
+	  overflow: auto;
+	}
+
+	/*
+	 * Removing background and border styles from fieldsets and legends
+	 * Use fieldsets and legends (and aria attributes) for accessibility.
+	 * Use divs for visual separation of groups of elements
+	 *
+	 */
+
+	fieldset, 
+	legend {
+		background: none;
+		border: none;
+	}
+
+	// Custom styles from 18F
+
+	input,
+	textarea,
+	select {
+	  @include boxSizing(border-box);
+	  appearance: none;
+	  border: 1px solid $color-gray;
+	  border-radius: 0;
+	  color: $text-color; // standardize on firefox
+	  display: block;
+	  outline: none;
+	  @include rem-fallback(font-size, $p-font-size);
+	  @include rem-fallback(line-height, $p-line-height);
+	  @include rem-fallback(margin, $base-margin/8);
+	  @include rem-fallback(padding, $base-padding/4, $base-padding/2);
+
+	  &:focus {
+		border: 1px solid $base-color;
+		@include materialShadow(2, $base-color);
+		// box-shadow: 0 0 0 2px $color-white, 0 0 0 4px $base-color, 0 2.25px 6px rgba(0,0,0,0.48),0 2.25px 9px rgba(0,0,0,0.24);
+	  }
+
+	  &:disabled {
+		background: $color-gray-lighter;
+		border: 1px solid $color-gray-light;
+		color: $color-gray;
+	  }
+	}
+
+	textarea, 
+	input[type='text'],
+	input[type='email'],
+	input[type='tel'],
+	input[type='url']{
+	  @include rem-fallback(margin-bottom, $base-margin); 
+	  @include rem-fallback(max-width, 46); // for readability
+	  width: 100%;
+	
+		&.compact {
+		margin-bottom: 0;
+		}
+	}
+
+	select {
+	  -moz-appearance: none;
+	  -webkit-appearance: none;
+	  appearance: none;
+	  background-image: url('#{$images}/arrow-down.png');
+	  background-image: url('#{$images}/arrow-down.svg');
+	  background-position: right 16px center;
+	  background-position: right 1rem center;
+	  background-repeat: no-repeat;
+	  @include rem-fallback(background-size, .75);
+	  @include rem-fallback(margin-bottom, $base-margin); 
+	  @include rem-fallback(padding-right, 2.75); // background size + background-position +1
+	}
+
+	[type="checkbox"],
+	[type="radio"] {
+	  margin-left: -2rem;
+	  opacity: 0;
+	  position: absolute;
+
+	  .lt-ie9 & {
+		border: 0;
+		float: left;
+		margin: 0.4em 0.4em 0 0;
+		position: static;
+		width: auto;
+	  }
+	}
+
+	[type="checkbox"] + label,
+	[type="radio"] + label {
+	  cursor: pointer;
+	  display: inline-block; // enclose in a block element
+	  font-weight: 400;
+	  /*@include rem-fallback(max-width, 24);*/
+	  @include rem-fallback(padding, $base-padding/4, 0);
+
+	  @include breakpoint(break-medium) { 
+		@include rem-fallback(padding, 0);
+		@include rem-fallback(margin-left, 1.625);  //  label::before width + margin-right
+		@include rem-fallback(text-indent, -1.625);
+	  }
+	}
+
+	[type="checkbox"] + label::before,
+	[type="radio"] + label::before {
+	  background: $color-white;
+	  border-radius: 0.25rem;
+	  box-shadow: 0 0 0 1px $color-gray-medium;
+	  content: '\a0';
+	  display: inline-block;
+	  @include rem-fallback(height, 1.125);
+	  @include rem-fallback(line-height, 1.125);
+	  @include rem-fallback(width, 1.125);
+	  margin-right: 0.6em;
+	  text-indent: 0.15em;
+	  vertical-align: middle\0; // Target IE 11 and below to vertically center inputs
+	}
+
+	[type="radio"] + label::before {
+	  box-shadow: 0 0 0 2px $color-white, 0 0 0 3px $color-gray-medium;
+	  @include rem-fallback(height, 1);
+	  @include rem-fallback(line-height, 1);
+	  @include rem-fallback(width, 1);
+	  border-radius: 100%;
+	}
+
+	[type="radio"]:checked + label::before {
+	  background-color: $base-color;
+	  box-shadow: 0 0 0 2px $color-white, 0 0 0 4px $base-color;
+	}
+
+	[type="radio"]:focus + label::before {
+	  box-shadow: 0 0 0 2px $color-white, 0 0 0 4px $base-color, 0 2.25px 6px rgba($base-color,0.48),0 2.25px 9px rgba($base-color,0.24);
+	}
+
+	[type="checkbox"]:checked + label::before {
+	  background-color: $base-color;
+	  box-shadow: 0 0 0 2px $color-white, 0 0 0 4px $base-color;
+	  background-image: url('#{$images}/correct8.png');
+	  background-image: url('#{$images}/correct8.svg');
+	  background-position: 50%;
+	  background-repeat: no-repeat;
+	}
+
+	[type="checkbox"]:focus + label::before {
+	  box-shadow: 0 0 0 1px $base-color, 0 2.25px 6px rgba($base-color,0.48),0 2.25px 9px rgba($base-color,0.24);
+	}
+
+	[type="checkbox"]:checked:focus + label::before {
+	  box-shadow: 0 0 0 2px $color-white, 0 0 0 4px $base-color, 0 2.25px 6px rgba($base-color,0.48),0 2.25px 9px rgba($base-color,0.24);
+	}
+
+	[type="checkbox"]:disabled + label,
+	[type="radio"]:disabled + label {
+	  color: $color-gray;
+	}
+
+	[type="checkbox"]:disabled + label::before,
+	[type="radio"]:disabled + label::before {
+	  background: $color-gray-lighter;
+	  box-shadow: 0 0 0 1px $color-gray-light;
+	  cursor: not-allowed;
+	}
+
+	[type="file"] {
+		border: none;
+	}
+
+	input[type="submit"],
+	input[type="reset"],
+	input[type="button"] {
+		display: inline-block;
+		@include rem-fallback(padding, $base-padding*2/3, $base-padding); 
+		white-space: normal !important; // necessary for word wrap
+		width: auto;
+		word-break: break-word;
+
+		@include makeGradient( darken($base-color, 5%), $base-color );
+		border: none;
+		color: #fff;
+	
+		@include materialShadow(3);
+		
+		@include borderRadius(4px);
+		@include borderRadius(0.25rem);
+
+		&:hover,
+		&:focus {
+			@include makeGradient( lighten($base-color, 5%), lighten($base-color, 10%) );
+			color: #fff;
+			outline: none;
+		}
+
+		&:active {
+			@include makeGradient( desaturate(lighten($base-color, 10%), 5%), desaturate(lighten($base-color, 20%), 10%) );
+			color: #fff;
+			@include materialShadow(0);
+		}
+		
+		.green {
+    
+			@include makeGradient( darken($dark-green, 5%), $dark-green );
+			border: none;
+			color: #fff;
+
+			&:hover,
+			&:focus {
+				@include makeGradient( lighten($dark-green, 2%), lighten($dark-green, 7%) );
+				color: #fff;
+				outline: none;
+			}
+	
+			&:active {
+				@include makeGradient( lighten($dark-green, 7%), lighten($dark-green, 12%) );
+			}
+		} // .green
+		
+		.red {
+    
+			@include makeGradient( darken($darker-red, 5%), $darker-red );
+			border: none;
+			color: #fff;
+
+			&:hover,
+			&:focus {
+				@include makeGradient( lighten($darker-red, 5%), lighten($darker-red, 10%) );
+				color: #fff;
+				outline: none;
+			}
+
+			&:active {
+				@include makeGradient( saturate(lighten($darker-red, 10%), 20%), saturate(lighten($darker-red, 15%), 10%) );
+			}
+		} // .red
+	}	
+	
+	.radio-list,
+	.checkbox-list {
+		list-style: none;
+		@include rem-fallback(margin-bottom, $base-margin); 
+		@include rem-fallback(padding-left, $base-padding); 
+		
+		&.headroom {
+			@include rem-fallback(margin-top, $base-margin); 
+		}
+
+		@include breakpoint(break-min) {
+
+			&.horizontal {
+				@include rem-fallback(padding-left, $base-padding); 
+
+				li {
+				  display: inline-block;
+				  @include rem-fallback(margin-right, $base-margin*1.5); 
+
+				  &:last-of-type {
+					  margin-right: 0;
+				  }
+				}
+			}
+
+		}
+	}
+
+	.fieldset-wrapper { // class for divisions wrapping fieldsets
+		
+		&.main { 
+			background-color: $color-gray-lighter;
+			@include materialShadow(1);		
+			@include rem-fallback(margin-bottom, $base-margin); 
+			@include rem-fallback(padding, $base-padding);
+		}
+		
+		&.followup,
+		&.sub-section { 
+			background-color: $color-gray-light;
+			@include materialShadow(1);		
+			@include rem-fallback(margin-bottom, $base-margin); 
+			@include rem-fallback(padding, $base-padding);
+			
+			&:last-of-type {
+				margin-bottom: 0;
+			}
+		}
+		
+	}
+	
+	.footroom {
+		@include rem-fallback(margin-bottom, $base-margin); 
+	}
+	
+	.border {
+		border: 1px solid #fff;
+	}
+	
+	legend,
+	label {
+		
+		&.form-section-header {		
+			@include rem-fallback(margin-bottom, $base-margin); 
+		}
+		
+		&.headroom {
+			@include rem-fallback(margin-top, $base-margin*2); 
+		}
+	}
+
+	.note,
+	.note p, 
+	.note li {
+		@include rem-fallback(font-size, $px14-font-size); // 14px
+		font-style: italic;
+		line-height: $px14-line-height; // 18px
+	
+		&.compact {
+			margin-bottom: 0;
+		}
+	
+		&.compact-top {
+			margin-top: 0;
+		}
+	}
+
+	.error-dialog {
+		@include rem-fallback(margin, -$base-margin/2, 0, $base-margin*1.5, 0); 
+	}
+	
+	label.inline-label { // label appears inline with the fields
+		
+		input,
+		select {
+			display: inline-block;
+		}
+	}
+	
+	.inline-field-wrapper { // get rid of space between inline-block .inline-field elements
+		font-size: 0;
+	}
+	
+	label.inline-field  {
+	// multiple inputs in a single line, small font labels above the fields
+	// primarily used for name fields: first middle last
+		display: inline-block;
+		
+		@include rem-fallback(font-size, 0.6875); // 11px
+		font-weight: normal;
+		line-height: 1.4545; // 16px
+		@include rem-fallback(margin, 0, $base-margin/4, $base-margin/2, 0);
+		text-transform: uppercase;
+		@include rem-fallback(letter-spacing, 0.0625); // 1px
+		vertical-align: middle;
+		
+		&.initial {
+			text-align: center;
+		}
+		
+		&:last-of-type {
+			margin-right: 0;
+		}
+		
+		input,
+		select {
+			display: block;
+			width: auto;
+			margin: 0 auto;
+		}
+	}
+		
+		@-moz-document url-prefix() { // firefox fix, don't get me started
+			
+			label.inline-field {
+				
+				select {
+					letter-spacing: -.5px;
+				}
+				
+				input.singlechar {
+					padding-left: 2px;
+					padding-right: 2px;
+				}
+				
+			}
+			
+		}
+		
+	.footroom label.inline-field {
+		margin-top: 0;
+		@include rem-fallback(margin-bottom, $base-margin);
+	}
+	
+	.actual-size,
+	.actual_size{ // when you just want the thing to be the size you set it to be
+		width: auto !important;
+		max-width: 100%;
+	}
+	
+	input.singlechar { // single character input field 
+		text-align: center;
+	}
+	
+	// multi-item rows
+	// taken from image gallery code in _img-obj.scss
+	// .form-item can be a div or a fieldset
+	
+	.form-row {
+		@include clearFix;
+	}
+	
+	.form-item {
+		float: left;
+
+		@include breakpoint(break-min) {
+			@include rem-fallback(padding-right, $base-padding); // 24px
+		}
+	}
+	
+	.col-2 .form-item {
+    
+		width: 100%;
+
+	  @include breakpoint(break-min) {
+		width: 50%;
+	  }
+	}
+
+	.col-3 .form-item {
+
+		width: 100%;
+
+	  @include breakpoint(break-small) {
+		width: 33.3%;
+	  }
+	}
+
+	.col-4 .form-item {
+
+		width: 100%;
+
+	  @include breakpoint(break-min) {
+		width: 50%;
+	  }
+
+	  @include breakpoint(break-medium) {
+		width: 25%;
+	  }
+	}
+	
+	/* validator styles */
+	
+	input.singlechar.valid {
+		background-image: none;
+	}
+	
+	select.valid {
+	  background-image: url('#{$images}/arrow-down-green.png');
+	  background-image: url('#{$images}/arrow-down-green.svg');
+	}
+
+} // .form-18f2
+
+
+// Publications database input forms
+
+.publications-db {
+	
+	.optional {
+		color: $dark-green;
+		
+		&:before {
+			content: '*';
+		}
+			
+		&.inline-field {
+			font-weight: bold;
+			
+			input {
+				font-weight: normal;
+			}
+		}
+	}
+	
+	label,
+	legend.label {
+		font-weight: bold;
+	}
+	
+	fieldset#leadauthor,
+	fieldset.contributor {
+		
+		input {
+			@include rem-fallback(padding, $base-padding/4);
+		}
+	}
+	
+	fieldset#leadauthor {
+		
+		label.inline-field {
+			@include rem-fallback(margin, $base-margin, $base-margin/8, 0, 0);
+		}
+	}
+	
+	fieldset.contributor {
+		border: 1px solid #FFF;
+		@include rem-fallback(margin-bottom, $base-margin); 
+		@include rem-fallback(padding, $base-margin/2); 
+		
+		> label {
+			margin-top: 0;
+		}
+		
+		.fa-reorder {
+			@include rem-fallback(font-size, 1.75); 
+			color: rgba(0,0,0,.25);
+		}
+		
+		.fa-reorder,
+		.fa-arrows {// .fa already has inline-block
+			vertical-align: middle;
+			color: rgba(0,0,0,.5);
+			cursor: default;
+			@include rem-fallback(font-size, 1.25); 
+			@include rem-fallback(margin-right, $base-margin/4); 
+			
+			&:hover,
+			&:focus {
+				color: rgba(0,0,0,0.70);
+			}
+		}
+		
+		.fa-remove { // .fa already has inline-block
+			color: $dark-red;
+			vertical-align: middle;
+			@include rem-fallback(font-size, 1.25); 
+			@include rem-fallback(margin-left, $base-margin/4); 
+		}
+	}
+	
+	input.add_contributor {
+	@include makeGradient( darken($dark-green, 5%), $dark-green );
+		border: none;
+		color: #fff;
+		@include materialShadow(3);
+		
+		@include rem-fallback(padding, $base-padding/4); 
+		width: 100%;
+		
+		&:hover,
+		&:focus{
+			@include makeGradient( lighten($dark-green, 2%), lighten($dark-green, 7%) );
+			color: #fff;
+			outline: none;
+		}
+	
+		&:active {
+			@include makeGradient( lighten($dark-green, 7%), lighten($dark-green, 12%) );
+			@include materialShadow(0);
+		}
+	}
+	
+	.fa-remove.red { // for the explanatory text
+		color: $dark-red;
+	}
+	
+}
+
+.publication_extras { // FY and collaborating labs info
+	font-style: italic;
+}
+
+form#edit,
+form#submit {
+	width: 49%;
+	margin: 0;
+	padding: 0;
+}
+
+form#edit {
+	float: left;
+}
+
+form#submit {
+	float: right;
+}
+
+
+
+#edit_button,
+#submit_button {
+	@include rem-fallback(font-size, $h56-font-size);
+	@include borderRadius(8px);
+	@include borderRadius(0.5rem);
+	@include rem-fallback(padding, $base-padding/2, $base-padding*2);
+	width: 90%;
+	
+	.big { // big text
+		@include rem-fallback(font-size, 2);
+		@include rem-fallback(line-height, 2.5);
+		
+		@include rem-fallback(margin-left, -2);
+		
+		i.fa {
+			&:before { 
+				display: inline-block;
+				@include rem-fallback(font-size, 1.5);
+				@include rem-fallback(line-height, 2.5);
+				vertical-align: middle; }
+		}
+	}
+}
+
+#edit_button {
+	@include makeGradient( darken($darker-red, 5%), $darker-red );
+	border: none;
+    color: #fff;
+	@include materialShadow(3);
+    
+    &:hover,
+	&:focus {
+		@include makeGradient( lighten($darker-red, 5%), lighten($darker-red, 10%) );
+        color: #fff;
+		outline: none;
+    }
+    
+    &:active {
+		@include makeGradient( saturate(lighten($darker-red, 10%), 20%), saturate(lighten($darker-red, 15%), 10%) );
+		@include materialShadow(0);
+    }
+}
+
+#submit_button {
+	@include makeGradient( darken($dark-green, 5%), $dark-green );
+	border: none;
+    color: #fff;
+	@include materialShadow(3);
+    
+    &:hover,
+	&:focus {
+		@include makeGradient( lighten($dark-green, 2%), lighten($dark-green, 7%) );
+        color: #fff;
+		outline: none;
+    }
+	
+	&:active {
+		@include makeGradient( lighten($dark-green, 7%), lighten($dark-green, 12%) );
+		@include materialShadow(0);
+	}
+	
+}
+	
+	
+	
+/* validator styles */
+
+.error-container {
+	display: none;
+	
+	&.has-error {
+		color: $dark-red;
+		display: block;
+	    @include rem-fallback(font-size, $px14-font-size); // 14px
+	    line-height: $px14-line-height;  // 18px
+	    @include rem-fallback(margin, -$base-margin/2, 0, $base-margin/2, 0);
+		
+		&.headroom { // touching all of the bases
+			@include rem-fallback(margin-top, $base-margin/2);
+		}
+		
+		&.footroom { // touching all of the bases
+			@include rem-fallback(margin-bottom, $base-margin);
+		}
+	}
+}
+
+.main-wrapper > .has-error {
+		background-color: $lighter-red;
+		border-color: $dark-red;
+	
+}
+
+input,
+textarea,
+select {
+	&.has-error {
+		background-color: $lighter-red;
+		border-color: $dark-red;
+		color: $dark-red;
+		font-weight: bold;
+		@include rem-fallback(padding, $base-padding);
+	}
+}
+
+ul,
+ol {
+	&+.has-error {
+	// undo "list followed by not-p" standard rule in _typography.scss
+		margin-top: 0;
+	}
+	
+	&.has-error {
+	// list itself has class "has-error"
+		[type="checkbox"] + label,
+		[type="radio"] + label { 
+			color: $dark-red;
+		}
+	}
+}
+
+
+.warning-container {
+	display: none;
+	
+	&.has-warning {
+		background-color: rgba(255,255,255,.5);
+		color: saturate(darken($alert-gold, 25%), 100%);
+		display: block;
+	    @include rem-fallback(font-size, $px14-font-size); // 14px
+	    line-height: $px14-line-height;  // 18px
+	    @include rem-fallback(margin, -$base-margin/2, 0, $base-margin/2, 0);
+		
+		&.headroom { // touching all of the bases
+			@include rem-fallback(margin-top, $base-margin/2);
+		}
+		
+		&.footroom { // touching all of the bases
+			@include rem-fallback(margin-bottom, $base-margin);
+		}
+	}
+}
+
+input,
+textarea,
+select {
+	&.has-warning {
+		background-color: $alert-gold-lightest;
+		border-color: $alert-gold;
+	}
+}
+
+ul,
+ol {
+	&+.has-warning {
+	// undo "list followed by not-p" standard rule in _typography.scss
+		margin-top: 0;
+	}
+	
+	&.has-warning {
+	// list itself has class "has-warning"
+		[type="checkbox"] + label,
+		[type="radio"] + label { 
+			color: darken($alert-gold, 25%);
+		}
+	}
+}
+

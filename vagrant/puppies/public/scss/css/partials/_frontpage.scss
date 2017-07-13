@@ -1,0 +1,256 @@
+/* Front page styles */
+
+// .nssl_home #content in _main.scss
+
+.home {
+	
+	
+	
+.front-page-item {
+	float: left;
+	@include rem-fallback(margin, 0, 0, $base-margin, 0);
+		
+	width: 47%;
+	margin-right: 5.5%;
+	
+	&:nth-of-type(2n) {
+		margin-right: 0;
+	} // nth-of-type
+	
+	&:nth-of-type(2n+1) {
+		clear: left;
+	} // nth-of-type
+	
+	
+	@include breakpoint(break-small) { 
+		width: 48.5%;
+		margin-right: 2.5%;	
+		
+	} // break-small
+	
+	
+	@include breakpoint(break-medium) { 
+		width: 23%;
+		margin-right: 2.5%;		
+	
+		// note: this is not included in the ie.scss file because deprecated IE doesnt support nth-of-type(odd)
+		
+		&:nth-of-type(2n) {
+			margin-right: 2.5%;
+		} // nth-of-type
+	
+	&:nth-of-type(2n+1) {
+		clear: none;
+	} // nth-of-type
+		
+		&:nth-of-type(4n) {
+			margin-right: 0;
+		} // nth-of-type
+	
+	&:nth-of-type(4n+1) {
+		clear: left;
+	} // nth-of-type
+		
+	} // break-medium
+
+} // .front-page-item
+
+
+
+.aspect-ratio-wrapper {
+	
+	@include aspect-ratio(1, 1);
+	
+	@include breakpoint(break-min) { 
+	
+		// note: still using the widths and margins for mobile, but the link lists begin to display
+		
+		@include aspect-ratio(2, 1);
+	
+	} // break-min
+	
+} // .aspect-ratio-wrapper
+
+
+
+.front-page-item-image {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	border: $sidebar-border;
+	@include borderRadius('24px');
+	@include borderRadius('4vw');
+	@include materialShadow(1);
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	
+	
+	@include breakpoint(break-min) { 
+		@include borderRadius('0');
+		@include materialShadow(0);
+		border-bottom: none;
+	} // break-min
+	
+	a {
+		display: block;
+		height: 100%;
+		width: 100%;
+		text-indent: -9999px;
+			
+			&:focus,
+			&:hover,
+			&:active {
+				// background: rgba(255,255,255,0.35);
+			}
+	} // a
+			
+} // .front-page-item-image
+
+	
+	
+#staff .front-page-item-image {
+	background-image: url(#{$images}/frontpage/staff-button.jpg);
+	@include breakpoint(break-min) { 
+		background-image: url(#{$images}/frontpage/staff.jpg);
+	}
+}
+#travel .front-page-item-image {
+	background-image: url(#{$images}/frontpage/travel-button.jpg);
+	@include breakpoint(break-min) { 
+		background-image: url(#{$images}/frontpage/travel.jpg);
+	}
+}
+#publications .front-page-item-image {
+	background-image: url(#{$images}/frontpage/publications-button.jpg);
+	@include breakpoint(break-min) { 
+		background-image: url(#{$images}/frontpage/publications.jpg);
+	}
+}
+#its .front-page-item-image {
+	background-image: url(#{$images}/frontpage/its-button.jpg);
+	@include breakpoint(break-min) { 
+		background-image: url(#{$images}/frontpage/its.jpg);
+	}
+}
+#nwc .front-page-item-image {
+	background-image: url(#{$images}/frontpage/nwc-button.jpg);
+	@include breakpoint(break-min) { 
+		background-image: url(#{$images}/frontpage/nwc.jpg);
+	}
+}
+#safety .front-page-item-image {
+	background-image: url(#{$images}/frontpage/safety-button.jpg);
+	@include breakpoint(break-min) { 
+		background-image: url(#{$images}/frontpage/safety.jpg);
+	}
+}
+#policies .front-page-item-image {
+	background-image: url(#{$images}/frontpage/policies-button.jpg);
+	@include breakpoint(break-min) { 
+		background-image: url(#{$images}/frontpage/policies.jpg);
+	}
+}
+#events .front-page-item-image {
+	background-image: url(#{$images}/frontpage/events-button.jpg);
+	@include breakpoint(break-min) { 
+		background-image: url(#{$images}/frontpage/eventsb.jpg);
+	}
+}
+
+
+
+.front-page-item-banner {
+	@include rem-fallback(font-size, $p-font-size);
+	text-transform: uppercase;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	font-weight: normal;
+		
+	a { 
+		color: $text-color;
+		text-decoration: none;
+		
+		display: inline-block;
+		@include rem-fallback(padding, 0.25);
+		width: 100%;
+			
+		&:focus,
+		&:hover,
+		&:active {
+			text-decoration: underline;
+		}
+	}
+	
+	@include breakpoint(break-min) { 
+		color: #fff;
+		background: #000;
+		
+		a { 
+			color: #fff;
+			
+			&:focus,
+			&:hover,
+			&:active {
+				background: rgba(255,255,255,0.35);
+				text-decoration: none;
+			}
+		}
+		
+	} // break-min
+	
+} // .front-page-item-banner
+
+
+.front-page-item-list {
+	
+	display: none;
+	
+	@include breakpoint(break-min) { 
+	
+		border: $sidebar-border;
+		display: block;
+		@include rem-fallback(padding, $base-padding);
+		
+		ul {
+			@include rem-fallback(padding, 0, 0, 0, 1);
+			margin: 0;
+			
+			> :last-child {
+				margin-bottom: 0;
+			} // last-child
+			
+		} // ul
+		
+		li {
+		@include rem-fallback(margin-bottom, $base-margin); 
+		}
+		
+		a {
+			color: $text-color;
+			
+			&:focus,
+			&:hover,
+			&:active {
+				color: $link-color;
+				text-decoration: underline;
+			}
+		
+		} // a
+			
+		
+	} // break-min
+	
+	@include breakpoint(break-small) { 
+		
+		li {
+		@include rem-fallback(margin-bottom, $base-margin/2); 
+		}
+		
+	} // break-small
+	
+} // .front-page-item-list
+
+} // .home

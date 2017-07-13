@@ -1,0 +1,146 @@
+/* === Sidebar === */
+ 
+ /* 
+  * Types of sidebar:
+  *
+  * .unified = sidebar is one whole thing, sub-items are not separated
+  *
+  * .modular = sidebar is a container holding modular sub-items
+  *
+  * .combination = unified sidebar with modular sub-items
+  * (this option uses a lot of horizontal space)
+  *
+  * Can pick one and delete the others and just have the desired 
+  * layout be the default
+  *
+  */
+
+#sidebar {
+  margin: 0;
+  padding: 0;
+  
+  @include breakpoint(break-small) {
+    float: left;
+    width: 40%;
+  } // break-small
+}
+
+.sidebar-wrapper {
+  margin: 0;
+  padding: 0;
+  
+  @include breakpoint(break-small) {
+    @include rem-fallback(margin, 0, $base-margin, $base-margin, $base-margin/2);
+    @include rem-fallback(padding, $base-padding, 0);
+	  border-left: $sidebar-border;
+  
+	  > :last-child {
+		 margin-bottom: 0;
+	  } // last-child
+	  
+  } // break-small
+}
+
+.sidebar_item {
+    @include rem-fallback(margin, 0, $base-margin, $base-margin*2, $base-margin);
+		padding: 0;
+  
+	  > :last-child {
+		 margin-bottom: 0;
+	  } // last-child
+				
+	
+	h2 {
+        @include rem-fallback(font-size, $h56-font-size); // 18px
+        line-height: $h56-line-height; // 24px
+		@include rem-fallback(letter-spacing, $lato-letter-spacing); // .5px use when doing all uppercase
+        text-transform: uppercase;
+        
+        a {
+            color: $text-color;
+        }
+	}
+	
+	ul {
+		@include rem-fallback(padding-left, $base-padding/2); 
+		
+		li {
+			background: url(#{$images}/square-bullet-005fbe.svg) no-repeat left 0.625rem;  // blue
+	  		@include rem-fallback(background-size, 0.375); 
+	  		@include rem-fallback(padding-left, 1); 
+			list-style: none;
+			
+			&.current {
+				background: url(#{$images}/square-bullet-bf0000.svg) no-repeat left 0.625rem; // red
+				@include rem-fallback(background-size, 0.375); 
+				
+				a { 
+					color: $text-color;
+					cursor: default;
+					text-decoration: none;
+					
+					:focus,
+					:hover,
+					:active {
+						text-decoration: none;
+					}
+				}
+			}
+		}
+	}
+}
+
+.photo_item {
+    @include rem-fallback(margin, 0, 0, $base-margin*1.5, 0);
+	padding: 0;
+    
+    img {
+        border: $box-border; // necessary for images with large white areas
+        display: block;
+        margin: 0 auto;
+    }
+        
+    &.shadow img {
+        @include materialShadow(2);
+    }
+  
+	  .caption,
+	  .caption p {
+		 color: lighten($text-color, 25%);
+		 @include rem-fallback(font-size, $px14-font-size); // 14px
+		 line-height: $px14-line-height;  // 18px
+		 @include rem-fallback(margin, $base-margin/2, 0, 0, 0); // 8px
+	  } // .photo_box .caption
+    
+    .credit {
+		color: lighten($text-color, 50%);
+		@include rem-fallback(font-size, $px14-font-size); // 14px
+		line-height: $px14-line-height;  // 18px
+		font-style: italic;
+		margin: 0;
+		text-align: right;
+    }        
+}
+
+.sidebar_text_box {
+    background: $box-bg;
+    @include rem-fallback(margin, 0, 0, $base-margin, $base-margin);
+    @include rem-fallback(padding, $base-padding);
+    @include materialShadow(1);
+    
+    p, li {
+      @include rem-fallback(font-size, 0.875); // 14px
+      line-height: 1.5; // 21px
+    }
+}    
+
+
+#section_links {
+    
+    display: none;
+    
+    @include breakpoint(break-small) {
+        display: block;
+    }
+    
+}

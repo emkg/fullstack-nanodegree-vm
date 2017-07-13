@@ -1,0 +1,333 @@
+@charset "UTF-8";
+/* For use in popup info pages, etc. Just the basics. */
+
+
+/* === Typography === */
+
+html {
+  font-family: "Lato", "Helvetica Neue", Helvetica, Univers, "Liberation Sans", Arial, "Nimbus Sans L", sans-serif;
+  font-size: 87.5%;
+}
+@media screen and (min-width: 992px) {
+  html {
+    font-size: 100%;
+  }
+}
+
+body {
+  background: #fff;
+  color: #000;
+}
+
+/* === Links === */
+a {
+  color: #0059b2;
+  text-decoration: none;
+}
+a:focus {
+  outline: 1px dotted #004c98;
+}
+a:hover, a:active {
+  text-decoration: underline;
+}
+
+/* === Headers and paragraphs === */
+h1 {
+  font-size: 32px;
+  font-size: 2rem;
+  line-height: 1.125;
+  margin: 0 0 24px 0;
+  margin: 0 0 1.5rem 0;
+}
+
+h2 {
+  font-size: 28px;
+  font-size: 1.75rem;
+  line-height: 1.2857;
+  margin: 0 0 24px 0;
+  margin: 0 0 1.5rem 0;
+}
+
+h3 {
+  font-size: 24px;
+  font-size: 1.5rem;
+  line-height: 1.25;
+  margin: 0 0 24px 0;
+  margin: 0 0 1.5rem 0;
+}
+
+h4 {
+  font-size: 21px;
+  font-size: 1.3125rem;
+  line-height: 1.42857;
+  margin: 0 0 24px 0;
+  margin: 0 0 1.5rem 0;
+}
+
+h5, h6 {
+  font-size: 18px;
+  font-size: 1.125rem;
+  line-height: 1.333;
+  margin: 0 0 24px 0;
+  margin: 0 0 1.5rem 0;
+}
+
+p {
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0 0 24px 0;
+  margin: 0 0 1.5rem 0;
+}
+
+h1, h2, h3, h4 {
+  font-style: normal;
+  font-weight: bold;
+}
+
+h5 {
+  font-style: italic;
+  font-weight: normal;
+}
+
+h6 {
+  font-style: normal;
+  font-weight: normal;
+}
+
+.px18 {
+  font-size: 18px;
+  font-size: 1.125rem;
+  line-height: 1;
+  margin: 0 0 24px 0;
+  margin: 0 0 1.5rem 0;
+}
+
+.px14 {
+  font-size: 14px;
+  font-size: 0.875rem;
+  line-height: 1.2857;
+  margin: 0 0 24px 0;
+  margin: 0 0 1.5rem 0;
+}
+
+.px12 {
+  font-size: 12px;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  margin: 0 0 24px 0;
+  margin: 0 0 1.5rem 0;
+}
+
+.px10 {
+  font-size: 10px;
+  font-size: 0.625rem;
+  line-height: 1.2;
+  margin: 0 0 18px 0;
+  margin: 0 0 1.125rem 0;
+}
+
+/* === Blockquotes, quotes, and cites === */
+blockquote {
+  border-left-style: solid;
+  border-left-color: #999999;
+  border-left-width: 4px;
+  border-left-width: 0.25rem;
+  color: #595959;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 24px 40px;
+  margin: 1.5rem 2.5rem;
+  padding: 8px 16px 8px 12px;
+  padding: 0.5rem 1rem 0.5rem 0.75rem;
+}
+blockquote > :first-child {
+  margin-top: 0;
+}
+blockquote > :last-child {
+  margin-bottom: 0;
+}
+blockquote blockquote {
+  border: none;
+  font-style: italic;
+  padding: 0;
+}
+blockquote cite {
+  font-style: italic;
+}
+
+blockquote.pretty {
+  border-left: none;
+  color: #000;
+  padding: 8px 0 0 24px;
+  padding: 0.5rem 0 0 1.5rem;
+  position: relative;
+}
+blockquote.pretty:before {
+  content: "\201C";
+  font-size: 144px;
+  font-size: 9rem;
+  font-style: italic;
+  font-family: Georgia, serif;
+  display: block;
+  padding-left: 12px;
+  padding-left: 0.75rem;
+  position: absolute;
+  left: -72px;
+  left: -4.5rem;
+  top: -40px;
+  top: -2.5rem;
+}
+
+/* === Code and Preformatted text === */
+code {
+  font-family: "Courier New", "Nimbus Mono L", FreeMono, Courier, monospace;
+}
+
+pre {
+  font-family: "Lucida Console", "Lucida Sans Typewriter", "Liberation Mono", "Andale Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", Consolas, monospace;
+}
+
+/* === Lists === */
+ul,
+ol {
+  margin: 0 0 24px 0;
+  margin: 0 0 1.5rem 0;
+  padding: 0 0 0 40px;
+  padding: 0 0 0 2.5rem;
+}
+ul + *:not(p),
+ol + *:not(p) {
+  margin-top: 48px;
+  margin-top: 3rem;
+}
+
+dl {
+  margin: 0 0 24px 0;
+  margin: 0 0 1.5rem 0;
+  padding: 0;
+}
+dl + *:not(p) {
+  margin-top: 48px;
+  margin-top: 3rem;
+}
+
+ul {
+  list-style: square;
+}
+
+ol {
+  list-style: decimal;
+}
+ol ol {
+  list-style: lower-alpha;
+}
+ol ol ol {
+  list-style: lower-roman;
+}
+
+li, dt, dd {
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0 0 12px 0;
+  margin: 0 0 0.75rem 0;
+}
+li ol, li ul, dt ol, dt ul, dd ol, dd ul {
+  margin-top: 0.75rem;
+  margin-bottom: 0;
+}
+
+dt {
+  font-style: normal;
+  font-weight: bold;
+}
+
+dd {
+  padding-left: 40px;
+  padding-left: 2.5rem;
+  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
+}
+
+/* === Tables === */
+table {
+  border: solid 1px #cccccc;
+  margin: 0 0 48px;
+  margin: 0 0 3rem;
+  padding: 0;
+}
+
+caption {
+  font-size: 19px;
+  font-size: 1.192rem;
+  line-height: 1.263;
+  padding: 8px 0;
+  padding: 0.5rem 0;
+}
+
+th,
+td {
+  border: solid 1px #cccccc;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.5;
+  padding: 4px 16px;
+  padding: 0.25rem 1rem;
+}
+th:first-child,
+td:first-child {
+  border-left: none;
+}
+th:last-child,
+td:last-child {
+  border-right: none;
+}
+
+th {
+  background: #e6e6e6;
+}
+
+
+
+/* === Structure === */
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 32px;
+  padding: 2rem;
+  min-width: 320px;
+  min-width: 20rem;
+}
+
+
+
+/* === Other styles === */
+
+.offsite_link:after,
+.offsite-link:after {
+  font-family: "FontAwesome";
+  font-size: 14px;
+  font-size: 0.875rem;
+  content: "\f08e";
+  display: inline-block;
+  padding-left: 4px;
+  padding-left: 0.25rem;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

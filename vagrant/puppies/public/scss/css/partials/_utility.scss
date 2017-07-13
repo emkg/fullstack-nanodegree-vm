@@ -1,0 +1,1454 @@
+/* ==========================================================================
+   Utility Classes
+   ========================================================================== */
+
+/* === Alignment === */
+
+.alignright-nobreak { // old alignright
+  float: right;
+  @include rem-fallback(margin-left, $base-margin);
+  @include rem-fallback(margin-bottom, $base-margin);
+}
+
+.alignleft-nobreak { // old alignleft
+  float: left;
+  @include rem-fallback(margin-right, $base-margin);
+  @include rem-fallback(margin-bottom, $base-margin);
+}
+
+.aligncenter {
+  display: block;
+  max-width: 100%;
+  @include rem-fallback(margin, $base-margin, auto);
+}
+
+.alignnone {
+  @include rem-fallback(margin, $base-margin, 0);
+}
+
+.center_text {
+    text-align: center;
+}
+
+.left_text {
+    text-align: left;
+}
+
+.right_text {
+    text-align: right;
+}
+
+/* alignright and alignleft now float left and right at tablet sizes and above
+ *  max-width 50%, same margins as alignleft and alignright
+ * 
+ *  at mobile sizes it's the same as aligncenter
+ */
+
+.alignleft {
+  display: block;
+  @include rem-fallback(margin, $base-margin, auto);
+  
+  @include breakpoint(break-min) {
+    float: left;
+    max-width: 50%;
+	 @include rem-fallback(margin, 0, $base-margin, $base-margin, 0);
+   } // break-small
+}
+  
+.alignright {
+  display: block;
+  @include rem-fallback(margin, $base-margin, auto);
+  
+  @include breakpoint(break-min) {
+    float: right;
+    max-width: 50%;
+	 @include rem-fallback(margin, 0, 0, $base-margin, $base-margin);
+   } // break-small
+	
+}
+
+.clearboth {
+	clear: both;
+}
+
+.clearfix:after, 
+.cf:after, 
+.group:after {
+  clear:      both;
+  content:    ".";
+  display:    block;
+  height:     0;
+  visibility: hidden;
+}
+
+.cf2 {
+  overflow: hidden;
+}
+
+.screen-reader-text,
+.screenreader-text,
+.assistive-text, 
+#skip-to-content, 
+.skip-link {
+  display: block;
+  font-size: 0;
+  line-height: 0;
+  text-indent: -9999px;
+  margin: 0;
+  padding: 0;
+  height: 0;
+  width: 0;
+  overflow: hidden;
+}
+
+.word-wrap {
+	@include word-wrap();
+}
+
+.url-word-wrap {
+	@include url-word-wrap();
+}
+
+.ellipsis {
+	@include ellipsis();
+}
+
+.red_emphasis,
+.red-emphasis{
+    color: $dark-red;
+    font-weight: bold;
+	text-transform: uppercase;
+	font-size: .75em;
+	letter-spacing: .05em;
+	text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.highlight_emphasis {
+    background: $alert-gold-lighter;
+	display: inline-block;
+    font-weight: bold;
+	padding: 0 4px;
+	margin: 1px 0;
+}
+
+.emphasis_box {
+    background: $ltbase-bg;
+    border: 1px solid $ltbase-border;
+    @include rem-fallback(margin, 0, 0, $base-margin, 0);
+    @include rem-fallback(padding, $base-padding);
+    
+    > :last-child {
+        margin-bottom: 0;
+    }
+}
+
+.emphasis_box2 { // taken from emphasis_box2
+	@include rem-fallback(margin, 0, 0, $base-margin, 0);
+	@include rem-fallback(padding, $base-padding);
+	border: 3px double $base-color;
+	
+	> :last-child {
+		margin-bottom: 0;
+	}
+}
+
+.emphasis_box_holiday { // playful...
+	background-color: $alert-gold-lighter;
+	background-image: url('/events/gab/img/Autumn_Pumpkin_Decoration_Clipart_PNG_Image-80.png');
+	background-repeat: no-repeat;
+	background-position: right bottom;
+	background-size: 50% auto;
+
+    @include rem-fallback(margin, 0, 0, $base-margin, 0);
+	@include rem-fallback(padding, $base-padding*2);
+	
+	@include materialShadow(1);
+    
+    > :last-child {
+        margin-bottom: 0;
+    }
+	
+	p {
+	  margin: 0;
+	  padding-right: 30%;
+	}
+	
+}
+
+.breaking-news-banner {
+	background-color: $breaking-bg;
+	color: $breaking-text;
+    @include rem-fallback(padding, $base-padding);
+	 
+	> :last-child { 
+		margin-bottom: 0;
+	}
+	.title {
+		font-weight: bold;
+	}
+	a {
+		color: $breaking-links;
+		font-weight: bold;
+		text-decoration: underline;
+		text-decoration-skip: ink;
+	}
+	p {
+		@include rem-fallback(font-size, 0.875); // 14px
+		line-height: 1.5; // 21px
+	}
+}
+
+.hot-items {
+	.news-excerpt:after {
+		content: url('/img/fireicon-16x16.png');
+	}
+}
+
+/*.offsite_link {
+    background: url(#{$images}/external.svg) no-repeat right;
+    @include rem-fallback(background-size, 0.75, 0.75);
+    @include rem-fallback(padding-right, 1);
+}*/
+
+.offsite_link,
+.offsite-link,
+.offsite a {
+	
+	&:after {
+		font-family: "FontAwesome";
+		@include rem-fallback(font-size, 0.875); 
+		content: "\f08e"; // fa-external-link
+		// content: "\f14c"; // fa-external-link-square
+		display: inline-block;
+		@include rem-fallback(padding-left, .25); 
+		text-rendering: auto;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+}
+
+/*.restricted_link {
+  background: url(#{$images}/locked.svg) no-repeat right;
+    @include rem-fallback(background-size, 0.75, 0.75);
+    @include rem-fallback(padding-right, 1);
+}*/
+
+.restricted_link,
+.restricted-link, 
+.restricted a {
+	
+	&:after {
+		font-family: "FontAwesome";
+		content: "\f023"; // fa-lock
+		display: inline-block;
+		@include rem-fallback(padding-left, 0.25); 
+		text-rendering: auto;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+}
+
+.popup_link,
+.popup-link {
+	
+	&:after {
+		font-family: "FontAwesome";
+		content: "\f065"; // fa-lock
+		display: inline-block;
+		@include rem-fallback(padding-left, 0.25); 
+		text-rendering: auto;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+}
+
+.offsite_link_new:after {
+  content: url(#{$images}/external.png);
+  padding-left: 2px;
+}
+
+.restricted_link_new:after {
+  content: url(#{$images}/locked.png);
+  padding-left: 2px;
+}
+
+.restricted_box { // taken from emphasis_box2
+	background-image: url(#{$images}/locked.svg);
+	background-repeat: no-repeat;
+	background-position: 24px, center;
+	background-position: 1.5rem, center; // base-padding; can't use mixin because of "center" value
+	@include rem-fallback(background-size, $base-padding*2);
+	@include rem-fallback(margin, 0, 0, $base-margin, 0);
+	@include rem-fallback(padding, $base-padding, $base-padding, $base-padding, $base-padding*4);
+	border: 3px double $base-color;
+	
+	> :last-child {
+		margin-bottom: 0;
+	}
+}
+
+a[href^="tel:"] {  // overriding other rules for links around the site
+
+  @include breakpoint(break-medium) { 
+  	color: $text-color;
+	cursor: default !important;
+	text-decoration: none !important;
+	
+	&:focus,
+	&:hover,
+	&:active {
+		text-decoration: none !important;
+	}
+  }
+}
+
+a.icon[href^="tel:"] {
+	
+	&:before {
+		 content: "\260E";
+		 display: inline-block;
+		 margin-right: 0.5em;
+	}
+}
+
+/*.acrobat_link {
+  background: url(#{$images}/pdf_tiny.gif) no-repeat right;
+    @include rem-fallback(background-size, 0.75, 0.75);
+    @include rem-fallback(padding-right, 1);
+}*/
+
+.acrobat_link,
+.acrobat-link {
+	
+	&:after {
+		font-family: "FontAwesome";
+		content: "\f1c1"; // fa-file-pdf-o
+		display: inline-block;
+		@include rem-fallback(padding-left, 0.25); 
+		text-rendering: auto;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+}
+
+/*.msword_link {
+  background: url(#{$images}/msword_tiny.gif) no-repeat right;
+    @include rem-fallback(background-size, 0.75, 0.75);
+    @include rem-fallback(padding-right, 1);
+}*/
+
+.msword_link,
+.msword-link {
+	
+	&:after {
+		font-family: "FontAwesome";
+		content: "\f1c2"; // fa-file-word-o
+		display: inline-block;
+		@include rem-fallback(padding-left, 0.25); 
+		text-rendering: auto;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+}
+
+.ppt_link,
+.ppt-link {
+	
+	&:after {
+		font-family: "FontAwesome";
+		content: "\f1c4"; // fa-file-powerpoint-o
+		display: inline-block;
+		@include rem-fallback(padding-left, 0.25); 
+		text-rendering: auto;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+}
+
+.zip_link,
+.zip-link {
+	
+	&:after {
+		font-family: "FontAwesome";
+		content: "\f1c6"; // fa-file-archive-o
+		display: inline-block;
+		@include rem-fallback(padding-left, 0.25); 
+		text-rendering: auto;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+}
+
+.adobereader_link { // there's not any Adobe or Acrobat FA icons
+    background: url(#{$images}/GetAdobeReader.png) no-repeat left;
+    display: inline-block;
+    line-height: 39px; // height and padding = image size
+    padding-left: 170px;
+}
+
+.gradient-button-link {
+    display: inline-block;
+    @include rem-fallback(padding, $base-padding*2/3, $base-padding); // 18px
+    @include borderRadius(0.75rem);
+    @include makeGradient($base-color, lighten($base-color, 10%));
+        @include materialShadow(2);
+    
+    color: #fff;
+    
+    &:hover {
+        @include makeGradient(lighten($base-color, 5%), lighten($base-color, 15%));
+        color: #fff;
+        text-decoration: none;
+        @include materialShadow(1);
+    }
+}
+
+.material-button-link,
+.material-button-link-0 {
+    display: inline-block;
+    @include rem-fallback(padding, $base-padding*2/3, $base-padding); // 18px
+    
+    background-color: $base-color;
+    color: #fff;
+    
+    &-1 {
+        @extend.material-button-link;
+        @include materialShadow(1);
+    }
+    
+    &-2 {
+        @extend.material-button-link;
+        @include materialShadow(2);
+    }
+    
+    &-3 {
+        @extend.material-button-link;
+        @include materialShadow(3);
+    }
+    
+    &:hover {
+        background-color: lighten($base-color, 10%);
+        color: #fff;
+        text-decoration: none;
+    }
+}
+
+.ghost-button-link {
+    display: inline-block;
+    @include rem-fallback(padding, $base-padding*2/3, $base-padding); // 18px
+    
+    background:transparent;
+    border: 1px solid $ghost-color;
+	 
+	 color: $ghost-color;
+    
+    &:hover {
+        border: 1px solid $ghost-highlight-color;
+        color: $ghost-highlight-color;
+        text-decoration: none;
+    }
+}
+
+.iframe-shadow iframe {
+	border: $box-border;
+	@include materialShadow(2);
+}
+
+.normalcase {
+  text-transform: none;
+}
+
+ul.compact,
+ol.compact {
+	@include rem-fallback(margin-bottom, $base-margin); 
+    
+    li {
+        margin-bottom: 0;
+        @include rem-fallback(padding-top, $base-padding/2);  
+        @include rem-fallback(padding-bottom, $base-padding/2);  
+        
+        @include breakpoint(break-small) {
+            @include rem-fallback(padding-top, $base-padding/4);  
+            @include rem-fallback(padding-bottom, $base-padding/4); 
+        }  
+        
+        @include breakpoint(break-medium) {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+    }
+
+}
+
+.list-none {
+    list-style: none;
+    @include rem-fallback(padding-left, $base-padding);
+}
+
+.journal,
+.conference,
+.publication,
+.book_title,
+.article_title,
+.project_name {
+  font-style: italic;
+}
+
+.volume {
+  font-weight: bold;
+}
+
+.dateline {
+	  color: lighten($text-color, 50%);
+	  font-style: italic;
+}
+
+.intro { // first paragraph, etc. with larger font
+  @include rem-fallback(font-size, $h56-font-size); // 18px
+  line-height: $h56-line-height;  // 24px
+  @include rem-fallback(margin, 0, 0, $base-margin, 0); 
+}
+
+.svr-watch {
+    background: yellow;
+    color: black;
+    font-weight: bold;
+    display: inline-block;
+    @include rem-fallback(padding, 0, $base-padding/4); 
+ }
+
+.svr-warning {
+    background: red;
+    color: white;
+    font-weight: bold;
+    display: inline-block;
+    @include rem-fallback(padding, 0, $base-padding/4);
+ }
+ 
+ .pager_display {
+     font-family: $stack-mono-serif;
+     @include rem-fallback(margin, $base-margin, 0); 
+     @include rem-fallback(padding, $base-padding);
+     border: 1px solid $text-color;
+ }
+	
+
+/*
+ * PAGE ITEMS
+ *
+ * Comparable to project_item in main site
+ *
+ */
+
+// related to video_items in _img-obj.scss
+
+.page_item {
+     background: $box-bg;
+	 border: $box-border;
+	 @include materialShadow(2);
+     @include rem-fallback(margin, $base-margin, 0);
+	 padding: 0;
+	 
+	.page_banner {
+		margin: 0;
+		padding: 0;
+	}
+	.page_item_wrapper {
+		@include rem-fallback(padding, $base-padding);
+		margin: 0;
+    
+	  > :last-child {
+		  margin-bottom: 0;
+	  }
+	}
+}
+	
+
+/*
+ * Alert Banners
+ *
+ */
+ 
+ .alert {  // alert banner at the top of the page
+		@include rem-fallback(padding, $base-padding/2);
+		
+		/* Lab Status */
+		
+		&.CLOSED,
+		&.closed { // lab status
+			background: $darker-red;
+			color: #fff;
+			
+			a {
+				color: #fff;
+			}
+		}
+		
+		&.OPEN, 
+		&.open { // lab status
+			background: $green;
+			color: #fff;
+			
+			a {
+				color: #fff;
+			}
+		}
+		
+		&.caution,
+		&.late { // lab status
+			background: $alert-gold;
+		}
+		
+		/* Bootstrap-style Alerts */
+		
+		&.info {
+			background: #dbeaff;
+			color: #315a8f;
+			
+			a {
+				//color: #4773aa;
+				color: #315a8f;
+			}
+		}
+		
+		&.success {
+			background: #dcf0d8;
+			color: #2e8540;
+			
+			a {
+				color: #2e8540;
+			}
+		}
+		
+		&.warning {
+			background: #fff1d2;
+			color: #a98842;
+			
+			a {
+				color: #a98842;
+			}
+		}
+		
+		&.danger { // text color from bootstrap
+			background: #f9dede;
+			color: #a94442;
+			
+			a {
+				color: #a94442;
+			}
+		}
+		
+		.alert-meta {
+			display: none;
+			
+			@include breakpoint(break-small) {
+				display: inline;
+				font-style: italic
+			}
+		}
+			
+			
+		
+		.alert-wrapper {
+			@include breakpoint(break-large) {
+				margin: 0 auto;
+				max-width: $break-large;
+			} // break-large
+		}
+		
+		a {
+			color: $text-color;
+			
+			&:link,
+			&:visited {
+				text-decoration: underline;
+				text-decoration-skip: ink;
+			}
+			
+			&:focus,
+			&:hover,
+			&:active {
+				text-decoration: none;
+			}
+			
+			i {
+				@include rem-fallback(margin-left, 0.25);
+				text-decoration: none;
+				cursor: pointer;
+			}
+			
+		}
+	 
+ }
+ 
+ 
+ 
+/*
+ * LAB STATUS
+ *
+ */
+ 
+ .lab-status { 
+		
+	.CLOSED,
+	.closed { 
+		background: $lighter-red2;
+		color: $dark-red;
+		display: inline-block;
+		padding: 2px 4px;
+	}
+	
+	.OPEN,
+	.open { 
+		background: $lighter-green2;
+		color: $green;
+		display: inline-block;
+		padding: 2px 4px;
+	}
+	
+	.late { 
+		background: $alert-gold;
+		color: #000;
+		display: inline-block;
+		padding: 2px 4px;
+	}
+	
+	.status-msg {
+	  background: $box-bg;
+	  border: $box-border;
+	  @include materialShadow(2);
+	  @include rem-fallback(margin, $base-margin, 0);
+	  @include rem-fallback(padding, $base-padding);
+	}
+	
+	.post-time {
+		font-style: italic;
+	}
+ }
+ 
+ 
+ 
+/*
+ * Zebra Tables and Lists
+ *
+ */
+
+.zebra { 
+
+  th {
+	  background: transparent;
+  }
+  
+  li {
+    @include rem-fallback(padding, $base-padding/2); // 12px
+    
+    &:first-child {
+      padding-top: 0;
+    } // first-child
+  } // li
+  
+  tr, 
+  li {
+    &:nth-of-type(even) { //alternating rows are different colors 
+      background: $box-bg;
+    } // even
+  } // tr, li
+  
+  .non-zebra {
+	  tr, li {
+		  background: transparent;
+	  }
+  }
+  
+} // zebra
+
+
+ 
+/*
+ * Responsive tables
+ *
+ */
+
+table.responsive {
+	
+	display: block;
+	margin: 0 auto;
+	width: 100%;
+	
+	caption:first-child {
+		@include rem-fallback(margin-top, $base-margin);
+	}
+	
+	caption:last-child {
+		@include rem-fallback(margin-bottom, $base-margin);
+	}
+	
+	caption.screenreader-text {
+		margin: 0;
+	}
+		
+	
+	thead, tbody, tr, th, td, caption { 
+		display: block; 
+	}
+	
+	td, th {
+		@include rem-fallback(padding, 1, 1); // fat fingers
+		text-align: left;
+		
+		@include breakpoint(break-small) {
+			@include rem-fallback(padding, 0.67, 1);
+		}
+	
+	}
+	
+	@include breakpoint(directory) {
+	
+		// this is a rare "max-width" media query, because I am lazy
+		
+		border: none;
+		
+	  /* Hide table headers (but not display: none, for accessibility) */
+	  
+		thead.hide tr { 
+			position: absolute;
+			top: -9999px;
+			left: -9999px;
+		}
+		
+		tr { 
+			border: $box-border; 
+		}
+		
+		
+		td { 
+		/* Behave  like a "row" */
+			border: none;
+			border-bottom: $main-border; 
+			position: relative;
+			@include rem-fallback(padding-left, 2.5);
+		}
+		
+		/*td:before { // Labels take place of table header 
+			content: attr(data-label)": ";
+			position: absolute;
+			@include rem-fallback(left, 1); // Top/left values mimic padding 
+			@include rem-fallback(top, 0.25); 
+			white-space: nowrap;
+			width: 25%;  
+		}*/
+		
+		td.hide,
+		th.hide {  // used for empty table cells -- don't display for mobile
+		  display: none;
+		}
+	
+	} // breakpoint-directory
+	
+	@include breakpoint(break-medium) {
+	
+		display: table;
+		
+		thead {
+			display: table-header-group;
+		}
+		
+		tbody {
+			display: table-row-group;
+		}
+		
+		tr {
+			display: table-row;
+			
+			&:nth-child(even) { // zebra stripes 
+				background: $box-bg;
+			} // even
+		} // tr
+		
+		td, th {
+			display: table-cell;
+		}
+		
+		caption {
+			display: table-caption;
+		}
+		
+		td, th {
+			@include rem-fallback(font-size, $px14-font-size); // 14px
+			line-height: $px14-line-height; // 18px
+			@include rem-fallback(padding, 0.75, 0.5); 
+			vertical-align: top;
+			
+			&[scope='row'] { // keep zebra stripes consistent
+				background: transparent;
+			}
+			
+		} // td, th
+	
+	} // break-medium
+	
+} // .responsive
+ 
+ 
+ 
+/*
+ * News pages
+ *
+ */
+ 
+.logo_item {
+	border-bottom: $sidebar-border;
+	@include rem-fallback(margin, $base-margin, 0);
+	@include rem-fallback(padding, $base-padding, 0);
+	
+	&:last-child {
+		border-bottom: none;
+	}
+	 
+	img {
+		float: left;
+		max-width: 22%;
+		margin: 0 3% 0 0;
+		
+		@include breakpoint(break-small) {
+			max-width: 45%;
+			margin: 0 5% 0 0;			
+		}
+	}
+	
+	.logo_item_wrapper {
+		margin-left: 25%;
+		
+		@include breakpoint(break-small) {
+			margin-left: 50%;
+		}
+		
+		ul {
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
+	}
+}
+
+/*
+ * AWARDS
+ *
+ */
+ 
+ dl.award_list {
+	 margin: 0;
+	 padding: 0;
+ }
+ 
+.award_list dt,
+.award_list dd {
+	@include rem-fallback(margin-left, 0);
+	padding: 0;
+}
+ 
+.award_list dt {
+	 margin-bottom: 0;
+}
+
+.award_name {
+	font-weight: bold;
+	color: #900;
+}
+
+.recipient_name {
+	font-weight: bold;
+}
+
+/*
+ * AGENDAS
+ *
+ */
+ 
+ .agenda_item {
+	overflow: hidden;
+	
+	&.logistics {
+		font-style: italic;
+	}
+	
+	.time {
+		float: left;
+		@include rem-fallback(width, 4);
+	}
+	
+	.event {
+		@include rem-fallback(margin-left, 6);
+	}
+		 
+ }
+ 
+ .line {
+	 
+	 .agenda_item {
+		 margin: 0;
+		 padding: 0;
+		 
+		 & + .section-header {
+			@include rem-fallback(margin-top, $base-margin);
+		 }
+	 }
+	 
+	.time {
+		@include rem-fallback(padding, $base-padding/3, 0);
+		text-align: right;
+	}
+	 
+	.event {
+		border-left: $box-border;
+		@include rem-fallback(padding, $base-padding/3, 0, $base-padding/3, 2);
+	}
+	
+	ul, 
+	ol {
+		margin-top: 0;
+		margin-bottom: 0;
+		padding: 0;
+		
+		ul,
+		ol {
+			@include rem-fallback(margin-top, $base-padding/3); // "padding" intended to match other sizes
+			@include rem-fallback(padding-left, 2);
+		}
+			
+	}
+		
+	.agenda_list { // matches ul, ol {ul, ol} above
+		@include rem-fallback(margin-top, $base-padding/3); // "padding" intended to match other sizes
+		@include rem-fallback(padding-left, 2);
+	}
+	
+	p {
+		margin-top: 0;
+		margin-bottom: 0;
+		@include rem-fallback(padding-top, $base-padding/6); 
+		@include rem-fallback(padding-bottom, $base-padding/6);
+	}
+	
+	li {
+		margin-top: 0;
+		margin-bottom: 0;
+		@include rem-fallback(padding, $base-padding/6); 
+		@include rem-fallback(margin-left, $base-padding/6);
+	
+		&.even {
+			background: $box-bg;
+		}
+	}
+	
+	h3 {
+		color: $title-text;
+		font-family: $stack-adventor;
+		font-weight: normal;
+		font-weight: 400;
+		@include rem-fallback(letter-spacing, $adventor-letter-spacing); // 1px use when doing all uppercase
+		text-transform: uppercase;
+	}
+ 
+ .moderator {
+	font-style: italic;
+	@include rem-fallback(margin-bottom, $base-margin);
+ }
+		 
+ }
+
+/*
+ * CONTACT PAGE
+ *
+ */
+ 
+.address_block {
+	
+	dt {
+		float: left;
+		font-weight: normal;
+		text-transform: uppercase;
+		text-align: right;
+		margin: 0;
+		@include rem-fallback(padding, .75, 0);
+		@include rem-fallback(width, 6);
+	}
+	
+	dd {
+		border-left: $box-border;
+		clear: right;
+		@include rem-fallback(margin, 0, 0, 0, 7);
+		@include rem-fallback(padding, .75, 0, .75, 1);
+	}
+}
+
+/*
+ * STAFF DIRECTORY
+ *
+ */
+
+.alpha_index { // A-Z links, unused
+	
+	
+	.alpha_link {
+		display: inline-block;
+	
+		@include rem-fallback(font-size, 0.75); // 12px
+		line-height: 1; // 12px
+		@include rem-fallback(margin, 0.2); // 14px
+		@include rem-fallback(padding, 1); // 14px
+	}
+	
+	
+	@include breakpoint(break-small) {
+		@include rem-fallback(font-size, $px14-font-size); // 14px
+		line-height: $px14-line-height; // 18px
+		@include rem-fallback(padding, 0.25); 
+	}
+		
+}
+
+.directory, .legend {
+		
+		.affiliation:after {
+		}
+		
+		.Federal:after {
+			content: " [F]";
+			color: $base-color;
+		}
+		
+		.CIMMS:after {
+			content: " [C]";
+			color: $dark-red;
+		}
+		
+		.Contract:after {
+			content: " [I]";
+			color: $green;
+		}
+		
+		.Other:after {
+			content: " [O]";
+			color: $text-color;
+		}
+}
+
+table.directory {
+	
+	td.labcell {
+		white-space: nowrap;
+	}
+	
+	td.phone {
+		white-space: nowrap;
+	}
+	
+	@include breakpoint(directory) {
+		
+	  /* Hide table headers (but not display: none, for accessibility) 
+	  
+	  thead tr { 
+		  position: absolute;
+		  top: -9999px;
+		  left: -9999px;
+	  } */
+			
+	  td.email {
+		  @include word-wrap();
+	  }
+		
+	  td.room:before {
+		content: 'Rm. ';
+	  }
+	  
+	  td.phone:before {
+		content: 'Office: ';
+	  }
+	  
+	  td.labcell:before {
+		content: 'Mobile: ';
+	  }
+		
+	}
+	
+	@include breakpoint(medium) {
+		
+	  td.phone {
+		  white-space: nowrap;
+	  }
+	}
+
+
+// font awesome icons 
+
+.fa.space {
+	display: inline-block;
+	
+	@include rem-fallback(margin-left, 2); 
+	
+	@include breakpoint(break-medium) {
+	  @include rem-fallback(margin-left, 1); 
+	}
+}
+
+a.fa_link {
+	color: #999;
+	
+	@include rem-fallback(font-size, 0.75); // 12px
+	
+	@include breakpoint(directory) {
+	  @include rem-fallback(font-size, 1); // 16px
+	}
+}
+	
+} // .directory
+
+
+div.orgchart { 
+	
+	width: 100%;
+	
+	.division {
+		margin: 0;
+		padding: 0;
+	}
+	
+	@include breakpoint(break-small) {
+	
+	  .division {
+		  float: left;
+		  width: 48%;
+		  margin: 0 2% 0 0;
+		  
+		  &:last-of-type {
+			  margin-right: 0;
+		  }
+	  }
+	  
+	} // break-small
+	
+	@include breakpoint(break-medium) {
+	
+	  .division {
+		  float: left;
+		  width: 22%;
+		  margin: 0 2% 0 0;
+		  
+		  &:last-of-type {
+			  margin-right: 0;
+		  }
+	  }
+	  
+	} // break-medium
+	
+	.division_header {
+		background: $dark-bg-color;
+		color: $dark-bg-text-color;
+		@include rem-fallback(font-size, 1.3125); // 21px
+		font-weight: bold;
+		line-height: 1; // 21px
+		@include rem-fallback(margin, 0, 0, $base-margin, 0); 
+		@include rem-fallback(padding, $base-padding/2, $base-padding);
+	}
+	
+	.group_header {
+		background: $box-bg;
+		@include rem-fallback(font-size, $h56-font-size); // 18px
+		line-height: $h56-line-height;  // 24px
+		font-weight: bold;
+		margin: 0; 
+		@include rem-fallback(padding, $base-padding/2, $base-padding); 
+	}
+	
+	.group_leader {
+		@include rem-fallback(font-size, 1); // 16px
+		font-weight: bold;
+		line-height: 1.25; // 20px
+		margin: 0; 
+		@include rem-fallback(padding, $base-padding/4, $base-padding); 
+	}
+	
+	.group_member {
+		@include rem-fallback(font-size, $px14-font-size); // 14px
+		line-height: $px14-line-height; // 18px
+		font-weight: normal;
+		margin: 0; 
+		@include rem-fallback(padding, $base-padding/4, $base-padding); 
+	}
+	
+	.student_header {
+		@include rem-fallback(font-size, $px14-font-size); // 14px
+		line-height: $px14-line-height; // 18px
+		font-weight: bold;
+		margin: 0; 
+		@include rem-fallback(padding, $base-padding/4, $base-padding); 
+	}	
+	
+} // .orgchart 
+
+.orgchart,
+.orgchart_legend {
+	
+	.group_leader {
+		@include rem-fallback(font-size, 1); // 16px
+		font-weight: bold;
+		line-height: 1.25; // 20px
+	}
+	
+	.Federal {
+		color: $federal;
+	}
+	
+	.CIMMS {
+		color: $cimms;
+	}
+	
+	.ITContractor {
+		color: $its;
+	}
+	
+	.student {
+		color: $student;
+	}
+}
+
+
+/*
+ * PMAC Criteria Tables
+ *
+ */
+ 
+table.pmac_criteria {
+	
+	thead {
+		border: solid 3px $medbase-bg;
+		
+		th {
+			border-right: solid 3px $main-bg;
+			border-bottom: solid 3px $main-bg;
+			background: $medbase-bg;
+			
+			&:last-of-type {
+				border-right: none;
+			}
+		}
+	} // thead
+	
+	tbody {
+		border: solid 3px $medbase-bg;
+		
+		th {
+			background: $medbase-bg;
+			border: solid 3px $main-bg;
+			border-left: none;
+		}
+		
+		&:last-of-type th { 
+			border-bottom:  solid 3px $medbase-bg;
+		}
+	} // tbody
+	
+	@include breakpoint(directory) {
+		
+		tr {
+			border: none;
+		} // tr
+		
+		thead {
+		  th {
+			  border: none;
+		  } 
+		} // thead
+		
+		tbody {
+		  border-top: none;
+		  th {
+			  border: solid 3px $main-bg;
+		  } 
+		
+		  &:last-of-type th { 
+			  border-bottom:  solid 3px $main-bg;
+		  }
+	
+		  tr:nth-of-type(even) { // alternating rows are different colors 
+			background: $box-bg;
+			
+			td {
+				border-bottom: solid 1px $box-border-color;
+			}
+		  } // even
+		  
+		} // tbody
+			
+	
+		td {
+			
+			padding-left: 29%;
+		  
+			&:before { // Labels take place of table header 
+				content: attr(data-label)": ";
+				font-weight: bold;
+				position: absolute;
+				@include rem-fallback(left, 1); // Top/left values mimic padding 
+				@include rem-fallback(top, 1); 
+				width: 22%;  
+			} // before
+			
+		} // td
+	} // breakpoint directory
+		
+ } // .criteria
+	
+ol.pmac_criteria {
+	
+	padding-left: .75rem;
+	
+	li {
+	  @include rem-fallback(font-size, $px14-font-size); // 14px
+	  line-height: $px14-line-height; // 18px
+	  
+	  @include breakpoint(directory) {
+		@include rem-fallback(font-size, $p-font-size); // 14px
+		line-height: $p-line-height; // 24px
+	  }
+	}
+	
+	& > li:last-child {
+	  margin-bottom: 0;
+	}
+	
+	&[type="A"] { 
+	  list-style-type: upper-alpha; 
+	}
+	
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+.strong-or {
+	display: block;
+	font-weight: bold;
+	@include rem-fallback(margin, $base-margin, 0); 
+	
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+
+/**
+* Site Map
+* --------------------------------------------------------------------------- */
+
+.sitemap .main-wrapper ul {
+	
+	margin: 0;
+	
+	li {
+		@include rem-fallback(margin, $base-margin/2, 0); 
+	}
+}

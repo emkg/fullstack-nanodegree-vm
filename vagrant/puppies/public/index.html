@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="cleartype" content="on">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <link href="/css/normalize.css" rel="stylesheet" type="text/css">
+    <link href="/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Oswald:700|Playfair+Display:400ii&text=%22' rel='stylesheet' type='text/css'>
+    <!--<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />-->
+    <link href="/js/jquery-ui-1.11.4.custom/jquery-ui.min.css" rel="stylesheet" type="text/css">
+    <link href="/js/jquery-ui-1.11.4.custom/jquery-ui.structure.min.css" rel="stylesheet" type="text/css">
+    <link href="/js/jquery-ui-1.11.4.custom/jquery-ui.theme.min.css" rel="stylesheet" type="text/css">
+    <link href="/css/nssl-2015.min.css?v=04122017" rel="stylesheet" type="text/css">
+    <!--[if lte IE 8]>
+      <link href="/css/nssl-2015-ie.min.css" rel="stylesheet" type="text/css">
+      <![endif]-->
+    <script type="text/javascript" src="/js/modernizr.custom.38176.js"></script>
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="NOAA National Severe Storms Laboratory">
+    <meta property="og:title" content="Publications Database Input Form">
+    <meta property="og:image" content="https://www.nssl.noaa.gov/img/social/nssl-og-1200x630.jpg">
+    <meta property="og:description" content="A page for generating and viewing updates on server maintenence.">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@NOAANSSL">
+    <meta name="twitter:title" content="Publications Database Input Form">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="https://www.nssl.noaa.gov/img/social/nssl-og-1200x630.jpg">
+    <!-- Dublin Core -->
+    <meta name="dc.creator.namecorporate" content="National Severe Storms Laboratory">
+    <meta name="dc.publisher.namecorporate" content="National Severe Storms Laboratory">
+    <meta name="dc.type" content="text">
+    <meta name="dc.format" content="text/html">
+    <meta name="dc.language" content="EN-US">
+    <meta name="dc.date.created" content="2017-06-27">
+    <meta name="dc.date.modified" content="2017-06-27">
+    <meta name="dc.title" content="Publications Database Input Form">
+    <meta name="dc.subject" content="Severe weather research">
+    <meta name="dc.description" content="A page for generating and viewing updates on server maintenence.">
+    <meta name="Description" content="A page for generating and viewing updates on server maintenence.">
+    <meta name="Keywords" content="National Severe Storms Laboratory, NSSL, Patch, Server, Maintenance">
+    <link rel="apple-touch-icon" sizes="57x57" href="/img/icons/apple-touch-icon-57x57.png?v=X2rHcaDt6y">
+    <link rel="apple-touch-icon" sizes="60x60" href="/img/icons/apple-touch-icon-60x60.png?v=X2rHcaDt6y">
+    <link rel="apple-touch-icon" sizes="72x72" href="/img/icons/apple-touch-icon-72x72.png?v=X2rHcaDt6y">
+    <link rel="apple-touch-icon" sizes="76x76" href="/img/icons/apple-touch-icon-76x76.png?v=X2rHcaDt6y">
+    <link rel="apple-touch-icon" sizes="114x114" href="/img/icons/apple-touch-icon-114x114.png?v=X2rHcaDt6y">
+    <link rel="apple-touch-icon" sizes="120x120" href="/img/icons/apple-touch-icon-120x120.png?v=X2rHcaDt6y">
+    <link rel="apple-touch-icon" sizes="144x144" href="/img/icons/apple-touch-icon-144x144.png?v=X2rHcaDt6y">
+    <link rel="apple-touch-icon" sizes="152x152" href="/img/icons/apple-touch-icon-152x152.png?v=X2rHcaDt6y">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/icons/apple-touch-icon-180x180.png?v=X2rHcaDt6y">
+    <link rel="icon" type="image/png" href="/img/icons/favicon-32x32.png?v=X2rHcaDt6y" sizes="32x32">
+    <link rel="icon" type="image/png" href="/img/icons/favicon-194x194.png?v=X2rHcaDt6y" sizes="194x194">
+    <link rel="icon" type="image/png" href="/img/icons/favicon-96x96.png?v=X2rHcaDt6y" sizes="96x96">
+    <link rel="icon" type="image/png" href="/img/icons/android-chrome-192x192.png?v=X2rHcaDt6y" sizes="192x192">
+    <link rel="icon" type="image/png" href="/img/icons/favicon-16x16.png?v=X2rHcaDt6y" sizes="16x16">
+    <link rel="manifest" href="/img/icons/manifest.json?v=X2rHcaDt6y">
+    <link rel="shortcut icon" href="/img/icons/favicon.ico?v=X2rHcaDt6y">
+    <link rel="mask-icon" href="/img/icons/noaa_mask_icon.svg?v=MTdub3YyMDE1" color="#001489">
+    <meta name="msapplication-TileColor" content="#003366">
+    <meta name="msapplication-TileImage" content="/img/icons/mstile-144x144.png?v=X2rHcaDt6y">
+    <meta name="msapplication-config" content="/img/icons/browserconfig.xml?v=X2rHcaDt6y">
+    <meta name="theme-color" content="#ffffff">
+    <!---->
+    <!--
+        manifest.json provides metadata used when your web app is added to the
+        homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+      -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+    <!--
+        Notice the use of %PUBLIC_URL% in the tags above.
+        It will be replaced with the URL of the `public` folder during the build.
+        Only files inside the `public` folder can be referenced from the HTML.
+
+        Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+        work correctly both with client-side routing and a non-root public URL.
+        Learn how to configure a non-root public URL by running `npm run build`.
+      -->
+    <style>
+      .group:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+    </style>
+
+    <title>Patch Alert</title>
+  </head>
+
+  <body>
+    <nav id="screenreader-links" class="screenreader-text"><a href="#main">Skip to main content</a> <a href="#sidebar">Skip to sidebar</a></nav>
+    <nav id="side-nav" class="menu-hidden drawer">
+      <div class="navbar-wrapper">
+        <div class="menubar" id="side-menubar">
+          <ul class="menu-items cf" id="side-menu-items">
+            <li class="menu-item"><a href="javascript:void(0)" aria-label="Close Menu" class="menu-toggle-button"><i class="fa fa-times"></i><span class="screenreader-text">close menu</span></a></li>
+            <li class="menu-item"><a href="/">Intranet Home</a></li>
+            <li class="menu-item"><a href="javascript:void(0)" class="submenu-toggle-button" aria-label="Staff Info"><span class="fa fa-caret-right"></span>Staff Info</a>
+              <ul class="sub-menu">
+                <li class="sub-menu-item"><a href="/staff/">Overview</a></li>
+                <li class="sub-menu-item" id="side-submenu-item-staff_directory"><a href="/personnel/list/">NSSL Staff Directory</a></li>
+                <li class="sub-menu-item" id="side-submenu-item-staff_orgchart"><a href="/personnel/list/orgchart.php">NSSL Organizational Chart</a></li>
+                <li class="sub-menu-item" id="side-submenu-item-staff_database"><a href="/personnel/">Personnel Database Form</a></li>
+                <li class="sub-menu-item" id="side-submenu-item-staff_federal"><a href="/staff/federal/">Federal Employee Info</a></li>
+                <li class="sub-menu-item" id="side-submenu-item-staff_cimms"><a href="/staff/cimms/">CIMMS Employee Info</a></li>
+                <li class="sub-menu-item" id="side-submenu-item-staff_its"><a href="/staff/its/">ITS Employee Info</a></li>
+                <li class="sub-menu-item" id="side-submenu-item-staff_visitors"><a href="/staff/visitors/">Foreign Nationals, Visitors &amp; Guests</a></li>
+                <li class="sub-menu-item" id="side-submenu-item-staff_training"><a href="/staff/training/">Training <span class="red-emphasis">NEW!</span></a></li>
+              </ul>
+              <!-- .sub-menu -->
+            </li>
+            <!-- .menu-item -->
+            <li class="menu-item"><a href="javascript:void(0)" class="submenu-toggle-button" aria-label="Travel"><span class="fa fa-caret-right"></span>Travel</a>
+              <ul class="sub-menu">
+                <li class="sub-menu-item"><a href="/travel/">Overview</a></li>
+                <li class="sub-menu-item" id="side-submenu-item-travel_fedinfo"><a href="/travel/federal/">Federal Employee Info</a></li>
+                <li class="sub-menu-item" id="side-submenu-item-travel_fedform"><a href="/travel/form/">Federal Employee Travel Arrangements Request Form</a></li>
+                <li class="sub-menu-item" id="side-submenu-item-travel_cimmsform"><a href="/travel/NSSL_INTERNAL_FORM_CIMMS_Travel.docx">CIMMS Employee Travel Request Form (.docx)</a></li>
+              </ul>
+              <!-- .sub-menu -->
+            </li>
+            <!-- .menu-item -->
+            <li class="menu-item"><a href="javascript:void(0)" class="submenu-toggle-button" aria-label="Publications"><span class="fa fa-caret-right"></span>Publications</a>
+              <ul class="sub-menu">
+                <li class="sub-menu-item"><a href="/publications/">Overview</a></li>
+                <li class="sub-menu-item" id="side-submenu-item-publications_procedures"><a href="/publications/journal/">Publications Procedures (Journal)</a></li>
+                <li class="sub-menu-item" id="side-submenu-item-publications_clearance"><a href="/publications/clearance/">Publications Clearance Form</a></li>
+                <li class="current sub-menu-item" id="side-submenu-item-publications_database"><a href="/publications/database/" title="You are here." aria-label="Current Page">Publications Database Input Form</a></li>
+                <li class="sub-menu-item" id="side-submenu-item-publications_listings"><a href="//www.nssl.noaa.gov/publications/">NSSL Publications Listings (public)</a></li>
+              </ul>
+              <!-- .sub-menu -->
+            </li>
+            <!-- .menu-item -->
+            <li class="menu-item"><a href="javascript:void(0)" class="submenu-toggle-button" aria-label="ITS Info"><span class="fa fa-caret-right"></span>ITS Info</a>
+              <ul class="sub-menu">
+                <li class="sub-menu-item"><a href="/its/">Overview</a></li>
+                <li class="sub-menu-item" id="side-submenu-item-its_sand"><a href="http://sand2.protect.nssl/">SAND (support requests)</a></li>
+                <li class="sub-menu-item" id="side-submenu-item-its_purchasing"><a href="/purchasing/">ITS Purchasing</a></li>
+                <li class="sub-menu-item" id="side-submenu-item-its_backups"><a href="/its/backups/">Backup Requests</a></li>
+                <li class="sub-menu-item" id="side-submenu-item-its_email"><a href="/its/email/">Email</a></li>
+                <li class="offsite sub-menu-item" id="side-submenu-item-its_vlab"><a href="https://vlab.ncep.noaa.gov/group/nssl/portal">VLab</a></li>
+                <li class="sub-menu-item" id="side-submenu-item-its_remote_access"><a href="/its/remote/">Remote Access</a></li>
+                <li class="sub-menu-item" id="side-submenu-item-its_printers"><a href="/its/printers/">Printers</a></li>
+                <li class="sub-menu-item" id="side-submenu-item-its_web"><a href="/its/web/">NSSL Web Resources</a></li>
+              </ul>
+              <!-- .sub-menu -->
+            </li>
+            <!-- .menu-item -->
+            <li class="menu-item"><a href="javascript:void(0)" class="submenu-toggle-button" aria-label="NWC Info"><span class="fa fa-caret-right"></span>NWC Info</a>
+              <ul class="sub-menu">
+                <li class="sub-menu-item"><a href="/nwc/">Overview</a></li>
+                <li class="offsite sub-menu-item" id="side-submenu-item-nwc_emergency"><a href="http://intranet.nwc.ou.edu/emergency_info.php">NWC EMERGENCY INFO</a></li>
+                <li class="offsite sub-menu-item" id="side-submenu-item-nwc_web"><a href="http://www.ou.edu/nwc/">NWC Website</a></li>
+                <li class="offsite sub-menu-item" id="side-submenu-item-nwc_intranet"><a href="http://intranet.nwc.ou.edu/">NWC Intranet</a></li>
+              </ul>
+              <!-- .sub-menu -->
+            </li>
+            <!-- .menu-item -->
+            <li class="menu-item"><a href="javascript:void(0)" class="submenu-toggle-button" aria-label="Safety"><span class="fa fa-caret-right"></span>Safety</a>
+              <ul class="sub-menu">
+                <li class="sub-menu-item"><a href="/safety/">Overview</a></li>
+                <li class="sub-menu-item" id="side-submenu-item-safety_status"><a href="/status/">LAB STATUS</a></li>
+              </ul>
+              <!-- .sub-menu -->
+            </li>
+            <!-- .menu-item -->
+            <li class="menu-item"><a href="javascript:void(0)" class="submenu-toggle-button" aria-label="Policies"><span class="fa fa-caret-right"></span>Policies</a>
+              <ul class="sub-menu">
+                <li class="sub-menu-item"><a href="/policies/">Overview</a></li>
+                <li class="sub-menu-item" id="side-submenu-item-policies_remoteaccess"><a href="/policies/remoteaccess/">Remote Access Policy</a></li>
+                <li class="sub-menu-item" id="side-submenu-item-policies_nsslclose"><a href="/policies/nsslclose/">Office Closing Policy</a></li>
+              </ul>
+              <!-- .sub-menu -->
+            </li>
+            <!-- .menu-item -->
+            <li class="menu-item"><a href="javascript:void(0)" class="submenu-toggle-button" aria-label="Events"><span class="fa fa-caret-right"></span>Events</a>
+              <ul class="sub-menu">
+                <li class="sub-menu-item"><a href="/events/">Overview</a></li>
+                <li class="sub-menu-item" id="side-submenu-item-events_gab"><a href="/events/gab/">Gab at the Lab</a></li>
+                <li class="sub-menu-item" id="side-submenu-item-events_allhands"><a href="/events/allhands/">All Hands Meetings</a></li>
+                <li class="sub-menu-item" id="side-submenu-item-events_advances"><a href="/events/advances/">NSSL Advances</a></li>
+                <li class="sub-menu-item" id="side-submenu-item-events_reviews"><a href="/events/reviews/">NSSL Lab Reviews</a></li>
+              </ul>
+              <!-- .sub-menu -->
+            </li>
+            <!-- .menu-item -->
+            <li class="menu-item" id="menu-item-sci_briefings"><a href="/sci-briefing/">Science Briefings</a>
+            </li>
+            <!-- .menu-item -->
+          </ul>
+          <!-- .menu-items -->
+        </div>
+        <!-- .menubar -->
+      </div>
+      <!-- .navbar-wrapper -->
+    </nav>
+    <header>
+      <nav id="top-nav" class="navbar">
+        <div class="navbar-wrapper cf">
+          <div class="top-nav-icons cf">
+            <!--<div class="search">
+                    <form id="usagov_search" name="usagov_search" method="get" action="//search.usa.gov/search" accept-charset="UTF-8">
+                        <div style="margin:0;padding:0;display:inline">
+                            <input name="utf8" type="hidden" value="&#x2713;" />
+                        </div>
+                        <input type="hidden" name="affiliate" value="nssl.noaa.gov">
+                        <input type="hidden" name="v:project" value="firstgov">
+                        <input type="text" name="query" id="query" size="24" title="search" placeholder="search">
+                        <input type="submit" value="search">
+                    </form>
+                </div>-->
+            <!-- .search -->
+            <div class="social cf">
+              <ul class="social-links cf">
+                <li class="menu-toggle"><a href="javascript:void(0)" aria-label="Open Menu" class="menu-toggle-button"><i class="fa fa-bars" title="Open Nav Menu"></i></a></li>
+                <li class="home-link"><a href="//www.nssl.noaa.gov/" aria-label="NSSL Home Page"><i class="nssl-home-icon" title="NSSL Home Page"></i></a></li>
+                <!--<li class="home-link"><a href="//www.nssl.noaa.gov/" aria-label="NSSL Home Page"><i class="fa fa-home" title="NSSL Home Page"></i></a></li>-->
+                <li class="facebook"><a href="https://www.facebook.com/NOAA.NSSL" aria-label="Facebook"><i class="fa fa-facebook" title="NSSL on Facebook"></i></a></li>
+                <li class="twitter"><a href="https://twitter.com/NOAANSSL" aria-label="Twitter"><i class="fa fa-twitter" title="NSSL on Twitter"></i></a></li>
+                <li class="instagram"><a href="https://instagram.com/noaanssl/" aria-label="Instagram"><i class="fa fa-instagram" title="NSSL on Instagram"></i></a></li>
+                <li class="youtube"><a href="https://www.youtube.com/playlist?list=PLCFE1C624F9360379" aria-label="Youtube"><i class="fa fa-youtube-square" title="NSSL on Youtube"></i></a></li>
+                <li class="flickr"><a href="https://www.flickr.com/photos/noaanssl/" aria-label="Flickr"><i class="fa fa-flickr" title="NSSL on Flickr"></i></a></li>
+              </ul>
+            </div>
+            <!-- .social -->
+          </div>
+          <!-- .top-nav-icons -->
+        </div>
+        <!-- .navbar-wrapper -->
+      </nav>
+      <div id="banner">
+        <div class="banner-wrapper banner">
+          <div class="branding">
+            <h1 class="nssl-branding-text"><a href="/" class="home-link">NSSL Intranet</a></h1>
+          </div>
+          <!-- .branding -->
+        </div>
+        <!-- .banner-wrapper -->
+      </div>
+      <!-- #banner -->
+      <nav id="bottom-nav" class="menu-container dropdown">
+        <div class="navbar-wrapper">
+          <div class="menubar" id="bottom-menubar">
+            <ul class="menu-items cf" id="bottom-menu-items">
+              <li class="menu-item" id="menu-item-staff"><a href="/staff/">Staff Info</a>
+                <ul class="sub-menu">
+                  <li class="sub-menu-item" id="submenu-item-staff_directory"><a href="/personnel/list/">NSSL Staff Directory</a></li>
+                  <li class="sub-menu-item" id="submenu-item-staff_orgchart"><a href="/personnel/list/orgchart.php">NSSL Organizational Chart</a></li>
+                  <li class="sub-menu-item" id="submenu-item-staff_database"><a href="/personnel/">Personnel Database Form</a></li>
+                  <li class="sub-menu-item" id="submenu-item-staff_federal"><a href="/staff/federal/">Federal Employee Info</a></li>
+                  <li class="sub-menu-item" id="submenu-item-staff_cimms"><a href="/staff/cimms/">CIMMS Employee Info</a></li>
+                  <li class="sub-menu-item" id="submenu-item-staff_its"><a href="/staff/its/">ITS Employee Info</a></li>
+                  <li class="sub-menu-item" id="submenu-item-staff_visitors"><a href="/staff/visitors/">Foreign Nationals, Visitors &amp; Guests</a></li>
+                  <li class="sub-menu-item" id="submenu-item-staff_training"><a href="/staff/training/">Training <span class="red-emphasis">NEW!</span></a></li>
+                </ul>
+                <!-- .sub-menu -->
+              </li>
+              <!-- .menu-item -->
+              <li class="menu-item" id="menu-item-travel"><a href="/travel/">Travel</a>
+                <ul class="sub-menu">
+                  <li class="sub-menu-item" id="submenu-item-travel_fedinfo"><a href="/travel/federal/">Federal Employee Info</a></li>
+                  <li class="sub-menu-item" id="submenu-item-travel_fedform"><a href="/travel/form/">Federal Employee Travel Arrangements Request Form</a></li>
+                  <li class="sub-menu-item" id="submenu-item-travel_cimmsform"><a href="/travel/NSSL_INTERNAL_FORM_CIMMS_Travel.docx">CIMMS Employee Travel Request Form (.docx)</a></li>
+                </ul>
+                <!-- .sub-menu -->
+              </li>
+              <!-- .menu-item -->
+              <li class="menu-item" id="menu-item-publications"><a href="/publications/">Publications</a>
+                <ul class="sub-menu">
+                  <li class="sub-menu-item" id="submenu-item-publications_procedures"><a href="/publications/journal/">Publications Procedures (Journal)</a></li>
+                  <li class="sub-menu-item" id="submenu-item-publications_clearance"><a href="/publications/clearance/">Publications Clearance Form</a></li>
+                  <li class="current sub-menu-item" id="submenu-item-publications_database"><a href="/publications/database/" title="You are here." aria-label="Current Page">Publications Database Input Form</a></li>
+                  <li class="sub-menu-item" id="submenu-item-publications_listings"><a href="//www.nssl.noaa.gov/publications/">NSSL Publications Listings (public)</a></li>
+                </ul>
+                <!-- .sub-menu -->
+              </li>
+              <!-- .menu-item -->
+              <li class="menu-item" id="menu-item-its"><a href="/its/">ITS Info</a>
+                <ul class="sub-menu">
+                  <li class="sub-menu-item" id="submenu-item-its_sand"><a href="http://sand2.protect.nssl/">SAND (support requests)</a></li>
+                  <li class="sub-menu-item" id="submenu-item-its_purchasing"><a href="/purchasing/">ITS Purchasing</a></li>
+                  <li class="sub-menu-item" id="submenu-item-its_backups"><a href="/its/backups/">Backup Requests</a></li>
+                  <li class="sub-menu-item" id="submenu-item-its_email"><a href="/its/email/">Email</a></li>
+                  <li class="offsite sub-menu-item" id="submenu-item-its_vlab"><a href="https://vlab.ncep.noaa.gov/group/nssl/portal">VLab</a></li>
+                  <li class="sub-menu-item" id="submenu-item-its_remote_access"><a href="/its/remote/">Remote Access</a></li>
+                  <li class="sub-menu-item" id="submenu-item-its_printers"><a href="/its/printers/">Printers</a></li>
+                  <li class="sub-menu-item" id="submenu-item-its_web"><a href="/its/web/">NSSL Web Resources</a></li>
+                </ul>
+                <!-- .sub-menu -->
+              </li>
+              <!-- .menu-item -->
+              <li class="menu-item" id="menu-item-nwc"><a href="/nwc/">NWC Info</a>
+                <ul class="sub-menu">
+                  <li class="offsite sub-menu-item" id="submenu-item-nwc_emergency"><a href="http://intranet.nwc.ou.edu/emergency_info.php">NWC EMERGENCY INFO</a></li>
+                  <li class="offsite sub-menu-item" id="submenu-item-nwc_web"><a href="http://www.ou.edu/nwc/">NWC Website</a></li>
+                  <li class="offsite sub-menu-item" id="submenu-item-nwc_intranet"><a href="http://intranet.nwc.ou.edu/">NWC Intranet</a></li>
+                </ul>
+                <!-- .sub-menu -->
+              </li>
+              <!-- .menu-item -->
+              <li class="menu-item" id="menu-item-safety"><a href="/safety/">Safety</a>
+                <ul class="sub-menu">
+                  <li class="sub-menu-item" id="submenu-item-safety_status"><a href="/status/">LAB STATUS</a></li>
+                </ul>
+                <!-- .sub-menu -->
+              </li>
+              <!-- .menu-item -->
+              <li class="menu-item" id="menu-item-policies"><a href="/policies/">Policies</a>
+                <ul class="sub-menu">
+                  <li class="sub-menu-item" id="submenu-item-policies_remoteaccess"><a href="/policies/remoteaccess/">Remote Access Policy</a></li>
+                  <li class="sub-menu-item" id="submenu-item-policies_nsslclose"><a href="/policies/nsslclose/">Office Closing Policy</a></li>
+                </ul>
+                <!-- .sub-menu -->
+              </li>
+              <!-- .menu-item -->
+              <li class="menu-item" id="menu-item-events"><a href="/events/">Events</a>
+                <ul class="sub-menu">
+                  <li class="sub-menu-item" id="submenu-item-events_gab"><a href="/events/gab/">Gab at the Lab</a></li>
+                  <li class="sub-menu-item" id="submenu-item-events_allhands"><a href="/events/allhands/">All Hands Meetings</a></li>
+                  <li class="sub-menu-item" id="submenu-item-events_advances"><a href="/events/advances/">NSSL Advances</a></li>
+                  <li class="sub-menu-item" id="submenu-item-events_reviews"><a href="/events/reviews/">NSSL Lab Reviews</a></li>
+                </ul>
+                <!-- .sub-menu -->
+              </li>
+              <!-- .menu-item -->
+              <li class="menu-item" id="menu-item-sci_briefings"><a href="/sci-briefing/">Science Briefings</a>
+              </li>
+              <!-- .menu-item -->
+            </ul>
+            <!-- .menu-items -->
+          </div>
+          <!-- .menubar -->
+        </div>
+        <!-- .navbar-wrapper -->
+      </nav>
+    </header>
+    <noscript>
+        You need to enable JavaScript to run this app.
+    </noscript>
+
+    <!-- clearfix -->
+    <!--div class="group"></div-->
+    <!-- App -->
+    <div id="root"></div>
+    <!-- end of App -->
+
+    <!-- clearfix -->
+    <!--div class="group"></div-->
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-wrapper cf2">
+        <div class="footer_left">
+          <p><span class="fn org">NOAA National Severe Storms Laboratory</span><br>
+            <span class="street-address">120 David L. Boren Blvd.</span><br>
+            <span class="locality">Norman</span>, <span class="region">OK</span> <span class="postal-code">73072</span><br>
+            <span class="country-name">USA</span><br>
+            <span class="tel"><a href="tel:405-325-3620">(405) 325-3620</a></span></p>
+          <ul class="compact">
+            <li><a href="http://www.commerce.gov/" class="offsite_link">U.S. Department of Commerce</a></li>
+            <li><a href="http://www.noaa.gov/" class="offsite_link">National Oceanic &amp; Atmospheric Administration</a></li>
+            <li><a href="http://www.oar.noaa.gov/" class="offsite_link">Office of Oceanic &amp; Atmospheric Research</a></li>
+          </ul>
+        </div>
+        <!-- end .footer_left -->
+        <div class="footer_center_right cf2">
+          <div class="footer_center">
+            <h2>Connect</h2>
+            <ul id="connect_list">
+              <li><a href="https://www.facebook.com/NOAA.NSSL" title="This link takes you to the NSSL page on Facebook."><i class="fa fa-facebook-square"></i>Facebook</a></li>
+              <li><a href="https://twitter.com/NOAANSSL" title="This link takes you to the NSSL page on Twitter."><i class="fa fa-twitter-square"></i>Twitter</a></li>
+              <li><a href="https://instagram.com/noaanssl/" title="This link takes you to the NSSL page on Instagram."><i class="fa fa-instagram"></i>Instagram</a></li>
+              <li><a href="https://www.youtube.com/playlist?list=PLCFE1C624F9360379" title="This link takes you to the NSSL video playlist on YouTube."><i class="fa fa-youtube-square"></i>YouTube</a></li>
+              <li><a href="https://www.flickr.com/photos/noaanssl/" title="This link takes you to the NSSL account on Flickr."><i class="fa fa-flickr"></i>Flickr</a></li>
+              <li><a href="/briefings/" title="NSSL's online newsletter."><i class="fa fa-comment-o"></i>NSSL News Blog</a></li>
+            </ul>
+          </div>
+          <!-- end .footer_center -->
+          <div class="footer_right">
+            <h2>Site Tools</h2>
+            <ul class="compact">
+              <li><a href="/contact.php">Contact Us</a></li>
+              <li><a href="/privacy.php">Privacy Policy</a></li>
+              <li><a href="/disclaimer.php">Disclaimer</a></li>
+              <li><a href="http://www.noaa.gov/foia/" class="offsite_link" title="This link takes you offsite.">FOIA</a></li>
+              <li><a href="http://www.usa.gov/" class="offsite_link" title="This link takes you offsite.">USA.gov</a></li>
+              <li><a href="/siteinfo.php">Site Information</a></li>
+              <li><a href="/sitemap.php">Site Map</a></li>
+              <li><a href="/search.php">Search</a></li>
+              <li><a href="https://intranet.nssl.noaa.gov/" class="restricted_link" title="Restricted access.">For NSSL Staff</a></li>
+            </ul>
+          </div>
+          <!-- end .footer_right -->
+        </div>
+        <!-- end .footer_center_right -->
+      </div>
+      <!-- end .footer-wrapper -->
+    </footer>
+    <!-- scripts -->
+    <script type="text/javascript" src="/js/modernizr.custom.38176.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <!--<script type="text/javascript" src="/js/retina/retina.js"></script> -->
+    <script type="text/javascript" src="/js/nssl2015.js"></script>
+    <script>
+      $(".menu-toggle-button").click(function(e) {
+        e.preventDefault();
+        $("#side-nav").toggleClass("menu-show");
+      });
+
+      $("#side-menubar .submenu-toggle-button").click(function(event) {
+        event.preventDefault();
+        if ($(this).next('ul').length) {
+          $(this).next().toggle('fast');
+          $(this).children('.fa:last-child').toggleClass('fa-caret-right fa-caret-down');
+        }
+      });
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "Organization",
+        "name": "NOAA National Severe Storms Laboratory",
+        "url": "http://www.nssl.noaa.gov",
+        "logo": "http://www.nssl.noaa.gov/img/social/noaa-logo-960x962.png",
+        "sameAs": ["http://www.facebook.com/NOAA.NSSL",
+          "https://twitter.com/NOAANSSL",
+          "http://www.flickr.com/photos/noaanssl/"
+        ],
+        "contactPoint": [{
+          "@type": "ContactPoint",
+          "telephone": "+1-405-325-3620",
+          "contactType": "customer service"
+        }]
+      }
+    </script>
+
+  </body>
+
+</html>

@@ -1,0 +1,395 @@
+/* === Typography === */
+
+html {
+	font-family: $stack-lato;
+	font-size: 87.5%;  // set up base 10
+	@include breakpoint(break-medium) { 
+		font-size: 100%; 
+	}
+}
+
+body {
+  background: $bg-color;
+  color: $text-color;
+}
+
+/* === Links === */
+
+a {
+  color: $link-color;
+  text-decoration: none;
+  
+  &:focus {
+	  outline: 1px dotted $base-color;
+  }
+  
+  &:hover,
+  &:active { 
+    text-decoration: underline; 
+  }
+}
+
+/* === Headers and paragraphs === */
+
+h1, .h1 {
+  @include rem-fallback(font-size, $h1-font-size); 
+  line-height: $h1-line-height; 
+  @include rem-fallback(margin, 0, 0, $base-margin, 0);
+ }
+
+h2, .h2 {
+  @include rem-fallback(font-size, $h2-font-size); 
+  line-height: $h2-line-height; 
+  @include rem-fallback(margin, 0, 0, $base-margin, 0);
+ }
+
+h3, .h3 {
+  @include rem-fallback(font-size, $h3-font-size); 
+  line-height: $h3-line-height; 
+  @include rem-fallback(margin, 0, 0, $base-margin, 0);
+ }
+
+h4, .h4 {
+  @include rem-fallback(font-size, $h4-font-size); 
+  line-height: $h4-line-height; 
+  @include rem-fallback(margin, 0, 0, $base-margin, 0);
+ }
+
+h5, h6 {
+  @include rem-fallback(font-size, $h56-font-size); 
+  line-height: $h56-line-height; 
+  @include rem-fallback(margin, 0, 0, $base-margin, 0);
+ }
+
+p {
+  @include rem-fallback(font-size, $p-font-size); 
+  line-height: $p-line-height; 
+  @include rem-fallback(margin, 0, 0, $base-margin, 0);
+ }
+
+h1, h2, h3, h4,
+.h1, .h2, .h3, .h4 {
+  font-style: normal;
+  font-weight: bold;
+}
+
+h5 {
+  font-style: italic;
+  font-weight: normal;
+}
+
+h6 {
+  font-style: normal;
+  font-weight: normal;
+}
+
+.px18 { 
+  @include rem-fallback(font-size, 1.125); // 18px
+  line-height: 1; // 18px
+  @include rem-fallback(margin, 0, 0, $base-margin, 0);
+}
+
+.px14 { 
+  @include rem-fallback(font-size, $px14-font-size); // 14px
+  line-height: $px14-line-height;  // 18px
+  @include rem-fallback(margin, 0, 0, $base-margin, 0);
+}
+
+.px12 { 
+  @include rem-fallback(font-size, 0.75); // 12px
+  line-height: 1.5; // 18px
+  @include rem-fallback(margin, 0, 0, $base-margin, 0);
+}
+
+.px10 { 
+  @include rem-fallback(font-size, 0.625); // 10px
+  line-height: 1.2; // 12px
+  @include rem-fallback(margin, 0, 0, 1.125, 0); // 18px bottom margin
+}
+
+/* === Blockquotes, quotes, and cites === */
+
+blockquote {
+  border-left-style: solid;
+  border-left-color: $blockquote-border;
+  @include rem-fallback(border-left-width, 0.25);
+  color: $blockquote-text;
+  @include rem-fallback(font-size, $p-font-size); // 16px
+  line-height: $p-line-height;  // 24px
+  @include rem-fallback(margin, $base-margin);
+  @include rem-fallback(padding, $base-padding/3, $base-padding*2/3, $base-padding/3, $base-padding/2);
+  
+  > :first-child {
+    margin-top: 0;
+  }
+  
+  > :last-child {
+    margin-bottom: 0;
+  }
+  
+  blockquote {
+    border: none;
+    font-style: italic;
+    padding: 0;
+  }
+  
+  cite {
+    font-style: italic;
+  }
+}
+
+blockquote.pretty {
+  border-left: none;
+  color: $text-color;
+  @include rem-fallback(padding, $base-padding/2, 0, $base-padding/2, $base-padding*2);
+  position: relative;
+  
+  &:before {
+	content: "\201C";
+	opacity: .2;
+	
+	font-family: 'Playfair Display', serif;
+	@include rem-fallback(font-size, 12);
+	font-weight: 400;
+	font-style: italic;
+	
+	display: block;
+	position: absolute;
+	@include rem-fallback(left, -$base-padding*2);
+	@include rem-fallback(top, -5.5);
+	
+	
+	//font-family: Georgia, serif;
+	//font-style: italic;
+	//@include rem-fallback(left, -5);
+	//@include rem-fallback(top, -5);
+  }
+
+}
+
+/* === Code and Preformatted text === */
+
+code,
+kbd,
+samp {
+  font-family: $stack-mono-serif;
+}
+
+pre {
+  font-family: $stack-mono-sans;
+}
+
+/* === Lists === */
+
+ul,
+ol { 
+  @include rem-fallback(margin, 0, 0, $base-margin, 0);
+  @include rem-fallback(padding, 0, 0, 0, $list-padding);
+  
+  //add some space between the end of a list and a following non-paragraph element 
+  + *:not(p) { 
+    @include rem-fallback(margin-top, $base-margin*2);
+  }
+}
+
+dl {
+  @include rem-fallback(margin, 0, 0, $base-margin, 0);
+  padding: 0;
+  
+  //add some space between the end of a list and a following non-paragraph element 
+  + *:not(p) { 
+    @include rem-fallback(margin-top, $base-margin*2);
+  }
+}
+
+ul {
+  list-style: square; 
+}
+
+ol {
+  list-style: decimal;
+  
+  ol {
+    list-style: lower-alpha;
+    
+    ol {
+      list-style: lower-roman;
+    }
+  }
+}
+
+li, dt, dd {
+  @include rem-fallback(font-size, $p-font-size); // 16px
+  line-height: $p-line-height;  // 24px
+  @include rem-fallback(margin, 0, 0, $base-margin/2, 0);
+  
+  ol, ul { 
+	  margin-top: 0.75rem;
+	  margin-bottom: 0;
+  }
+}
+
+dt {
+  font-style: normal;
+  font-weight: bold;
+}
+
+dd {
+    @include rem-fallback(padding-left, $list-padding);
+    @include rem-fallback(margin-bottom, $base-margin);
+}
+
+/* === Tables === */
+
+table {
+  border: $box-border;
+  @include rem-fallback(margin, 0, 0, $base-margin*2);
+  padding: 0;
+}
+
+caption {
+  @include rem-fallback(font-size, $px19-font-size); // 19px
+  line-height: $px19-line-height;  // 24px
+  @include rem-fallback(padding, $base-padding/3, 0);
+}
+
+th, 
+td {
+  border: $box-border;
+  @include rem-fallback(font-size, $p-font-size); // 16px
+  line-height: $p-line-height;  // 24px
+  @include rem-fallback(padding, $base-padding/6, $base-padding*2/3);
+  
+  &:first-child {
+    border-left: none;
+  }
+  
+  &:last-child {
+    border-right: none;
+  }
+}
+
+th {
+  background: $box-bg;
+}
+
+
+/**
+* Page and Section Titles
+* --------------------------------------------------------------------------- */
+
+.page_title,
+.page_subtitle {
+	color: $title-text;
+	font-family: $stack-adventor;
+	font-style: normal;
+	font-weight: normal;
+	font-weight: 400;
+	@include rem-fallback(letter-spacing, $adventor-letter-spacing); // 1px use when doing all uppercase
+	text-transform: uppercase;// .headroom
+	
+	a:focus,
+	a:hover,
+	a:active {
+		text-decoration: none;
+		background-image: linear-gradient(to bottom, $base-color 50%, transparentize($base-color, 0.7) 50%);
+		background-repeat: repeat-x;
+		background-size: 2px 2px;
+		background-position: 0 93%;
+		
+	}
+}
+
+.page_title {
+	background: $box-bg;
+	@include rem-fallback(margin, $base-margin, -$base-padding); // 
+	@include rem-fallback(padding, $base-padding); // 48px
+	
+	@include breakpoint(break-small) {
+		background: none;
+		@include rem-fallback(margin, 0, 0, $base-margin, 0); // 48px
+		padding: 0;
+	}
+}
+
+.page_subtitle2 {
+	color: $blockquote-text;
+	font-style: italic;
+	font-weight: normal;
+}
+  
+.section-header,
+.subsection-header {
+	font-family: $stack-adventor;
+	font-style: normal;
+	font-weight: normal;
+	font-weight: 400;
+	@include rem-fallback(letter-spacing, $adventor-letter-spacing); // 1px use when doing all uppercase
+	@include rem-fallback(padding, $base-padding/4);
+	// margin = -padding, left and right
+	@include rem-fallback(margin-left, -$base-padding/4);
+	@include rem-fallback(margin-right, -$base-padding/4);
+	background: $ltbase-bg;
+	border-top: 1px solid $ltbase-border;
+	border-bottom: 1px solid $ltbase-border;
+	text-transform: uppercase;
+	
+	a:focus,
+	a:hover,
+	a:active {
+		text-decoration: none;
+		background-image: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,0.6) 50%);
+		background-repeat: repeat-x;
+		background-size: 2px 2px;
+		background-position: 0 93%;
+		
+	}
+}
+  
+.headroom {
+	@include rem-fallback(margin-top, $base-margin*2); // 48px
+} 
+
+.no-cssgradients {
+	
+	.page_title,
+	.page_subtitle,
+	.section-header,
+	.subsection-header {
+		
+		a:focus,
+		a:hover,
+		a:active {
+			text-decoration: underline;
+			background-image: none;
+		}
+	}
+}
+
+
+/**
+* Misc
+* --------------------------------------------------------------------------- */
+
+.orig_case {
+    text-transform: none;
+}
+
+// end marker
+
+.podcast.endmark > p:last-child:after {
+  font-family: "FontAwesome";
+  content: "\f130"; // microphone
+  display: inline-block;
+  @include rem-fallback(padding-left, 0.5); 
+  color: $base-color;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+} 
+
+/*.endmark > p:last-child:after {
+  content: url("/img/tornado-icon2.png");
+  display: inline-block;
+  @include rem-fallback(padding-left, 0.5); 
+} */

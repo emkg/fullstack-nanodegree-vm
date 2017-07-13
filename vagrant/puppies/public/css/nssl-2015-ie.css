@@ -1,0 +1,313 @@
+/* Styles for Boise City */
+#side-nav {
+  display: none;
+}
+
+li.menu-toggle {
+  display: none;
+}
+
+.footer_left {
+  background: url(/img/noaa-wt-100.png) no-repeat 20px 21px;
+  float: left;
+  margin: 0;
+  width: 50%;
+}
+.footer_left p, .footer_left li {
+  margin-left: 150px;
+}
+
+.footer_center_right {
+  border-top: none;
+  border-left: solid 1px #004fb8;
+  float: left;
+  padding: 0;
+  width: 50%;
+}
+
+.footer_center,
+.footer_right {
+  padding: 0 24px;
+  padding: 0 1.5rem;
+}
+
+#connect_list li {
+  line-height: 32px;
+  line-height: 2rem;
+  padding-top: 6px;
+  padding-top: 0.375rem;
+  padding-bottom: 6px;
+  padding-bottom: 0.375rem;
+}
+
+.banner-wrapper {
+  background: #B0C6DC;
+}
+
+.top-nav-icons {
+  padding: 0 48px;
+  padding: 0 3rem;
+}
+
+.branding {
+  background-image: url(/img/noaa_notext.png);
+  background-position: 40px center;
+  padding: 12px 48px 12px 120px;
+  padding: 0.75rem 3rem 0.75rem 7.5rem;
+}
+.branding h1 {
+  font-size: 18px;
+  font-size: 1.125rem;
+  line-height: 18px;
+  line-height: 1.125rem;
+}
+.branding .nssl-branding-text {
+  font-size: 60px;
+  font-size: 3.75rem;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.mobile {
+  display: none;
+}
+
+.tablet {
+  display: none;
+}
+
+.fullscreen {
+  display: block;
+}
+
+body {
+  padding: 0;
+}
+
+.navbar-wrapper {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.banner-wrapper {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+#content {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+.nssl_home #content {
+  padding: 48px 0 0 0;
+  padding: 3rem 0 0 0;
+}
+
+.footer-wrapper {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 24px;
+  padding: 1.5rem;
+}
+
+#main {
+  float: left;
+  width: 60%;
+}
+
+.main-wrapper {
+  margin: 0 12px 24px 24px;
+  margin: 0 0.75rem 1.5rem 1.5rem;
+  padding: 24px;
+  padding: 1.5rem;
+  border-bottom: none;
+}
+.main-wrapper > :last-child {
+  margin-bottom: 0;
+}
+
+#breadcrumbs {
+  display: block;
+  margin: 0;
+  padding: 24px 48px;
+  padding: 1.5rem 3rem;
+}
+
+#top-nav {
+  position: relative;
+  top: auto;
+  z-index: auto;
+}
+
+#bottom-nav {
+  display: block;
+}
+
+.table .menu-items li li {
+  font-size: 14px;
+  font-size: 0.875rem;
+}
+.table .menu-items li a {
+  padding: 0 24px;
+  padding: 0 1.5rem;
+}
+
+#top-nav .search {
+  display: block;
+}
+
+#top-nav input[type="submit"], #side-nav .search input[type="submit"] {
+  background: #1B457E url(/img/search.svg) no-repeat center center;
+}
+#top-nav input[type="submit"]:focus, #top-nav input[type="submit"]:hover, #side-nav .search input[type="submit"]:focus, #side-nav .search input[type="submit"]:hover {
+  background: #6c9de0 url(/img/search.svg) no-repeat center center;
+}
+
+#sidebar {
+  float: left;
+  width: 40%;
+}
+
+.sidebar-wrapper {
+  margin: 0 24px 24px 12px;
+  margin: 0 1.5rem 1.5rem 0.75rem;
+  padding: 24px 0;
+  padding: 1.5rem 0;
+  border-left: solid 1px #a6a6a6;
+}
+
+.sidebar_item ul li {
+  background: none;
+  list-style: square;
+}
+
+#section_links {
+  display: block;
+}
+
+ul.social-links li {
+  font-size: 32px;
+  font-size: 2rem;
+  line-height: 64px;
+  line-height: 4rem;
+  width: 32px;
+  width: 2rem;
+}
+
+html {
+  font-size: 100%;
+}
+
+.page_title {
+  background: none;
+  margin: 0 0 24px 0;
+  margin: 0 0 1.5rem 0;
+  padding: 0;
+}
+
+.alignleft {
+  float: left;
+  max-width: 50%;
+  margin: 0 24px 24px 0;
+  margin: 0 1.5rem 1.5rem 0;
+}
+
+.alignright {
+  float: right;
+  max-width: 50%;
+  margin: 0 0 24px 24px;
+  margin: 0 0 1.5rem 1.5rem;
+}
+
+.compact li {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.offsite_link {
+  background: url(/img/external.png) no-repeat right;
+}
+
+.restricted_link {
+  background: url(/img/locked.png) no-repeat right;
+}
+
+.restricted_box {
+  background-image: url(/img/locked-48.png);
+}
+
+.logo_item img {
+  max-width: 45%;
+  margin: 0 5% 0 0;
+}
+
+.logo_item .logo_item_wrapper {
+  margin-left: 50%;
+}
+
+.col-2 .gallery_item {
+  width: 50%;
+}
+
+.col-3 .gallery_item {
+  width: 33.3%;
+}
+
+.col-4 .gallery_item {
+  width: 25%;
+}
+
+.ui-state-active {
+  background: transparent url(/css/jqueryui/uiTabsArrow.png) no-repeat bottom center;
+}
+
+.fa-bars:before {
+  content: url(/img/social/icons/bars.png);
+}
+
+.fa-facebook:before {
+  content: url(/img/social/icons/facebook.png);
+}
+
+.fa-facebook-square:before {
+  content: url(/img/social/icons/facebook-square.png);
+}
+
+.fa-twitter:before {
+  content: url(/img/social/icons/twitter.png);
+}
+
+.fa-twitter-square:before {
+  content: url(/img/social/icons/twitter-square.png);
+}
+
+.fa-flickr:before {
+  content: url(/img/social/icons/flickr-square.png);
+}
+
+.fa-youtube-square:before {
+  content: url(/img/social/icons/youtube-square.png);
+}
+
+.fa-umbrella:before {
+  content: url(/img/social/icons/umbrella.png);
+}
+
+.nssl_flexslider .slider-wrapper {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.flex-direction-nav a {
+  top: 35%;
+}
+.flex-direction-nav .flex-prev {
+  opacity: 1;
+  left: 10px;
+}
+.flex-direction-nav .flex-next {
+  opacity: 1;
+  right: 10px;
+}
+
+/*# sourceMappingURL=nssl-2015-ie.css.map */

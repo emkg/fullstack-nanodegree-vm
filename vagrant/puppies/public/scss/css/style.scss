@@ -1,0 +1,45 @@
+/* Styles for NSSL Intranet */
+
+// @import url('normalize.css') screen;
+
+@import "partials/mixins";
+
+@import "partials/retina"; // Retina.js background image mixin
+
+@import "partials/config";
+
+@import "partials/fonts"; // webfonts and font stacks
+
+@import "partials/typography";  // define headers, paragraphs, lists, tables, etc.
+
+@import "partials/img-obj"; // images, photoboxes, captions, object embeds
+
+@import "partials/main"; // initial setup, major divs
+
+@import "partials/onecol"; // page layout for one column pages, no sidebar
+
+@import "partials/sidebar"; // what it says on the tin
+
+@import "partials/menus"; // horizontal menu bars, upper and lower
+
+@import "partials/drawer"; // styles for the side-drawer menu
+
+@import "partials/search"; // styles for the search forms
+
+@import "partials/social"; // social media links & icons
+
+@import "partials/header"; // logo, banner, none of the above
+
+@import "partials/footer"; // three-column footer
+
+@import "partials/forms"; // utility classes
+
+@import "partials/utility"; // utility classes
+
+@import "partials/publications"; // publications display classes
+
+@import "partials/frontpage"; // classes for front page
+
+@import "partials/jqueryui"; // jQueryUI classes
+
+@import "partials/commercial"; // classes for external scripts

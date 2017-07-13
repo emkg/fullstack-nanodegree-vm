@@ -1,0 +1,101 @@
+/**
+* Banner Header
+* --------------------------------------------------------------------------- */
+
+.banner-wrapper {
+    background: $main-bg; // cheating because I can't find the source of the 3-px gap between the banner and the bottom nav bar
+    
+    @include breakpoint(break-medium) { 
+        background: $bottom-nav-bg; // cheating because I can't find the source of the 3-px gap between the banner and the bottom nav bar
+    }
+  
+  .banner-image {
+      margin: 0;
+      padding: 0;
+		
+		img {
+			margin: 0;
+			padding: 0;
+		}
+    }
+  
+}
+
+
+/**
+* Header Titles
+* --------------------------------------------------------------------------- */
+
+.page-home {
+	.home-link {
+		cursor: default;
+	 } // .home-link
+}
+
+.top-nav-icons {
+	margin: 0;
+	@include rem-fallback(padding, 0, $base-padding);
+	
+	@include breakpoint(break-small) {
+		@include rem-fallback(padding, 0, $base-padding*2);
+	}
+}
+
+.branding {
+	clear: both;
+	background-color: $branding-bg;
+	background-image: url('/img/noaa_notext.svg');
+	background-repeat: no-repeat;
+	background-position: 24px center;
+  	@include rem-fallback(background-size, 3, 3);
+	
+	border-bottom: 12px solid $top-nav-bg; // I probably ought to make some kind of rem fallback for this but omg do not care
+  	margin: 0;
+  	@include rem-fallback(padding, $base-padding/2, $base-padding, $base-padding/2, $base-padding*4);
+  
+	@include breakpoint(break-small) {
+		background-position: 40px center;
+		@include rem-fallback(padding, $base-padding/2, $base-padding*2, $base-padding/2, $base-padding*5);
+	} // break-small
+	
+	h1 {
+		font-weight: normal;
+		@include rem-fallback(font-size, 1); // 16px
+		line-height: 1;
+		margin: 0;
+		padding: 0;
+		@include makeTransition();
+		
+		a { 
+			color: $top-nav-text;
+			text-decoration: none;
+			display: inline-block; // contains full height of NSSL text
+		}
+  
+		@include breakpoint(break-small) {
+			@include rem-fallback(font-size, 1.125); // 18px
+			@include rem-fallback(line-height, 1.125); // can't use unitless multiplier because of big NSSL -- need actual size
+		} // break-small
+		
+		&.nssl-branding-text {
+			display:block;
+			font-family: $stack-oswald;
+			@include rem-fallback(font-size, 3); // 48px
+			font-weight: bold;
+			line-height: 1;
+			margin: 0;
+			padding: 0;
+  
+			@include breakpoint(break-small) {
+				@include rem-fallback(font-size, 3.375); // 54px
+				display: inline-block;
+				vertical-align: middle;
+			} // break-small
+  
+			@include breakpoint(break-medium) {
+				@include rem-fallback(font-size, 3.75); // 60px
+			} // break-medium
+			
+		}
+	}
+}

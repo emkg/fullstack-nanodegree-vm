@@ -1,0 +1,146 @@
+
+/**
+* Social Media Links
+* --------------------------------------------------------------------------- */
+
+/* Header */
+
+.navbar .social {
+  float: right;
+  @include rem-fallback(margin, 0); // 0 24px
+  padding: 0;
+}
+
+ul.social-links {
+  margin: 0; 
+  padding: 0;
+  
+	li {
+		float: left;
+		list-style: none;
+		@include rem-fallback(margin, 0, 0, 0, ($base-margin*2)/3); // 0 12px
+		padding: 0;
+		text-align: center;
+		
+		@include rem-fallback(font-size, $social-icon-font-size-sm);
+		@include rem-fallback(line-height, $social-icon-height-sm);
+		@include rem-fallback(width, $social-icon-width-sm); 
+		
+		&.youtube,
+		&.flickr {
+			display: none;
+		}
+		
+		@include breakpoint(break-small) {
+			@include rem-fallback(font-size, $social-icon-font-size-lg);
+			@include rem-fallback(line-height, $social-icon-height-lg);
+			@include rem-fallback(width, $social-icon-width-lg);
+		
+			&.youtube,
+			&.flickr {
+				display: list-item;
+			} 
+			
+		} // break-small
+	
+	} // li
+  
+  a {
+    display: inline-block;
+    width: 100%;
+    
+    &:link,
+    &:visited {
+      color: $top-nav-links;
+      text-decoration: none;
+    } // &:link, &:visited
+	 
+	 &:focus {
+		 outline: 1px dotted $top-nav-links;
+	 }    
+    
+    &:hover,
+    &:active {
+      color: $top-nav-links-highlight;
+      outline:none;
+      text-decoration: none;
+    } // &:focus, &:hover, &:active
+	 
+  } // a
+  
+  .nssl-home-icon:before {
+	font-family: "nssl-home-icon";
+	font-style: normal;
+	font-weight: normal;
+	content: '\e800'; 
+	display: inline-block;
+	@include rem-fallback(padding-left, 0.5); 
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+} 
+  
+  .no-fontface & {
+  }
+}
+
+/* Contact Page */
+
+.contact-social {
+		
+	a {
+		display: inline-block;
+		@include rem-fallback(margin-right, .5); 
+		@include rem-fallback(padding, 0, .5); 
+	
+		@include rem-fallback(font-size, 3); 
+		@include rem-fallback(line-height, 4); 
+			
+		@include breakpoint(break-small) {
+			@include rem-fallback(font-size, 2.5); 
+			@include rem-fallback(line-height, 3.5);
+		}
+	}
+	
+	// official social media platform colors
+	
+	a[href*="facebook.com"] {
+		color: #3b5998;
+		
+		&:hover { 
+			color: $text-color;
+		}
+	}
+	
+	a[href*="twitter.com"] {
+		color: #00aced;
+		
+		&:hover { 
+			color: $text-color;
+		}
+	}
+	
+	a[href*="youtube.com"] {
+		color: #bb0000;
+		
+		&:hover { 
+			color: $text-color;
+		}
+	}
+	
+	a[href*="flickr.com"] {
+		color: #ff0084;
+		
+		&:hover { 
+			color: $text-color;
+		}
+	}
+	
+	a[href*="instagram.com"] {
+		color: #517fa4;
+		
+		&:hover { 
+			color: $text-color;
+		}
+	}
+}

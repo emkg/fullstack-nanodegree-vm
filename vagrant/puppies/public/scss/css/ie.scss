@@ -1,0 +1,344 @@
+/* Styles for Boise City */
+
+// This is ridiculous, but it will build an IE stylesheet that ought to have the full desktop styles 
+// readable for old IE -- NOT inside a media query
+
+@import "partials/mixins";
+
+@import "partials/config";
+
+
+// _drawer.scss
+
+#side-nav { display: none; }
+
+li.menu-toggle { display: none; }
+
+
+
+// _footer.scss
+
+.footer_left {
+	background: url(#{$images}/noaa-wt-100.png) no-repeat 20px 21px;
+	float: left;
+	margin: 0;
+	width: 50%;
+	
+	p, li {
+		margin-left: 150px;
+	}
+} 
+
+.footer_center_right {
+	border-top: none;
+	border-left: $footer-border;
+	float: left;
+	padding: 0;
+	width: 50%;
+}
+
+.footer_center,
+.footer_right {
+	@include rem-fallback(padding, 0, $base-padding);
+}
+
+#connect_list li {
+	@include rem-fallback(line-height, 2);
+	@include rem-fallback(padding-top, $base-padding/4);  
+	@include rem-fallback(padding-bottom, $base-padding/4); 
+}
+
+
+
+// _header.scss
+
+.banner-wrapper {
+	 background: $bottom-nav-bg; // cheating because I can't find the source of the 3-px gap between the banner and the bottom nav bar
+ }
+
+.top-nav-icons {
+	@include rem-fallback(padding, 0, $base-padding*2);
+}
+
+.branding {
+	background-image: url(#{$images}/noaa_notext.png);
+	background-position: 40px center;
+	@include rem-fallback(padding, $base-padding/2, $base-padding*2, $base-padding/2, $base-padding*5);
+	
+	h1 {
+		@include rem-fallback(font-size, 1.125); // 18px
+		@include rem-fallback(line-height, 1.125); // can't use unitless multiplier because of big NSSL -- need actual size
+	}
+
+	.nssl-branding-text {
+		@include rem-fallback(font-size, 3.75); // 60px
+		display: inline-block;
+		vertical-align: middle;
+	}
+}
+	
+	
+	
+// _main.scss
+
+.mobile { display:none; } 
+
+.tablet { display: none; }
+
+.fullscreen { display: block; }
+
+body { padding: 0; } 
+
+.navbar-wrapper {
+    margin: 0 auto;
+    max-width: $break-large;
+}
+
+.banner-wrapper {
+	margin: 0 auto;
+  max-width: $break-large;
+}
+
+#content {
+  margin: 0 auto;
+  max-width: $break-large; 
+  
+  .nssl_home & { // no breadcrumbs on front page, need a little extra space at the top
+	  @include rem-fallback(padding, $base-padding*2, 0, 0, 0);
+  }
+}
+ 
+.footer-wrapper {
+  margin: 0 auto;
+  max-width: $break-large; 
+  @include rem-fallback(padding, $base-padding);
+}
+
+#main {
+  float: left;
+  width: 60%;
+}
+  
+.main-wrapper { 
+	  @include rem-fallback(margin, 0, $base-margin/2, $base-margin, $base-margin);
+	  @include rem-fallback(padding, $base-padding);
+	  border-bottom: none;
+  
+	  > :last-child {
+		 margin-bottom: 0;
+	  } // last-child
+	  
+}
+
+#breadcrumbs {
+	  display: block;
+	  margin: 0;
+	  @include rem-fallback(padding, $base-padding, $base-padding*2);
+}
+
+
+
+// _menus.scss 
+
+#top-nav {
+	position: relative;
+	top: auto; 
+	z-index: auto;
+}
+
+#bottom-nav {	display: block; } 
+
+.table .menu-items li {
+	
+	li {
+		@include rem-fallback(font-size, $px14-font-size); // 14px
+	}
+	
+	a {
+		@include rem-fallback(padding, 0, $base-padding);
+	}
+
+}
+
+// _search.scss
+
+#top-nav .search { display: block; }
+
+#top-nav, #side-nav .search {
+	input[type="submit"] {
+			background: $search-bg url(#{$images}/search.svg) no-repeat center center;
+		
+		&:focus,
+		&:hover {
+				background: $search-button-highlight url(#{$images}/search.svg) no-repeat center center;
+		}
+	}
+}
+
+
+
+// _sidebar.scss
+
+#sidebar {
+	float: left;
+	width: 40%;
+}
+
+.sidebar-wrapper {
+	@include rem-fallback(margin, 0, $base-margin, $base-margin, $base-margin/2);
+	@include rem-fallback(padding, $base-padding, 0);
+	border-left: $sidebar-border;
+}
+
+.sidebar_item ul li {
+	background: none;
+	list-style: square;
+}
+
+#section_links { display: block; }
+
+
+
+// _social.scss
+
+ul.social-links li {
+	@include rem-fallback(font-size, $social-icon-font-size-lg);
+	@include rem-fallback(line-height, $social-icon-height-lg);
+	@include rem-fallback(width, $social-icon-width-lg); 
+}
+
+
+
+// _typography.scss 
+
+html { 
+	font-size: 100%; 
+}
+
+.page_title {
+	background: none;
+	@include rem-fallback(margin, 0, 0, $base-margin, 0); // 48px
+	padding: 0;
+}
+
+
+
+// _utility.scss
+
+.alignleft {
+    float: left;
+    max-width: 50%;
+	 @include rem-fallback(margin, 0, $base-margin, $base-margin, 0);
+}
+
+.alignright {
+    float: right;
+    max-width: 50%;
+	 @include rem-fallback(margin, 0, 0, $base-margin, $base-margin);
+}
+
+.compact li {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.offsite_link {
+  background: url(#{$images}/external.png) no-repeat right;
+}
+
+.restricted_link {
+  background: url(#{$images}/locked.png) no-repeat right;
+}
+
+.restricted_box {
+	background-image: url(#{$images}/locked-48.png);
+}
+
+.logo_item img {
+	max-width: 45%;
+	margin: 0 5% 0 0;			
+}
+
+.logo_item .logo_item_wrapper {
+	margin-left: 50%;
+}
+
+
+
+// _img-obj.scss
+
+.col-2 .gallery_item { width: 50%; }
+
+.col-3 .gallery_item { width: 33.3%; }
+
+.col-4 .gallery_item { width: 25%; }
+
+
+
+// _jqueryui.scss
+
+.ui-state-active {
+	background: transparent url(#{$styles}/jqueryui/uiTabsArrow.png) no-repeat bottom center;
+}
+		
+		
+
+// font awesome
+
+.fa-bars:before { 
+	content: url(#{$images}/social/icons/bars.png);
+}
+
+.fa-facebook:before { 
+	content: url(#{$images}/social/icons/facebook.png);
+}
+
+.fa-facebook-square:before { 
+	content: url(#{$images}/social/icons/facebook-square.png);
+}
+
+.fa-twitter:before { 
+	content: url(#{$images}/social/icons/twitter.png);
+}
+
+.fa-twitter-square:before { 
+	content: url(#{$images}/social/icons/twitter-square.png);
+}
+
+.fa-flickr:before { 
+	content: url(#{$images}/social/icons/flickr-square.png);
+}
+
+.fa-youtube-square:before { 
+	content: url(#{$images}/social/icons/youtube-square.png);
+}
+
+.fa-umbrella:before { 
+	content: url(#{$images}/social/icons/umbrella.png);
+}
+
+
+
+// flex-partials/nssl.less
+
+.nssl_flexslider .slider-wrapper {
+	margin: 0 auto;
+	max-width: $break-large;
+}
+
+.flex-direction-nav {
+
+	a {
+		top: 35%; 
+	}
+	
+	.flex-prev { 
+		opacity: 1; 
+		left: 10px;
+	}
+	
+	.flex-next { 
+		opacity: 1; 
+		right: 10px;
+	}
+}

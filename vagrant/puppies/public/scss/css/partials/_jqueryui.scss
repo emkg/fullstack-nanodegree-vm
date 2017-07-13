@@ -1,0 +1,83 @@
+/* ==========================================================================
+   jQueryUI classes
+   ========================================================================== */
+
+.tabs-min {
+	background: transparent;
+	border: none;
+	
+	li.tabs-label { /* add a label to the left of the tabs */
+		display: block;
+		float: left;
+		/* mimic anchor tag */
+		font-weight: normal;
+		@include rem-fallback(padding, $base-padding/3, 2*$base-padding/3);
+		text-transform: uppercase;
+		/* mimic list item */
+		@include rem-fallback(font-size, 0.75); // 12px
+		line-height: 2; // 24px -- same as line height for the general tabs li
+		@include rem-fallback(margin, 0, $base-margin/4, 0, 0);
+		top: 1px;
+		white-space: nowrap;
+	}
+	
+	.ui-widget-header {
+		background: transparent;
+		border: none;
+		border-bottom: $sidebar-border;
+		@include borderRadius(0);
+	}
+	
+	.ui-state-default {
+		background: transparent;
+		border: none;
+	}
+	
+	.ui-state-active {
+		background: transparent url(#{$styles}/jqueryui/uiTabsArrow.svg) no-repeat bottom center;
+		@include rem-fallback(background-size, 1, 1);
+		border: none;
+	}
+	
+	.ui-state-default a {
+		color: darken($main-bg, 35%);
+		font-weight: normal;
+		text-transform: uppercase;
+	}
+	
+	.ui-state-active a,
+	.ui-state-hover a {
+		color: $link-color;
+		font-weight: normal;
+		text-transform: uppercase;
+	}
+	
+	.ui-widget-content a {
+		color: $link-color;
+	}
+	
+	.ui-tabs-nav {
+		// @include rem-fallback(max-height, 3);  // don't know where this came from, so.
+	}
+	
+	.ui-tabs-panel {
+		@include rem-fallback(margin-top, $base-margin);
+	}
+		
+	.more_links {
+		margin: 21px -10px 21px -10px;
+		padding: 10px 10px 11px;
+		@include rem-fallback(margin, $base-padding, -$base-padding/2); // yes, "padding" is intentional, to match the actual padding
+		@include rem-fallback(padding, $base-padding/2);
+		border-top: $sidebar-border;
+	}
+	
+	.tab_contents {
+		@include rem-fallback(margin-top, $base-margin);
+	}
+	
+}
+
+.ui-dialog {
+	@include materialShadow(3);
+}

@@ -1,0 +1,211 @@
+/**
+* Menu Bars
+* --------------------------------------------------------------------------- */
+
+// May God have mercy
+
+// the top nav bar lives inside a strip width = 100% of the window
+// although the nav bar itself is limited to the same max width
+// as the rest of the page
+
+#top-nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2000; // keep the nav above jquery-ui elements like accordions and tabs
+  
+  @include breakpoint(break-medium) { 
+	  position: relative;
+	  top: auto; 
+	  z-index: auto;
+  }
+  
+  .navbar-wrapper {
+		  background: $top-nav-bg;
+		  color: $top-nav-text;
+  }
+
+}	
+
+#bottom-nav {
+  
+  .navbar-wrapper {
+		background: $bottom-nav-bg;
+  }
+  
+  a:link,
+  a:visited {
+    color: $bottom-nav-links;
+  } 
+  
+  a:focus {
+	  outline: 1px dotted $bottom-nav-links;
+  }
+  
+  a:hover,
+  a:active {
+    color: $bottom-nav-links-highlight;
+  } 
+}
+
+// Okay, ready?
+.menu-container {
+	
+  margin: 0;
+  padding: 0;
+  
+  .menubar {
+  
+		margin: 0;
+		padding: 0;
+		position: relative;
+		z-index: 2000; // this keeps the menu above jQueryUI elements like tabs and accordion headers
+		
+		ul {
+			margin: 0;
+			padding: 0;
+		
+		} // ul
+		
+		li {
+			font-weight: normal;
+			@include rem-fallback(font-size, $px14-font-size); // 14px
+			
+			// line height = 2.375 = text height + 0.75 rem padding top and bottom
+			
+			@include rem-fallback(line-height, $px14-font-size+$base-padding ); // 38px
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			
+			float: left;
+			
+			a {
+				display: block;
+				text-decoration: none;
+				margin: 0;
+				@include rem-fallback(padding, 0, $base-padding*0.75); 
+				
+				&:hover {
+					outline: none;
+					text-decoration: underline;
+				} 
+			
+			} // li a
+			
+			li {
+				border-top: $bottom-nav-border;
+				float: none;
+				@include rem-fallback(line-height, 1.5); // standard stuff
+				
+				a { 
+					@include rem-fallback(padding, $base-padding/2, $base-padding*0.75); 
+				} // li li a
+				
+			} // li li
+			
+			&.current > a,
+			a.current {
+				text-decoration: none;
+				cursor: default;
+			} 
+		
+		} // li
+    
+  } // .menubar
+
+} // .menu-container
+
+#bottom-nav {
+	
+	@include makeTransition("display", 300ms);
+
+	display: none;
+	
+	@include breakpoint(break-medium) {
+	
+		display: block;
+	
+	} // media query
+	
+	.menubar {
+		@include rem-fallback(padding, 0, $base-padding); 
+	}
+		
+	.menubar li {
+		a {
+			border: none;
+		} // a
+	
+		&.current > a,
+		a.current {
+			color: $bottom-nav-current;
+		} 
+	
+		// submenu items
+		
+		li {
+			
+			a:link,
+			a:visited {
+				color: $bottom-subnav-links;
+			}
+			
+			a:focus {
+				outline: 1px dotted $bottom-subnav-links;
+			}
+			
+			a:hover,
+			a:active {
+				color: $bottom-subnav-links-highlight;
+			}
+			
+			&.current > a,
+			a.current {
+				color: $bottom-subnav-links-current;
+			} 
+		
+		} // .menubar li li
+		
+	} // .menubar li
+
+} // #bottom-nav
+
+// dropdown menus
+
+.dropdown .menu-items li {
+	
+		ul {
+			background: $bottom-nav-bg;
+			@include rem-fallback(width, 14);
+			position: absolute;
+			left: -9999px;
+			@include materialShadow(1);
+			
+			li {
+				@include rem-fallback(width, 14);
+				padding: 0;
+				margin: 0;
+			}
+		} // ul
+		
+		&:hover ul,
+		&.hover ul {
+			left: auto;
+		}
+
+} // .dropdown .menu-items li
+
+// drawer styles in _drawer.scss
+
+/* === 50th Anniversary === */
+ 
+ /* 
+  * Styles for special menu items
+  *
+  */
+
+#side-submenu-item-vortex a,
+#submenu-item-vortex a {
+    // color: #00d966 !important;
+}

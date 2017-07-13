@@ -1,0 +1,288 @@
+// Do rems and fallbacks for arbitrary attributes
+// Kudos to:
+// http://css-tricks.com/snippets/css/less-mixin-for-rem-font-sizing/
+//
+// Use like this:
+// 
+// @include rem-fallback(margin, 10, 20, 30, 40);
+// 
+// and  get
+// 
+// body {
+//  margin: 160px 320px 480px 640px;
+//  margin: 10rem 20rem 30rem 40rem; 
+// }
+
+@function strip-unit($num) {
+
+  @debug $num;
+  @if $num == "auto" { @return "auto"; }
+  @else { @return $num / ($num * 0 + 1); }
+}
+
+@mixin rem-fallback($property, $values...) {
+  // Create a couple of empty lists as output buffers.
+  $base-font-size: 16px; // should be consistent with your html/body font-size
+  $px-values: ();
+  $rem-values: ();
+ 
+  // Loop through the $values list
+  @each $value in $values {
+    // For each property value, if it's in rem or px, derive both rem and
+    // px values for it and add those to the end of the appropriate buffer.
+    // Ensure all pixel values are rounded to the nearest pixel.
+    @if $value == 0 or $value == 0px {
+      // 0 -- use it without a unit
+      $px-values: join($px-values, 0);
+      $rem-values: join($rem-values, 0);
+    } @else if type-of($value) == number and not unitless($value) and (unit($value) == px) {
+      // px value given - calculate rem value from base-font-size
+      $new-rem-value: $value / $base-font-size;
+      $px-values: join($px-values, round($value));
+      $rem-values: join($rem-values, #{$new-rem-value}rem);
+    } @else if $value == auto or $value == inherit {
+        // auto or inherit - don't add px or rem
+        $px-values: join($px-values, $value);
+        $rem-values: join($rem-values, $value);
+    }
+    @else {
+      // unitless value - use those directly as rem and calculate the px-fallback
+      $px-values: join($px-values, round($value * $base-font-size));
+      $rem-values: join($rem-values, unquote("#{$value}rem"));
+    }
+  }
+ 
+  // output the converted rules
+  #{$property}: $px-values;
+  #{$property}: $rem-values;
+}
+
+
+// Media queries 
+//
+// Use like this:
+// 
+// page-wrap {
+//  width: 75%;
+//  @include breakpoint(break-small) { width: 95%; }
+//  @include breakpoint(break-medium) { width: 80%; }
+//  @include breakpoint(break-max) { width: 60%; }
+// }
+
+
+$break-min: 480px;
+$break-small: 768px;
+$break-medium: 992px;
+$break-large: 1200px;
+
+@mixin breakpoint($point) {
+  @if $point == break-min {
+    @media screen and (min-width: 480px) { @content; } // roughly modern phones -- this is an arbitrary-but-useful break in the large span from 20 to 48 rems
+  }
+  @else if $point == break-small {
+    @media screen and (min-width: 768px) { @content; } // roughly tablets
+  }
+  @else if $point == break-medium {
+    @media screen and (min-width: 992px) { @content; } // desktop-ish
+  }
+  @else if $point == break-large {
+    @media screen and (min-width: 1200px)  { @content; } // sky's the limit
+  }
+  @else if $point == directory {
+    @media screen and (max-width: 991px)  { @content; } // this is for the staff directory, may God have mercy upon my soul
+  }
+}
+
+
+// Support old IE versions 
+//
+// Use like this:
+// 
+// page-wrap {
+//  width: 75%;
+//  @include breakpoint(break-small) { width: 95%; }
+//  @include breakpoint(break-medium) { width: 80%; }
+//  @include breakpoint(break-max) { width: 60%; }
+//  @include old-ie { width: 60%; }
+// }
+
+$old-ie: false !default;
+
+@mixin old-ie {
+    // Only use this content if we're dealing with old IE
+    @if $old-ie {
+        @content;
+    }
+}
+
+
+// Clearfix 
+
+@mixin clearFix {
+    &:after {
+      clear:      both;
+      content:    ".";
+      display:    block;
+      height:     0;
+      visibility: hidden;
+    }
+}
+
+
+// ======= VENDOR PREFIXES ========= 
+
+// Box-sizing
+
+@mixin boxSizing($value) {
+  -webkit-box-sizing: #{$value}; 
+     -moz-box-sizing: #{$value}; 
+          box-sizing: #{$value};
+}
+
+// Transitions
+
+@mixin makeTransition($property: "All", $value: 300ms, $timing: "ease") {
+	-webkit-transition: #{$property} #{$value} #{$timing};
+		-moz-transition: #{$property} #{$value} #{$timing};
+		  -o-transition: #{$property} #{$value} #{$timing};
+			  	transtion: #{$property} #{$value} #{$timing};
+}
+
+// BorderRadius
+
+@mixin borderRadius($value) {
+    -webkit-border-radius: #{$value};
+       -moz-border-radius: #{$value};
+            border-radius: #{$value};
+  -webkit-background-clip: padding-box; 
+     -moz-background-clip: padding; 
+          background-clip: padding-box;
+}
+
+// BackgroundSize
+
+@mixin backgroundSize($value) {
+  -webkit-background-size: #{$value}; 
+        -o-background-size: #{$value}; 
+          background-size: #{$value};
+}
+
+// BoxShadow
+// Probably should use the Materical Design Shadow mixin below
+
+@mixin boxShadow($value) {
+	-webkit-box-shadow: #{$value};
+		-moz-box-shadow: #{$value};
+			  box-shadow: #{$value};
+}
+
+// makeGradient
+// give a base color, and it makes a subtle vertical gradient with a lighter color on top
+// and the base color as the fallback background
+
+@mixin makeGradient($bottom, $top) {
+	background: #{$bottom};
+    background: -moz-linear-gradient(top, #{$top} 0%, #{$bottom} 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, #{$top}), color-stop(100%, #{$bottom}));
+    background: -webkit-linear-gradient(top, #{$top} 0%, #{$bottom} 100%);
+    background: -o-linear-gradient(top, #{$top} 0%, #{$bottom} 100%);
+    background: -ms-linear-gradient(top, #{$top} 0%, #{$bottom} 100%);
+    background: linear-gradient(to bottom, #{$top} 0%, #{$bottom} 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$top}', endColorstr='#{$bottom}', GradientType=0 );
+}
+
+// Material Design shadows from CSS-Tricks
+// https://css-tricks.com/snippets/sass/material-shadows-mixin/
+
+
+/// Gives a card depth effect.
+/// @param {Number} $depth - depth level (between 1 and 5)
+/// @link http://www.google.com/design/spec/layout/layout-principles.html#layout-principles-dimensionality Google Design
+/// @requires {function} top-shadow
+/// @requires {function} bottom-shadow
+
+@mixin materialShadow($depth, $color: black) {
+  @if $depth < 1 {
+    box-shadow: none;
+  } @else if $depth > 5 {
+    @warn "Invalid $depth `#{$depth}` for mixin `card`.";
+  } @else {
+    box-shadow: bottom-shadow($depth, $color), top-shadow($depth, $color);  
+  }
+}
+
+/// Computes a top-shadow for a card effect.
+/// @param {Number} $depth - depth level
+/// @return {List}
+@function top-shadow($depth, $color) {
+  $primary-offset: nth(1.5 3 10 14 19, $depth) * 1px;
+  $blur: nth(1.5 3 10 14 19, $depth) * 4px;
+  $colorblur: rgba($color, nth(.12 .16 .19 .25 .30, $depth));
+
+  @return 0 $primary-offset $blur $colorblur;
+}
+
+/// Computes a bottom-shadow for a card effect.
+/// @param {Number} $depth - depth level
+/// @return {List}
+@function bottom-shadow($depth, $color) {
+  $primary-offset: nth(1.5 3 6 10 15, $depth) * 1px;
+  $blur: nth(1 3 3 5 6, $depth) * 4px;
+  $colorblur: rgba($color, nth(.24 .23 .23 .22 .22, $depth));
+
+  @return 0 $primary-offset $blur $colorblur;
+}
+
+
+// Word wrap mixins. Wrap words. Use hyphens where possible. 
+// Also an ellipsis mixin.
+
+@mixin word-wrap() {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+@mixin ellipsis() {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+// Aspect ratio mixins
+// From: https://css-tricks.com/snippets/sass/maintain-aspect-ratio-mixin/
+
+// Use like:
+//
+// <div class="sixteen-nine">
+//   <div class="content">
+//     insert content here
+//     this will maintain a 16:9 aspect ratio
+//   </div>
+// </div>
+//
+// .sixteen-nine {
+//   @include aspect-ratio(16, 9);
+// }
+
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+  > .aspect-ratio {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}

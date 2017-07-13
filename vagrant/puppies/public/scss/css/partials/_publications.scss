@@ -1,0 +1,274 @@
+/*
+ * PUBLICATIONS
+ *
+ */
+
+// These styles are related to the old forms and the pages on www.nssl.noaa.gov 
+// Newer styles down below. -- VRF 2/23/2017
+ 
+ /* Publications search forms */
+ 
+.publications-form {
+	@include rem-fallback(margin, 0, 0, $base-margin, 0);
+	@include rem-fallback(padding, $base-padding);
+	@include materialShadow(1);
+	border: $box-border;
+	
+
+	fieldset {
+		@include rem-fallback(padding, $base-padding/2);
+		
+		@include breakpoint(break-small) { 
+			@include rem-fallback(padding, $base-padding);
+		}
+		
+		&.open {
+			border: none;
+			padding: 0;
+		}
+	} // fieldset
+	
+	legend {
+		@include rem-fallback(padding, $base-padding/4);
+		@include rem-fallback(margin, 0, 0, $base-margin/2, 0);
+		background: $box-bg;
+		border: $box-border;
+		
+		&.open {
+			background: transparent;
+			border: none;
+			font-weight: bold;
+			padding: 0;
+		}
+	} // legend
+	
+	label {
+			display: inline-block;
+			font-weight: bold;
+			@include rem-fallback(margin, 0, 0, $base-margin/2, 0);
+		
+		&.radio {
+			display: inline-block;
+			font-weight: normal;
+		}
+	} // label
+	
+	.form_item {
+		@include rem-fallback(margin, 0, 0, $base-margin, 0);
+		
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+	
+	input[type=submit] {
+		@include rem-fallback(padding, $base-padding/2, $base-padding);
+	}		
+	
+	.note {
+		@include rem-fallback(font-size, $px14-font-size); // 14px
+		font-style: italic;
+		line-height: $px14-line-height; // 18px
+		@include rem-fallback(margin, -$base-margin/4, 0, $base-margin/2, 0);
+	}
+	
+	&.quick-search {
+		
+		@include breakpoint(break-min) { 
+			.form_item {
+				float: left;
+				@include rem-fallback(padding, 0, $base-padding/2);
+				width: 50%;
+			}
+				
+			div.form_item:first-of-type { // note: this avoids conflict with fieldset.form_item
+				border-right: $box-border;
+			}
+			
+		} // break-min
+			
+		.radio-label {
+			@include rem-fallback(margin, 0, 0, $base-margin, 0);
+	
+			@include breakpoint(break-medium) { 
+				@include rem-fallback(margin, 0, 0, $base-margin/2, 0);
+			}
+		}
+		
+	} // .quick-search
+	
+	&.advanced-search {
+		input[type=text],
+		textarea {
+		@include rem-fallback(margin, 0, 0, $base-margin/4, 0);
+			width: 100%;
+			
+		}
+	
+		& > fieldset {
+			border: 2px solid $base-color;
+		}
+		
+		legend {
+			background-color: transparent;
+			border: none;
+			float: left; // this puts the legend inside the fieldset
+			font-weight: normal;
+			@include rem-fallback(margin, 0, 0, $base-margin, 0);
+			padding: 0;
+			width: 100%;
+			
+			&.section-header {
+				background: $ltbase-bg;
+				border-top: 1px solid $ltbase-border;
+				border-bottom: 1px solid $ltbase-border;
+				@include rem-fallback(font-size, $h4-font-size); // h4-size to match quick search
+				line-height: $h4-line-height; // 30px
+				@include rem-fallback(margin, 0, -$base-padding/4, $base-margin, -$base-padding/4); // offset the padding
+				@include rem-fallback(padding, $base-padding/4);
+			} // .section-header
+		} // legend
+		
+		label {
+			font-weight: normal;
+			
+			&.radio-label {
+				display: block;
+				@include rem-fallback(margin, $base-margin, 0);
+		
+				@include breakpoint(break-medium) { 
+					display: inline-block;
+					@include rem-fallback(margin, 0, $base-margin/2, $base-margin/2, 0);
+				}
+				
+			}
+		}
+		
+		input[type=submit] {
+			display: inline-block;
+			@include rem-fallback(margin-right, $base-margin/2); // offset the padding
+		}
+		
+	} // .advanced-search
+		
+} // .publications-form
+ 
+ /* Publications listings display */
+ 
+ $cimms: $dark-red;
+ 
+ $fed: $base-color;
+ 
+ .publication_item {
+    background: $box-bg;
+	 border: $box-border;
+    @include rem-fallback(margin, $base-margin, 0);
+    @include rem-fallback(padding, $base-padding);
+    
+    > :last-child {
+        margin-bottom: 0;
+    }
+ }
+	
+.journal_name,
+.conference_name,
+.book_title {
+	font-style: italic;
+}
+
+.volume_number {
+	font-weight: bold;
+}
+
+.cimms {
+	color:  $cimms;
+	font-weight: bold;
+}
+
+.fed {
+	color: $fed;
+	font-weight: bold;
+}
+
+.other-affil {
+	font-weight: bold;
+}
+
+.abstract p {
+  @include rem-fallback(font-size, 0.875); // 14px
+  line-height: 1.5; // 21px
+  @include rem-fallback(margin, 0, 0, $base-margin, $base-margin);
+}
+
+.publication_meta,
+.search_meta {
+  @include rem-fallback(font-size, 0.875); // 14px
+  line-height: 1.5; // 21px
+	@include rem-fallback(padding, $base-padding/4, $base-padding);
+	@include rem-fallback(margin, $base-margin, 0);
+	background: $ltbase-bg;
+	border-top: 1px solid $ltbase-border;
+	border-bottom: 1px solid $ltbase-border;
+
+	p {
+	  @include rem-fallback(font-size, 0.875); // 14px
+	  line-height: 1.5; // 18px
+		margin: 0;
+	}
+
+}
+
+.search_meta .fed,
+.search_meta .cimms {
+	text-transform: uppercase;
+}
+
+.publication_tags p {
+  @include rem-fallback(font-size, 0.875); // 14px
+  line-height: 1.5; // 18px
+	font-style: italic;
+}
+
+#pub_quick_search_accordion {
+	@include rem-fallback(margin-bottom, $base-margin);
+	border: none;
+	
+	.ui-accordion-header {
+		
+		&.ui-state-default {
+			background-color: transparent;
+			background-image: none;
+			border: 1px solid transparent;
+			color: $link-color;
+			text-decoration: none;
+			
+			&:focus {
+				outline: none;
+				border: 1px dotted $text-color;
+			}
+			
+			&:hover,
+			&:active {
+				text-decoration: underline;
+				text-decoration-skip: ink;
+			}
+		}
+	}
+	
+	.ui-widget-content {
+		border: none;
+		@include rem-fallback(padding, $base-padding, 0, 0, 0);
+	}
+	
+	
+/*	.accordion_toggle:focus,
+	.accordion_toggle a:focus {
+		outline: none;
+		text-decoration: underline;
+	}*/
+}
+
+// 2017 STYLES
+
+// many form styles are in _forms.scss
+
