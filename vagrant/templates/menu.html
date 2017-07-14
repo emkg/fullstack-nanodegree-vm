@@ -1,11 +1,11 @@
 <html>
   <body>
 
-    <h1> Restaurant </h1>
+    <h1> {{restaurant.name}} </h1>
 
       <h2> MENU </h2>
 
-      <a href='#'>Add New Item!</a>
+      <a href='{{url_for('addMenuItem', restaurant_id = restaurant.id)}}'>Add New Item!</a>
 
       <br/>
       <br/>
@@ -17,9 +17,9 @@
         <br/>
         {{i.description}}
         <br/>
-        <a href= '#' >Edit</a>
+        <a href='{{url_for('editMenuItem', restaurant_id=restaurant.id, menu_id=i.id)}}' >Edit</a>
         <br/>
-        <a href= '#' >Delete</a>
+        <a href= '{{url_for('deleteMenuItem', restaurant_id=restaurant.id, menu_id=i.id)}}' >Delete</a>
         <br/>
         <br/>
 

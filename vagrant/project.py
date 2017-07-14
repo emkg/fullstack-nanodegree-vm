@@ -68,6 +68,7 @@ def deleteMenuItem(restaurant_id, menu_id):
     else:
         return render_template('deleteMenuItem.html', restaurant_id=restaurant_id, menu_id=menu_id, i=item)
 
+
 if __name__ == '__main__':
     app.debug = True # restart server on changes
     app.run(host = '0.0.0.0', port = 5000)

@@ -1,17 +1,15 @@
 <html>
   <body>
-    <form action='#' method='POST'>
+    <form action='{{url_for('editMenuItem', restaurant_id=restaurant_id, menu_id=menu_id)}}' method='POST'>
       <p>Item name: </p>
-        <input name='name' type ='text' placeholder='' />
+        <input name='name' type ='text' size-'100' value={{item.name}} />
       <p>Item price: </p>
-        <input name='price' type ='text' placeholder='$' />
+        <input name='price' type ='text' size='100' value={{item.price}} />
       <p>Item description: </p>
-        <input name='descr' type ='text' placeholder='' />
-
+        <input name='descr' type ='text' size='100' value={{item.description}} />
       <br/>
       <br/>
-
-      <input type='submit' value='Edit it!'  />
+      <input type='submit' value='Edit it!' />
     </form>
   </body>
 </html>

@@ -2,20 +2,20 @@
   <body>
     <h1> Restaurants! </h1>
 
-
-
-      <a href='#'>Add New Item!</a>
+      <a href= '{{url_for('addRestaurant')}}'>Add New Restaurant!</a>
 
       <br/>
       <br/>
 
-      {% for R in Restaurant %}
-        {{R.name}}
+      {% for r in restaurants %}
+
+        {{r.name}}
         <br/>
+        <a href='{{url_for('getRestaurantMenu', restaurant_id=r.id)}}' >Menu</a>
         <br/>
-        <a href= '#' >Edit</a>
+        <a href='{{url_for('editRestaurant', restaurant_id=r.id)}}' >Edit</a>
         <br/>
-        <a href= '#' >Delete</a>
+        <a href='{{url_for('deleteRestaurant', restaurant_id=r.id)}}' >Delete</a>
         <br/>
         <br/>
 

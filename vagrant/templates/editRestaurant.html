@@ -1,13 +1,13 @@
 <html>
   <body>
-    <form method='POST' action='#' >
+    <form method='POST' action='{{url_for('editRestaurant', restaurant_id = restaurant_id)}}' >
       <h2> What is the new name of the restaurant? </h2>
         <p> Name: </p>
             <input name='name' type ='text' placeholder='' />
 
         <input type='submit' value='Change It' />
 
-        <a href='#' >Cancel</a>
+        <a href='{{url_for('getRestaurants')}}' >Cancel</a>
 
     </form>
   </body>

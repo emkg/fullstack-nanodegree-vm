@@ -1,6 +1,6 @@
 <html>
   <body>
-      <form method='POST', action='{{url_for('newMenuItem', restaurant_id = restaurant_id)}}' >
+      <form method='POST', action='{{url_for('addMenuItem', restaurant_id = restaurant_id)}}' >
         <p>Item name: </p>
           <input name='name' type ='text' placeholder='' />
         <p>Item price: </p>
@@ -12,6 +12,7 @@
         <br/>
 
         <input type='submit' value='Add it!'  />
+        <a href='{{url_for('getRestaurantMenu', restaurant_id=restaurant_id)}}' >Cancel</a>
       </form>
   </body>
 </html>
