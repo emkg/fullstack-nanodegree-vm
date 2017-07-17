@@ -1,27 +1,31 @@
 <html>
+  <head>
+    <link rel='stylesheet' type='text/css' href='/static/style.css'/>
+  </head>
   <body>
     <h1> Restaurants! </h1>
-
       <a href= '{{url_for('addRestaurant')}}'>Add New Restaurant!</a>
-
       <br/>
       <br/>
+          {% for r in restaurants %}
+          <div class='page-container'>
+            <div class='item-box' >
+              <div class='item'>
+                  <h2>{{r.name}}</h2>
+                  <br/>
+              </div>
 
-      {% for r in restaurants %}
-
-        {{r.name}}
-        <br/>
-        <a href='{{url_for('getRestaurantMenu', restaurant_id=r.id)}}' >Menu</a>
-        <br/>
-        <a href='{{url_for('editRestaurant', restaurant_id=r.id)}}' >Edit</a>
-        <br/>
-        <a href='{{url_for('deleteRestaurant', restaurant_id=r.id)}}' >Delete</a>
-        <br/>
-        <br/>
-
-      {% endfor %}
-
-
-
+              <div class='buttons' >
+                <a href='{{url_for('getRestaurantMenu', restaurant_id=r.id)}}' >Menu</a>
+                <br/>
+                <a href='{{url_for('editRestaurant', restaurant_id=r.id)}}' >Edit</a>
+                <br/>
+                <a href='{{url_for('deleteRestaurant', restaurant_id=r.id)}}' >Delete</a>
+                <br/>
+                <br/>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
   </body>
 </html>

@@ -12,7 +12,27 @@ Base.metadata.bind = engine
 DBSession = sessionmaker(bind = engine)
 session = DBSession()
 
+# API
+@app.route('/restaurants/JSON')
+def restaurantListJSON():
+    restaurantList = session.query(Restaurant).all()
+    return jsonify(Directory=[r.serialize for r in restaurantList])
 
+
+@app.route('/restaurant/<int:restaurant_id>/menu/JSON')
+def restaurantMenuJSON(restaurant_id):
+    restaurant = session.query(Restaurant).filter_by(id = restaurant_id).one()
+    items = session.query(MenuItem).filter_by(restaurant_id = restaurant_id).all()
+    return jsonify(MenuItems=[i.serialize for i in items])
+
+@app.route('/restaurant/<int:restaurant_id>/menu/<int:menu_id>/JSON')
+def restaurantMenuItemJSON(restaurant_id, menu_id):
+    restaurant = session.query(Restaurant).filter_by(id = restaurant_id).one()
+    item = session.query(MenuItem).filter_by(restaurant_id = restaurant_id, id = menu_id).one()
+    return jsonify(Item=item.serialize)
+
+
+# website
 @app.route('/')
 @app.route('/restaurants')
 def getRestaurants():
@@ -56,7 +76,8 @@ def deleteRestaurant(restaurant_id):
 def getRestaurantMenu(restaurant_id):
     items = session.query(MenuItem).filter_by(restaurant_id = restaurant_id).all()
     restaurant = session.query(Restaurant).filter_by(id = restaurant_id).one()
-    return render_template('menu.html', restaurant=restaurant, items=items)
+    courses = ["Appetizer", "Entree", "Beverage", "Dessert"]
+    return render_template('menu.html', restaurant=restaurant, items=items, courses=courses)
 
 @app.route('/restaurant/<int:restaurant_id>/menu/new', methods=['GET', 'POST'])
 def addMenuItem(restaurant_id):
